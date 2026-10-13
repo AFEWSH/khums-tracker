@@ -1,0 +1,106 @@
+# نصب و اجرای زیرساخت فاز ۱
+
+2026-10-13 — این راهنما برای کد آماده‌شده فاز ۱ است. اجرای backend Laravel و ۳۷ تست موفق است؛ مرور بصری در محیط کاربر باقی است؛ جزئیات در [PROGRESS](PROGRESS.md).
+
+## وضعیت نسخه‌ها و سازگاری
+
+| جزء | نسخه/قید | وضعیت واقعی این تحویل |
+|---|---|---|
+| PHP | 8.4.26 در محیط؛ قید پروژه `~8.4.0` | موجود؛ Argon2id و pdo_sqlite فعال؛ preflight موفق |
+| Composer | 2.9.5 | وابستگی‌ها توسط کاربر نصب؛ validate و platform requirements موفق |
+| Laravel | 13.35.0؛ قید `^13.0` | نصب و ثبت در composer.lock، runtime موفق |
+| Livewire | 4.4.7؛ قید `^4.4.7` | نصب و تست‌های component/update موفق؛ browser review باقی است |
+| Pest / Laravel plugin | 4.7.8 / 4.1.0 | نصب و ۳۷ تست/۲۱۶ assertion موفق |
+| Pint | 1.32.1؛ قید `^1.32.1` | نصب در vendor؛ composer format و format:check موفق |
+| Node / npm | 22.22.3 / 12.2.0 | موجود؛ با نیاز Node 22.12+ ابزارهای انتخابی سازگار |
+| Vite / laravel-vite-plugin | 8.0.16 / 3.1.0 | نصب از کَش، ثبت در package-lock و Build موفق |
+| Tailwind / @tailwindcss/vite | 4.3.0 / 4.3.0 | نصب از کَش و Build موفق؛ تنظیم Vite مخصوص Tailwind 4 |
+| Alpine | همراه Livewire 4 | dependency مستقل ندارد؛ اجرای مرورگری پس از نصب Livewire باید بررسی شود |
+| SQLite | اتصال PDO با foreign keys و busy timeout | PDO SQLite 3.45.1؛ migration جدید و تست‌های FK موفق |
+| فونت | Noto Sans Arabic معمولی و ضخیم، محلی | فایل‌ها و مجوز OFL در resources/fonts؛ در Build بسته‌بندی شدند |
+
+وابستگی‌های اصلی انتخابی MIT هستند؛ مجوزهای transitive از composer licenses و فایل‌های vendor بررسی شدند؛ گزینه BSD در مجوز چندگانه Nette انتخاب شد. از جابه‌جایی نسخه اصلی برای رفع نبود کَش یا نادیده‌گرفتن platform requirements استفاده نشده است.
+
+منابع بررسی: [Laravel 13](https://laravel.com/framework/docs/13.x/releases)، [manifest اسکلت رسمی](https://github.com/laravel/laravel/blob/master/composer.json)، [manifest Livewire 4.4.7](https://github.com/livewire/livewire/blob/v4.4.7/composer.json)، [Pest](https://pestphp.com/docs/installation)، [manifest افزونه Laravel برای Pest](https://github.com/pestphp/pest-plugin-laravel/blob/4.x/composer.json)، [Tailwind و Vite](https://tailwindcss.com/docs/installation/using-vite). اطلاعات package.json نصب‌شده Vite/Tailwind نیز برای نسخه، engines و MIT خوانده شد. این بررسی جای اجرای runtime هدف را نمی‌گیرد.
+
+## پیش‌نیازهای محیط
+
+در Ubuntu، بسته سازگار `php8.4-sqlite3` باید برای همان PHP CLI و در صورت استفاده، PHP-FPM فعال باشد. اسکریپت `php scripts/check-environment.php` افزونه‌های لازم و Argon2id را بدون اتصال به داده شخصی بررسی می‌کند. بسته سیستم را کاربر نصب کرد؛ ابزار فقط فعال‌بودن driver را بررسی کرد.
+
+نصب اولیه Composer و npm به دسترسی به مخازن بسته‌ها یا کَش کامل همان نسخه‌ها نیاز دارد. استفاده معمول برنامه پس از نصب و Build به اینترنت یا API خارجی وابسته نیست. کاربر نصب PHP را در ترمینال Ubuntu انجام داد و composer.lock تولید شد؛ در نشست ابزار هنوز محدودیت شبکه/پورت برقرار است، ولی برای تست‌های نصب‌شده نیاز به دانلود دوباره نداریم.
+
+## راه‌اندازی جدید
+
+فرمان‌های زیر پس از رفع پیش‌نیازها، برای یک پایگاه جدید و بدون داده شخصی هستند. در محیط فعلی migration هویت روی DB جدید اجرا شده و .env/کلید خصوصی آماده‌اند. برای پایگاه موجود، قبل از migration پشتیبان سازگار و بازیابی آزموده لازم است؛ آن روند در فاز ۲ توسعه می‌یابد.
+
+```bash
+php scripts/check-environment.php
+cp -n .env.example .env
+chmod 600 .env
+composer install
+php artisan key:generate
+mkdir -p storage/app/private
+chmod 700 storage/app/private
+touch storage/app/private/database.sqlite
+chmod 600 storage/app/private/database.sqlite
+php artisan migrate
+php artisan owner:create
+npm ci
+npm run build
+php artisan serve --host=127.0.0.1
+```
+
+برنامه در `http://127.0.0.1:8000` باز می‌شود. owner:create نام کاربری و رمز/تکرار مخفی را دریافت می‌کند؛ رمز در آرگومان فرمان یا فایل نمونه قرار نمی‌گیرد. نام کاربری ۳ تا ۶۴ نویسه لاتین/رقم/نقطه/خط تیره/زیرخط، و رمز حداقل ۱۲ و حداکثر ۱۲۸ نویسه است؛ عبارت طولانی مجاز است. مالک دوم ساخته نمی‌شود. پایگاه محلی این تحویل بدون مالک است؛ داده نمونه فقط در تست‌های memory/tmp بود.
+
+composer.lock اکنون با resolve واقعی تولید شده و باید در Git نگهداری شود؛ نسخه‌های ثبت‌شده آن مبنای نصب تکرارپذیرند. package-lock.json موجود است و `npm ci` مسیر تکرارپذیر frontend خواهد بود.
+
+## ورود، نشست و بازیابی دسترسی
+
+GET /login فرم Livewire را نشان می‌دهد؛ POST /login مسیر عادی بدون JavaScript با همان Action ورود است. هر دو اعتبارسنجی سرور و محدودسازی مشترک دارند. فرم POST و CSRF دارد تا نبود JavaScript باعث ارسال رمز در URL نشود. پس از ورود تنها به dashboard هدایت می‌شود؛ redirect خارجی از ورودی کاربر پذیرفته نمی‌شود.
+
+در یک دقیقه، پنج تلاش برای ترکیب نام کاربری نرمال‌شده/IP و بیست تلاش کل برای IP مجاز است؛ محدودکننده file cache در اجرای معمول بین درخواست‌ها پایدار می‌ماند. پیام نام کاربری ناشناخته، رمز غلط یا مالک غیرفعال یکسان است. رفتار سقف پنج تلاش، تغییر نام کاربری برای سقف IP و cooldown در Pest موفق‌اند؛ این نتیجه ضمانت سقف مطلق در تمام همزمانی‌های distributed نیست و برنامه محلی است.
+
+نشست database در فاز ۱ ثابت است تا ابطال تمام نشست‌های مالک در بازیابی رمز معنی مشخص داشته باشد. payload با APP_KEY رمز می‌شود؛ lifetime سی دقیقه، انقضا با بستن مرورگر، HttpOnly و SameSite=strict است. ورود session ID را می‌چرخاند؛ خروج POST، session و CSRF را باطل می‌کند. middleware `auth.session` تغییر رمز را نیز بررسی می‌کند. middleware مالک و نشست روی updateهای Livewire دوباره اجرا می‌شوند.
+
+```bash
+php artisan owner:reset-password
+```
+
+این فرمان با رمز مخفی، رمز مالک را عوض و نشست‌های database او را در همان تراکنش حذف می‌کند؛ مالک غیرفعال را خودکار فعال نمی‌کند. دسترسی به shell/APP_KEY/پایگاه فقط برای مالک دستگاه باشد. حساب و password_hash در log یا خروجی فرمان چاپ نمی‌شوند.
+
+## فایل‌های خصوصی و اجرای آینده روی سرور
+
+SQLite پیش‌فرض در `storage/app/private/database.sqlite` است؛ DB_DATABASE می‌تواند مسیر خصوصی مطلق تعیین کند. local disk قابل serve نیست و لینک public/storage نداریم. `.env`، SQLite/WAL، cache نشست، log، backup، receipt و export در ignore قرار دارند؛ اطلاعات محرمانه در `.env.example` نیست.
+
+اجرای توسعه فقط روی loopback است. برای استقرار آینده، public تنها web root و HTTPS الزامی است؛ APP_ENV=production باعث اجبار Secure cookie و غیرفعال‌شدن debug در provider می‌شود. تنظیم APP_URL، دسترسی فایل‌های خصوصی و کاربر PHP-FPM باید متناسب همان میزبان بررسی شود. این فاز استقرار سرور انجام نداده است.
+
+## بررسی‌های قابل تکرار
+
+```bash
+composer validate --strict --no-check-publish
+composer check:environment
+composer test
+composer format
+composer format:check
+npm ci
+npm run build
+git diff --check
+```
+
+Pest با PHPUnit config اجباریِ testing و SQLite in-memory اجرا می‌شود؛ TestCase پیش از RefreshDatabase، اتصال غیرآزمایشی یا config cache واقعی را رد می‌کند. Factory فقط داده ساختگی دارد؛ هیچ seed خودکار مالک وجود ندارد. CSRF در دو تست عمداً از bypass پیش‌فرض testing خارج می‌شود، ولی اتصال همان SQLite آزمایشی باقی می‌ماند.
+
+تست‌های backend و HTTP آفلاین موفق‌اند؛ پذیرش بصری موبایل/دسکتاپ، صفحه‌کلید و مرورگر واقعی در محیط کاربر باقی است. فاز ۲ تا تحویل موفق فاز ۱ و تأیید جدا شروع نمی‌شود.
+
+## اجرای سریع همین محیط و پذیرش رابط
+
+.env و جداول هویت تازه آماده‌اند و کلید قبلی باید حفظ شود. برای شروع روی همین سیستم، فقط owner:create (اگر هنوز مالک وجود ندارد) و serve لازم‌اند:
+
+```bash
+cd /home/irantech/Projects/khums-tracker
+php artisan owner:create
+php artisan serve --host=127.0.0.1
+```
+
+در مرورگر Ubuntu به http://127.0.0.1:8000 بروید. ورود با رمز درست/غلط، پیام فارسی، Tab/Enter و خروج را بررسی کنید؛ با عرض ۳۶۰ و دسکتاپ خوانایی/عدم overflow را ببینید. با سرور محلی روشن و اینترنت قطع، صفحات و فونت باید بارگیری شوند. نتیجه این بررسی انسانی برای تأیید نهایی فاز ۱ ثبت خواهد شد.
+
+Chrome این نشست به permission در setsockopt و Firefox به محدودیت snap برخورد کردند؛ سرور TCP هم مجاز نبود. این محدودیت سبب استفاده از HTTP kernel مستقیم برای تست backend شد؛ هیچ نتیجه موفق browser interaction گزارش نشده است.

@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+@source '../views/**/*.blade.php';
+@source '../../app/Livewire/**/*.php';
+@source '../../storage/framework/views/*.php';
+
+@font-face {
+    font-family: 'Noto Arabic';
+    src: url('../fonts/NotoSansArabic-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Arabic';
+    src: url('../fonts/NotoSansArabic-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@theme {
+    --font-sans: 'Noto Arabic', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    body {
+        @apply bg-slate-50 text-slate-800 antialiased;
+    }
+
+    button, a, input {
+        @apply outline-offset-4;
+    }
+
+    button:not(:disabled), a {
+        @apply cursor-pointer;
+    }
+
+    ::selection {
+        @apply bg-teal-100 text-teal-950;
+    }
+}
+
+@layer components {
+    .form-input {
+        @apply block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 shadow-xs transition focus:border-teal-600 focus:outline-2 focus:outline-teal-600 aria-invalid:border-red-600;
+    }
+
+    .button-primary {
+        @apply inline-flex min-h-12 items-center justify-center rounded-xl bg-teal-800 px-5 py-3 text-sm font-bold text-white shadow-xs transition hover:bg-teal-900 focus-visible:outline-2 focus-visible:outline-teal-700 disabled:cursor-wait disabled:opacity-60;
+    }
+
+    .button-secondary {
+        @apply inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm transition hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-teal-700;
+    }
+
+    .panel {
+        @apply rounded-2xl border border-slate-200 bg-white shadow-xs;
+    }
+}

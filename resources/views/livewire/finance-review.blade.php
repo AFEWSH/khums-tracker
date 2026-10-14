@@ -30,7 +30,7 @@
     </section>
     <section class="panel space-y-4 p-6">
         <h2 class="text-xl font-bold">اصلاح مانده ریالی افتتاحیه</h2>
-        <p class="text-sm leading-7 text-slate-600">اصلاحیه، سند افتتاحیه اصلی را تغییر نمی‌دهد. پیشنهاد ابتدا ذخیره می‌شود و فقط با تأیید جدا و بازسازی بدون ناسازگاری اثر می‌گذارد. اصلاح تعداد یا وضعیت مخمّس نیازمند بررسی جداست.</p>
+        <p class="text-sm leading-7 text-slate-600">اصلاحیه، سند افتتاحیه اصلی را تغییر نمی‌دهد. پیشنهاد ابتدا ذخیره می‌شود و فقط با تأیید جدا و بازسازی بدون ناسازگاری اثر می‌گذارد.</p>
         <div class="grid gap-4 sm:grid-cols-2">
             <label class="space-y-1 text-sm"><span>قلم افتتاحیه</span><select wire:model="openingItemId" class="field w-full"><option value="">انتخاب کنید</option>@foreach ($openingItems as $item)<option value="{{ $item->id }}">{{ $item->name }}</option>@endforeach</select></label>
             <label class="space-y-1 text-sm"><span>مانده صحیح (تومان)</span><input wire:model="correctedToman" class="field w-full" dir="ltr" inputmode="decimal"></label>
@@ -50,6 +50,17 @@
         <button wire:click="proposeAssetCorrection" type="button" class="button-secondary">ذخیره پیشنهاد اصلاح ارزش</button>
     </section>
     <section class="panel space-y-4 p-6">
+        <h2 class="text-xl font-bold">اصلاح مقدار و اظهار مخمّس دارایی افتتاحیه</h2>
+        <p class="text-sm leading-7 text-slate-600">دارایی انتخاب‌شده و دلیل اصلاح از بخش بالا خوانده می‌شوند. سهم مخمّس فقط با اظهار صریح شما ثبت می‌شود؛ باقی‌مانده نامشخص می‌ماند. تأیید اصلاح در صورت کسری معاملات بعدی رد می‌شود.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+            <label class="space-y-1 text-sm"><span>مقدار صحیح کل</span><input wire:model="correctedAssetQuantity" class="field w-full" dir="ltr" inputmode="decimal"></label>
+            <label class="space-y-1 text-sm"><span>مقدار مخمّس اظهارشده</span><input wire:model="correctedProtectedQuantity" class="field w-full" dir="ltr" inputmode="decimal"></label>
+            <label class="space-y-1 text-sm"><span>پایه مخمّس (تومان؛ در صورت اظهار مقدار مخمّس لازم)</span><input wire:model="correctedProtectedBasisToman" class="field w-full" dir="ltr" inputmode="decimal"></label>
+            <label class="space-y-1 text-sm"><span>وضعیت مدرک</span><select wire:model="correctedOriginEvidence" class="field w-full"><option value="unknown">نامشخص</option><option value="user_declared">اظهار و تأیید من</option></select></label>
+        </div>
+        <button wire:click="proposeAssetQuantityCorrection" type="button" class="button-secondary">ذخیره پیشنهاد اصلاح مقدار و منشأ</button>
+    </section>
+    <section class="panel space-y-4 p-6">
         <h2 class="text-xl font-bold">واقعیت تملک پیش از افتتاحیه</h2>
         <p class="text-sm leading-7 text-slate-600">این ثبت فقط واقعیت مستند را نگه می‌دارد و خرید، پرداخت یا بهای تاریخی ساختگی نمی‌سازد.</p>
         <div class="grid gap-4 sm:grid-cols-2">
@@ -61,5 +72,20 @@
         </div>
         @error('fact') <p role="alert" class="text-sm text-red-700">{{ $message }}</p> @enderror
         <button wire:click="recordFact" type="button" class="button-secondary">ثبت واقعیت</button>
+    </section>
+    <section class="panel space-y-4 p-6">
+        <h2 class="text-xl font-bold">وصول طلب یا بازپرداخت بدهی ارزی</h2>
+        <p class="text-sm leading-7 text-slate-600">مقدار اصل ارز و مبلغ ریالی واقعاً دریافت یا پرداخت‌شده را وارد کنید. اختلاف با ارزش دفتریِ سهم تسویه‌شده جداگانه به‌عنوان سود/زیان تسعیر ثبت می‌شود؛ اصل تعهد درآمد یا هزینه تازه نیست. تسویهٔ تاریخ‌گذشته پیش از تسویهٔ بعدی همان تعهد برای بازبینی ترتیب رد می‌شود.</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+            <label class="space-y-1 text-sm"><span>تعهد ارزی</span><select wire:model="fxObligationId" class="field w-full"><option value="">انتخاب کنید</option>@foreach ($foreignObligations as $obligation)<option value="{{ $obligation['id'] }}">{{ $obligation['name'] }} · {{ $obligation['instrument'] }} · مانده اصل {{ $obligation['remaining'] }}</option>@endforeach</select></label>
+            <label class="space-y-1 text-sm"><span>حساب ریالی دریافت/پرداخت</span><select wire:model="fxCashId" class="field w-full"><option value="">انتخاب کنید</option>@foreach ($cashAccounts as $account)<option value="{{ $account->id }}">{{ $account->name }}</option>@endforeach</select></label>
+            <label class="space-y-1 text-sm"><span>تاریخ شمسی</span><input wire:model="fxDate" class="field w-full" dir="ltr" inputmode="numeric"></label>
+            <label class="space-y-1 text-sm"><span>مقدار اصل ارز</span><input wire:model="fxQuantity" class="field w-full" dir="ltr" inputmode="decimal"></label>
+            <label class="space-y-1 text-sm"><span>وجه ریالی واقعی (تومان)</span><input wire:model="fxCashToman" class="field w-full" dir="ltr" inputmode="decimal"></label>
+            <label class="space-y-1 text-sm"><span>توضیح (اختیاری)</span><input wire:model="fxReason" class="field w-full" maxlength="240"></label>
+        </div>
+        <label class="flex items-start gap-3 text-sm"><input wire:model="fxAfterOpening" type="checkbox" class="mt-1"><span>اگر تاریخ ۲۰ مرداد ۱۴۰۵ است، تأیید می‌کنم این تسویه پس از افتتاحیه انجام شده است.</span></label>
+        @error('fx') <p role="alert" class="text-sm text-red-700">{{ $message }}</p> @enderror
+        <button wire:click="settleForeignObligation" type="button" class="button-primary">ثبت تسویه ارزی</button>
     </section>
 </div>

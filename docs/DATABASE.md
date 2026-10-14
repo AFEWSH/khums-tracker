@@ -1,5 +1,20 @@
 # مدل داده پیشنهادی
 
+## schema اجرایی فاز ۶ — 2026-10-14
+
+پنجمین migration سه جدول `cpi_series`، `cpi_points` و `cpi_revisions` را اضافه کرد. هویت سری `(provider, coverage, base_year, methodology_version)` یکتاست؛ وضعیت فعلی `unverified` است. هر نقطه `(series_id, jalali_year, jalali_month)` یکتا و دارای بازه ماه میلادی استاندارد است؛ مقدار، منبع، تاریخ انتشار اختیاری، دلیل اصلاح، actor و زمان ثبت در revision تغییرناپذیر نگه داشته می‌شود. برای CPI از `VARCHAR` دهدهی و محاسبه دقیق استفاده می‌شود. جدول bridge، منطق شرعی و snapshot گزارش این فاز ساخته نشده‌اند. پیش از migration محلی، backup رمزدار schema ۴ و restore drill موفق انجام شد.
+
+
+## فاز ۵ب — 2026-10-14
+
+فاز ۵ب migration ندارد. idempotency در `operations.idempotency_key` موجود و نسخهٔ پیش‌نمایش در `financial_state.revision` موجود استفاده می‌شود؛ هیچ جدول `imports` یا صف کار افزوده نشده است. metadata موقت پیش‌نمایش در session رمزگذاری‌شدهٔ مالک قرار می‌گیرد و پس از تأیید پاک می‌شود. postedها همان جداول و قیود عملیات دستی‌اند.
+
+
+## تکمیل اجرایی فاز ۵ — 2026-10-14
+
+اصلاح مقدار افتتاحیه schema تازه نمی‌خواهد: `amendment_cases.proposal` نسخه اظهار، `quantity_entries` اختلاف مقدار، `user_decisions` اظهار تأییدشده و `replay_lot_positions` وضعیت بازسازی‌شده را نگه می‌دارند. اصل `asset_opening_items` و `lots.acquired_atoms` ثابت‌اند. تسویه تعهد ارزی از `operations`, `journal_lines`, `quantity_entries` و `audit_events` موجود استفاده می‌کند؛ سود/زیان تسعیر حساب‌های سیستمی جداست.
+
+
 ## وضعیت اجرایی فاز ۴/۵ — 2026-10-14
 
 migration چهارم `2026_10_14_000002_create_replay_and_facts` جدول‌های `projection_revisions`, `lot_allocation_projections`, `replay_cash_positions`, `replay_lot_positions`, `replay_adjustments`, `lot_basis_adjustments`, `asset_fact_versions`, `amendment_cases` را افزود. `approved_operation_id` اصلاحیه تأییدشده را به سند posted وصل می‌کند. نسخه قدیمی سند/lot به‌جای overwrite حفظ می‌شود؛ projectionهای نقد و lot نسخه‌دارند. schema محلی پس از backup و restore drill از ۳ به ۴ رسید: یک مالک، صفر عملیات مالی، integrity و FK سالم. `SqliteBackup` هر چهار schema را می‌پذیرد.

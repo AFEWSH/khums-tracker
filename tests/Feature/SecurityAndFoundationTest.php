@@ -93,7 +93,7 @@ it('creates only identity, cash and phase-four asset tables and enables SQLite f
 
     expect($tables)->toBe([
         'accounts', 'amendment_cases', 'asset_accounts', 'asset_fact_versions', 'asset_opening_items',
-        'asset_origin_events', 'asset_prices', 'audit_events', 'categories', 'financial_state',
+        'asset_origin_events', 'asset_prices', 'audit_events', 'categories', 'cpi_points', 'cpi_revisions', 'cpi_series', 'financial_state',
         'foreign_obligation_opening_items', 'foreign_obligations', 'instruments', 'journal_lines',
         'lot_allocation_projections', 'lot_allocations', 'lot_basis_adjustments', 'lots', 'migrations', 'obligations',
         'opening_items', 'operations', 'projection_revisions', 'provenance_events', 'quantity_entries',

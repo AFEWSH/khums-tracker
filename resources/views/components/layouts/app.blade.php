@@ -28,8 +28,10 @@
             <a href="{{ route('dashboard') }}" aria-current="page" class="inline-flex min-h-12 items-center border-b-2 border-teal-700 px-2 text-sm font-bold text-teal-900">خانه</a>
             <a href="{{ route('cash.setup') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">راه‌اندازی</a>
             <a href="{{ route('cash.workspace') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">حساب‌ها</a>
+            <a href="{{ route('cash.import') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">ورود CSV</a>
             <a href="{{ route('assets.workspace') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">دارایی‌ها</a>
             <a href="{{ route('finance.review') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">مرور و گزارش</a>
+            <a href="{{ route('cpi.workspace') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">شاخص تورم</a>
         </nav>
     </header>
     <main id="main-content" class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">

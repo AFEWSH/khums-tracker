@@ -47,12 +47,26 @@ final class ReplayProjection
                     if ($effectiveCost->rial()[0] === '-') {
                         throw new FinanceInputException('Corrected opening lot basis cannot be negative.');
                     }
+                    $openingQuantity = (string) $lot->acquired_atoms;
+                    $protectedMin = (string) $origin->protected_min_atoms;
+                    $protectedMax = (string) $origin->protected_max_atoms;
+                    if ($lot->opening_item_id !== null) {
+                        foreach (DB::table('amendment_cases')->where('kind', 'opening_asset_quantity_origin')
+                            ->where('status', 'approved')->orderBy('id')->pluck('proposal') as $rawProposal) {
+                            $proposal = json_decode($rawProposal, true, flags: JSON_THROW_ON_ERROR);
+                            if ((int) $proposal['asset_opening_item_id'] === (int) $lot->opening_item_id) {
+                                $openingQuantity = $proposal['new_atoms'];
+                                $protectedMin = $proposal['new_protected_atoms'];
+                                $protectedMax = $openingQuantity;
+                            }
+                        }
+                    }
                     $lotStates[(int) $lot->id] = [
                         'account_id' => (int) $lot->account_id,
-                        'atoms' => (string) $lot->acquired_atoms,
+                        'atoms' => $openingQuantity,
                         'cost' => $effectiveCost,
-                        'min' => BigInteger::of((string) $origin->protected_min_atoms),
-                        'max' => BigInteger::of((string) $origin->protected_max_atoms),
+                        'min' => BigInteger::of($protectedMin),
+                        'max' => BigInteger::of($protectedMax),
                     ];
                 }
             }

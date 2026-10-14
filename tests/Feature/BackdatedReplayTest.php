@@ -266,3 +266,47 @@ it('amends an opening asset valuation and replays a later sale without changing 
         ->and((string) DB::table('replay_adjustments')->where('affected_operation_id', $sale)->value('cost_delta_rial'))->toBe('-100')
         ->and(app(AssetOverview::class)->realizedResult('2026-08-12')['net_toman'])->toBe('30');
 });
+
+it('amends opening quantity and protected declaration without rewriting the opening or inventing income', function (): void {
+    $this->actingAs(User::factory()->create());
+    $catalog = app(AssetCatalog::class);
+    $instrument = $catalog->createInstrument('AMEND-QTY', 'سهم اصلاح مقدار', 'stock', 0);
+    $item = $catalog->addOpeningItem($instrument, 'سبد مقدار', '2', '100', '0', null, 'unknown');
+    $setup = app(OpeningSetup::class);
+    $opening = $setup->confirm((int) $setup->session()->revision, 1, 'quantity-origin-opening-001');
+    $holding = (int) DB::table('asset_accounts')->where('opening_item_id', $item)->value('account_id');
+    $original = DB::table('quantity_entries')->where('operation_id', $opening)->first();
+    $amend = app(OpeningAmendment::class);
+    $case = $amend->proposeAssetQuantityOrigin($item, '3', '2', '60', 'user_declared', 'تصحیح موجودی ساختگی');
+    $seen = (int) DB::table('financial_state')->where('id', 1)->value('revision');
+    $id = $amend->approveAssetQuantityOrigin($case, $seen, 'quantity-origin-approve-001');
+    expect((string) DB::table('quantity_entries')->where('id', $original->id)->value('signed_atoms'))->toBe('2')
+        ->and((string) DB::table('quantity_entries')->where('operation_id', $id)->value('signed_atoms'))->toBe('1')
+        ->and((string) DB::table('lots')->where('opening_item_id', $item)->value('remaining_atoms'))->toBe('3')
+        ->and((string) DB::table('replay_lot_positions')->where('lot_id', DB::table('lots')->where('opening_item_id', $item)->value('id'))->value('protected_min_atoms'))->toBe('2')
+        ->and((string) DB::table('accounts')->find($holding)->balance_rial)->toBe('1000')
+        ->and(DB::table('user_decisions')->where('kind', 'opening_asset_protected_amendment')->count())->toBe(1)
+        ->and(DB::table('operations')->where('type', 'income')->count())->toBe(0);
+});
+
+it('rolls back an opening quantity reduction that would invalidate a later sale', function (): void {
+    $this->actingAs(User::factory()->create());
+    $catalog = app(AssetCatalog::class);
+    $instrument = $catalog->createInstrument('AMEND-SHORT', 'سهم کسری اصلاح', 'stock', 0);
+    $item = $catalog->addOpeningItem($instrument, 'سبد کسری', '2', '100', '0', null, 'unknown');
+    $setup = app(OpeningSetup::class);
+    $setup->confirm((int) $setup->session()->revision, 1, 'quantity-short-opening-001');
+    $holding = (int) DB::table('asset_accounts')->where('opening_item_id', $item)->value('account_id');
+    $cash = app(CashBook::class)->createAccount('وجه کسری', 'bank');
+    app(AssetDisposal::class)->sell(['source_id' => $holding, 'cash_id' => $cash, 'date' => '2026-08-12',
+        'quantity' => '2', 'gross_toman' => '120', 'fee_toman' => '0', 'idempotency_key' => 'quantity-short-sale-001']);
+    $amend = app(OpeningAmendment::class);
+    $case = $amend->proposeAssetQuantityOrigin($item, '1', '0', null, 'unknown', 'تصحیح کاهشی ساختگی');
+    $seen = (int) DB::table('financial_state')->where('id', 1)->value('revision');
+    $before = DB::table('operations')->count();
+    expect(fn () => $amend->approveAssetQuantityOrigin($case, $seen, 'quantity-short-approve-001'))
+        ->toThrow(RuntimeException::class, 'lacks asset quantity');
+    expect(DB::table('operations')->count())->toBe($before)
+        ->and(DB::table('amendment_cases')->find($case)->status)->toBe('draft')
+        ->and((string) DB::table('lots')->where('opening_item_id', $item)->value('remaining_atoms'))->toBe('0');
+});

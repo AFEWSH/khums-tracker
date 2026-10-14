@@ -8,7 +8,7 @@
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
 [![Livewire](https://img.shields.io/badge/Livewire-4E56A6?logo=livewire&logoColor=white)](https://livewire.laravel.com/)
 ![Status](https://img.shields.io/badge/status-in%20development-orange)
-![Phase](https://img.shields.io/badge/current%20phase-1-blue)
+![Phase](https://img.shields.io/badge/current%20phase-5b-blue)
 
 [Overview](#overview) · [Current Status](#current-status) · [Getting Started](#getting-started) · [Documentation](#documentation)
 
@@ -20,11 +20,11 @@
 
 **Khums Finance** is a personal project exploring a simple, privacy-conscious way to manage financial records and, in later phases, support Khums-related tracking and calculations. The interface is intended for Persian-speaking users.
 
-The project is being developed incrementally. **It is not yet a complete finance or Khums calculation application.** Its current implementation is focused on the foundations needed for later financial features.
+The project is being developed incrementally. **It is not yet a complete finance or Khums calculation application.** The phase-five financial workflow is ready for review with synthetic data; religious calculations and real-data acceptance remain separate.
 
 ## Current Status
 
-**Phase 1 — Foundation and single-owner access**
+**Phase 5b — Limited CSV import ready for synthetic-data review**
 
 The current implementation includes:
 
@@ -32,11 +32,13 @@ The current implementation includes:
 - Single-owner authentication with sign-in and sign-out.
 - Owner account creation via a CLI command, without public registration.
 - Local owner password reset via a CLI command, without a public password recovery flow.
-- Automated checks for the implemented foundation.
+- Opening balances, cash and quantity-asset transactions, historical posting with atomic replay, opening amendments, FX obligation settlement and cash-flow review.
+- A limited, reviewed CSV batch import for supported cash operations.
+- Automated checks for the implemented financial workflow.
 
-**Last reported verification:** 37 tests, 216 assertions; formatting and frontend build checks passed. Visual and keyboard-accessibility review remains pending. Phase 2 has not started.
+**Last reported verification:** 95 tests, 556 assertions; formatting, Blade compilation and frontend build passed. Visual and keyboard-accessibility review remains pending. Phase 6 has not started.
 
-> **Development notice:** Do not use real financial information with the current development version. Financial tracking and Khums workflows are planned work, not completed features.
+> **Development notice:** Do not enter real financial information until the review and separate acceptance documented in [PROGRESS](docs/PROGRESS.md). Khums and Zakat engines are not implemented.
 
 ## Technical Approach
 
@@ -89,7 +91,7 @@ By default, the app will be available at `http://127.0.0.1:8000`.
 
 ## Testing and Quality
 
-The Phase 1 foundation has automated tests and formatting/build checks. Run the project-defined commands after installing dependencies:
+The implemented workflow has automated tests and formatting/build checks. Run the project-defined commands after installing dependencies:
 
 ```bash
 composer test

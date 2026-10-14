@@ -6,8 +6,11 @@ use App\Actions\Finance\AssetFacts;
 use App\Actions\Finance\CashFlowReport;
 use App\Actions\Finance\CoverageConfirmation;
 use App\Actions\Finance\FinanceInputException;
+use App\Actions\Finance\ForeignObligationSettlement;
 use App\Actions\Finance\OpeningAmendment;
 use App\Support\Dates\PersianDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
 use Brick\Math\Exception\MathException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
@@ -48,6 +51,14 @@ class FinanceReview extends Component
 
     public string $correctedAssetToman = '';
 
+    public string $correctedAssetQuantity = '';
+
+    public string $correctedProtectedQuantity = '0';
+
+    public string $correctedProtectedBasisToman = '';
+
+    public string $correctedOriginEvidence = 'unknown';
+
     public int $amendSeenRevision = 0;
 
     public string $amendKey = '';
@@ -62,6 +73,22 @@ class FinanceReview extends Component
 
     public string $factEvidence = '';
 
+    public string $fxObligationId = '';
+
+    public string $fxCashId = '';
+
+    public string $fxQuantity = '';
+
+    public string $fxCashToman = '';
+
+    public string $fxDate = '';
+
+    public string $fxReason = '';
+
+    public bool $fxAfterOpening = false;
+
+    public string $fxKey = '';
+
     public function mount(): void
     {
         Gate::authorize('access-app');
@@ -70,6 +97,8 @@ class FinanceReview extends Component
         $this->flowEnd = PersianDate::fromGregorian(now('Asia/Tehran')->addDay()->format('Y-m-d'));
         $this->coverageKey = (string) Str::uuid();
         $this->amendKey = (string) Str::uuid();
+        $this->fxDate = $today;
+        $this->fxKey = (string) Str::uuid();
         $this->coverageSeenRevision = (int) DB::table('financial_state')->where('id', 1)->value('revision');
     }
 
@@ -115,13 +144,34 @@ class FinanceReview extends Component
         }
     }
 
+    public function proposeAssetQuantityCorrection(OpeningAmendment $amendment): void
+    {
+        try {
+            $this->pendingCaseId = $amendment->proposeAssetQuantityOrigin(
+                (int) $this->assetOpeningItemId, $this->correctedAssetQuantity,
+                $this->correctedProtectedQuantity,
+                $this->correctedProtectedBasisToman === '' ? null : $this->correctedProtectedBasisToman,
+                $this->correctedOriginEvidence, $this->correctionReason,
+            );
+            $this->pendingCaseKind = 'asset_quantity_origin';
+            $this->amendSeenRevision = (int) DB::table('financial_state')->where('id', 1)->value('revision');
+            session()->flash('success', 'پیشنهاد اصلاح مقدار و منشأ ذخیره شد؛ تأیید جدا لازم است.');
+        } catch (InvalidArgumentException|FinanceInputException $error) {
+            $this->addError('correction', $error->getMessage());
+        } catch (MathException) {
+            $this->addError('correction', 'مقدار یا پایه با دقت مجاز سازگار نیست.');
+        }
+    }
+
     public function approveCorrection(OpeningAmendment $amendment): void
     {
         try {
             if ($this->pendingCaseId === null) {
                 throw new InvalidArgumentException('پیشنهاد اصلاحی برای تأیید انتخاب نشده است.');
             }
-            if ($this->pendingCaseKind === 'asset') {
+            if ($this->pendingCaseKind === 'asset_quantity_origin') {
+                $amendment->approveAssetQuantityOrigin($this->pendingCaseId, $this->amendSeenRevision, $this->amendKey);
+            } elseif ($this->pendingCaseKind === 'asset') {
                 $amendment->approveAssetValue($this->pendingCaseId, $this->amendSeenRevision, $this->amendKey);
             } else {
                 $amendment->approve($this->pendingCaseId, $this->amendSeenRevision, $this->amendKey);
@@ -148,6 +198,25 @@ class FinanceReview extends Component
         }
     }
 
+    public function settleForeignObligation(ForeignObligationSettlement $settlement): void
+    {
+        try {
+            $settlement->post([
+                'obligation_id' => (int) $this->fxObligationId, 'cash_id' => (int) $this->fxCashId,
+                'date' => PersianDate::parseInput($this->fxDate), 'quantity' => $this->fxQuantity,
+                'cash_toman' => $this->fxCashToman, 'reason' => $this->fxReason,
+                'after_opening' => $this->fxAfterOpening, 'idempotency_key' => $this->fxKey,
+            ]);
+            $this->fxKey = (string) Str::uuid();
+            $this->reset('fxQuantity', 'fxCashToman', 'fxReason', 'fxAfterOpening');
+            session()->flash('success', 'تسویه اصل تعهد ارزی و نتیجه تسعیر جداگانه ثبت شد.');
+        } catch (InvalidArgumentException|FinanceInputException $error) {
+            $this->addError('fx', $error->getMessage());
+        } catch (MathException) {
+            $this->addError('fx', 'مقدار یا مبلغ با دقت مجاز سازگار نیست.');
+        }
+    }
+
     public function render(CashFlowReport $flow, CoverageConfirmation $coverage): View
     {
         Gate::authorize('access-app');
@@ -164,11 +233,30 @@ class FinanceReview extends Component
             // Opening or date is not yet ready for confirmation.
         }
 
+        $foreignObligations = DB::table('foreign_obligations')
+            ->join('accounts', 'accounts.id', '=', 'foreign_obligations.account_id')
+            ->join('instruments', 'instruments.id', '=', 'foreign_obligations.instrument_id')
+            ->orderBy('accounts.id')->get(['accounts.id', 'accounts.name', 'accounts.subtype',
+                'instruments.name as instrument_name', 'instruments.quantity_scale'])
+            ->map(function ($row): array {
+                $atoms = BigInteger::zero();
+                foreach (DB::table('quantity_entries')->where('account_id', $row->id)->pluck('signed_atoms') as $entry) {
+                    $atoms = $atoms->plus((string) $entry);
+                }
+
+                return ['id' => (int) $row->id, 'name' => $row->name, 'kind' => $row->subtype,
+                    'instrument' => $row->instrument_name,
+                    'remaining' => (string) BigDecimal::ofUnscaledValue($atoms, (int) $row->quantity_scale)->strippedOfTrailingZeros()];
+            })->all();
+
         return view('livewire.finance-review', [
             'report' => $report, 'preview' => $preview, 'latestCoverage' => $coverage->latest(),
             'openingItems' => DB::table('opening_items')->orderBy('id')->get(['id', 'name', 'kind', 'amount_rial']),
             'assetOpeningItems' => DB::table('asset_opening_items')->orderBy('id')->get(['id', 'name']),
             'openingLots' => DB::table('lots')->where('acquisition_method', 'opening')->orderBy('id')->get(['id', 'instrument_id']),
+            'foreignObligations' => $foreignObligations,
+            'cashAccounts' => DB::table('accounts')->where('class', 'asset')
+                ->whereIn('subtype', ['bank', 'cash', 'broker_cash', 'wallet_cash'])->whereNull('archived_at')->orderBy('name')->get(['id', 'name']),
         ]);
     }
 }

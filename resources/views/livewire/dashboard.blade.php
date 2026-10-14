@@ -2,8 +2,8 @@
     <section aria-labelledby="dashboard-title">
         <p class="text-sm font-bold text-teal-800">فضای شخصی شما</p>
         <h1 id="dashboard-title" class="mt-3 text-3xl leading-relaxed font-bold text-slate-950">خوش آمدید</h1>
-        <p class="mt-3 max-w-2xl text-sm leading-8 text-slate-600">ورود شما انجام شد. نسخه آزمایشی راه‌اندازی، حساب‌ها و دارایی‌های مقداری برای بررسی فاز ۴ آماده است. برای استفاده از داده واقعی تا تکمیل فاز ۵ صبر کنید.</p>
-        <div class="mt-5 flex flex-wrap gap-3"><a class="button-primary" href="{{ route('cash.setup') }}">راه‌اندازی</a><a class="button-secondary" href="{{ route('cash.workspace') }}">حساب‌ها و ثبت</a><a class="button-secondary" href="{{ route('assets.workspace') }}">دارایی‌ها</a><a class="button-secondary" href="{{ route('finance.review') }}">مرور و گزارش</a></div>
+        <p class="mt-3 max-w-2xl text-sm leading-8 text-slate-600">راه‌اندازی، ثبت نقدی و دارایی، مرور گذشته و ورود گروهی CSV برای بررسی با داده ساختگی آماده‌اند. وضعیت پذیرش و محدودیت‌های باز را پیش از ورود داده واقعی در راهنمای پروژه بررسی کنید.</p>
+        <div class="mt-5 flex flex-wrap gap-3"><a class="button-primary" href="{{ route('cash.setup') }}">راه‌اندازی</a><a class="button-secondary" href="{{ route('cash.workspace') }}">حساب‌ها و ثبت</a><a class="button-secondary" href="{{ route('cash.import') }}">ورود CSV</a><a class="button-secondary" href="{{ route('assets.workspace') }}">دارایی‌ها</a><a class="button-secondary" href="{{ route('finance.review') }}">مرور و گزارش</a></div>
     </section>
 
     <section class="panel overflow-hidden" aria-labelledby="workspace-title">

@@ -2,7 +2,8 @@
     <section aria-labelledby="dashboard-title">
         <p class="text-sm font-bold text-teal-800">فضای شخصی شما</p>
         <h1 id="dashboard-title" class="mt-3 text-3xl leading-relaxed font-bold text-slate-950">خوش آمدید</h1>
-        <p class="mt-3 max-w-2xl text-sm leading-8 text-slate-600">ورود شما انجام شد. امکانات ثبت و بررسی اطلاعات مالی در مراحل بعد به این فضای شخصی اضافه می‌شوند.</p>
+        <p class="mt-3 max-w-2xl text-sm leading-8 text-slate-600">ورود شما انجام شد. نسخه آزمایشی راه‌اندازی نقدی و ثبت ریالی برای بررسی فاز ۳ آماده است.</p>
+        <div class="mt-5 flex flex-wrap gap-3"><a class="button-primary" href="{{ route('cash.setup') }}">راه‌اندازی نقدی</a><a class="button-secondary" href="{{ route('cash.workspace') }}">حساب‌ها و ثبت</a></div>
     </section>
 
     <section class="panel overflow-hidden" aria-labelledby="workspace-title">

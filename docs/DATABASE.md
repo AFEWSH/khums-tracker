@@ -1,5 +1,13 @@
 # مدل داده پیشنهادی
 
+## وضعیت schema اجراشده فاز ۳ — 2026-10-14
+
+migration دوم `2026_10_14_000000_create_cash_finance_core` این جدول‌ها را واقعاً ساخت: `financial_state`, `setup_sessions`, `opening_items`, `accounts`, `categories`, `operations`, `journal_lines`, `provenance_events`, `obligations`, `user_decisions`, `audit_events`. ستون‌های `balance_rial` و `protected_min/max_rial` در accounts projection کنترل‌شده‌اند؛ عملیات posted و خطوط آن منبع حسابرسی‌اند. فقط حساب‌های ریالی در این فاز ایجاد می‌شوند. `operations.effective_at` برای زمان نامعلوم nullable و `boundary_relation` برای روز افتتاحیه صریح است. `operations.idempotency_key` و `reversal_of_id` یکتا هستند. هیچ جدول مقدار/lot/CPI/احکام هنوز موجود نیست.
+
+پایگاه محلی پس از backup و restore drill نسخه ۱، migration دوم را با موفقیت اجرا کرد. شمار مالک پیش/پس ۱، `operations`/`journal_lines`/`opening_items` صفر و `integrity_check=ok` است؛ هیچ داده مالی واقعی نوشته نشد. `SqliteBackup` حالا bundleهای schema ۱ و ۲ را می‌پذیرد. هنگام طراحی migration بعدی باید نسخه پشتیبان و آزمون بازگردانی تازه شود.
+
+یادداشت اجرا 2026-10-14: فاز ۲ migration جدید ندارد. `MoneyRial` با بازه BIGINT و `AssetQuantity` با atoms رشته‌ای در کد هستند و جدول‌های مقدار/دفترکل هنوز وجود ندارند. پشتیبان نسخه ۱ فقط schema فعلی هویت (`2026_10_13_000000_create_identity_tables`) را می‌پذیرد؛ پیش از هر migration آینده باید نسخه پشتیبان و آزمون سازگاری آن به‌روز شود. هیچ schema یا داده محلی کاربر در این فاز تغییر نکرد.
+
 نسخه 0.2 — 2026-10-13؛ طرح منطقی مرحله‌ای برای migrationهای آینده؛ migration هویت فاز ۱ روی SQLite تازه اجرا شده است؛ فقط users/sessions و metadata migrations واقعی‌اند و جدول‌های دامنه آینده هنوز طرح‌اند. ۴۸ جدول دامنه در طرح مقصد، نه تعهد به ساخت هم‌زمان؛ جدول‌های framework در این شمارش نیستند.
 
 ## قرارداد عمومی

@@ -3,10 +3,10 @@
 $problems = [];
 
 if (PHP_MAJOR_VERSION !== 8 || PHP_MINOR_VERSION !== 4) {
-    $problems[] = 'این پروژه در فاز ۱ به PHP 8.4 نیاز دارد.';
+    $problems[] = 'این پروژه به PHP 8.4 نیاز دارد.';
 }
 
-foreach (['ctype', 'curl', 'dom', 'fileinfo', 'filter', 'hash', 'mbstring', 'openssl', 'pdo', 'pdo_sqlite', 'session', 'tokenizer', 'xml'] as $extension) {
+foreach (['ctype', 'curl', 'dom', 'fileinfo', 'filter', 'hash', 'intl', 'mbstring', 'openssl', 'pdo', 'pdo_sqlite', 'session', 'sodium', 'tokenizer', 'xml'] as $extension) {
     if (! extension_loaded($extension)) {
         $problems[] = 'افزونه لازم فعال نیست: '.$extension;
     }
@@ -24,4 +24,4 @@ if ($problems !== []) {
     exit(1);
 }
 
-fwrite(STDOUT, 'پیش‌نیازهای PHP فاز ۱ آماده‌اند.'.PHP_EOL);
+fwrite(STDOUT, 'پیش‌نیازهای PHP آماده‌اند.'.PHP_EOL);

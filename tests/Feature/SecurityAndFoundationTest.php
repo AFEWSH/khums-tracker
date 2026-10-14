@@ -87,11 +87,15 @@ it('rechecks authentication on a real update of a private Livewire component', f
         ])->assertUnauthorized();
 });
 
-it('creates only identity tables and enables SQLite foreign keys', function (): void {
+it('creates only identity and phase-three cash tables and enables SQLite foreign keys', function (): void {
     $tables = collect(DB::select("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'"))
         ->pluck('name')->sort()->values()->all();
 
-    expect($tables)->toBe(['migrations', 'sessions', 'users']);
+    expect($tables)->toBe([
+        'accounts', 'audit_events', 'categories', 'financial_state', 'journal_lines', 'migrations',
+        'obligations', 'opening_items', 'operations', 'provenance_events', 'sessions',
+        'setup_sessions', 'user_decisions', 'users',
+    ]);
     expect((int) DB::selectOne('PRAGMA foreign_keys')->foreign_keys)->toBe(1);
 
     expect(fn () => DB::table('sessions')->insert([

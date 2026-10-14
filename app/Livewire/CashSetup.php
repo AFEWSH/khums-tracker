@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Actions\Finance\AssetCatalog;
 use App\Actions\Finance\FinanceInputException;
 use App\Actions\Finance\OpeningSetup;
+use Brick\Math\Exception\MathException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
@@ -33,6 +35,40 @@ class CashSetup extends Component
     public string $confirmKey = '';
 
     public bool $confirmNoItems = false;
+
+    public string $instrumentCode = '';
+
+    public string $instrumentName = '';
+
+    public string $instrumentType = 'stock';
+
+    public int $instrumentScale = 0;
+
+    public ?int $instrumentFineness = null;
+
+    public string $assetInstrumentId = '';
+
+    public string $assetName = '';
+
+    public string $assetQuantity = '';
+
+    public string $assetValueToman = '';
+
+    public string $assetProtectedQuantity = '0';
+
+    public string $assetProtectedBasisToman = '';
+
+    public string $assetEvidence = 'unknown';
+
+    public string $foreignInstrumentId = '';
+
+    public string $foreignKind = 'receivable';
+
+    public string $foreignName = '';
+
+    public string $foreignPrincipal = '';
+
+    public string $foreignValueToman = '';
 
     public function mount(OpeningSetup $setup): void
     {
@@ -77,6 +113,62 @@ class CashSetup extends Component
         $this->seenRevision = (int) $setup->session()->revision;
     }
 
+    public function createInstrument(AssetCatalog $catalog): void
+    {
+        try {
+            $catalog->createInstrument($this->instrumentCode, $this->instrumentName, $this->instrumentType, $this->instrumentScale, $this->instrumentFineness);
+            $this->reset('instrumentCode', 'instrumentName');
+            session()->flash('success', 'ابزار دارایی ذخیره شد.');
+        } catch (InvalidArgumentException|FinanceInputException $error) {
+            $this->addError('instrument', $error->getMessage());
+        }
+    }
+
+    public function addAssetItem(AssetCatalog $catalog, OpeningSetup $setup): void
+    {
+        try {
+            $catalog->addOpeningItem((int) $this->assetInstrumentId, $this->assetName, $this->assetQuantity,
+                $this->assetValueToman, $this->assetProtectedQuantity,
+                $this->assetProtectedBasisToman, $this->assetEvidence);
+            $this->seenRevision = (int) $setup->session()->revision;
+            $this->reset('assetName', 'assetQuantity', 'assetValueToman', 'assetProtectedBasisToman');
+            $this->assetProtectedQuantity = '0';
+            $this->assetEvidence = 'unknown';
+            session()->flash('success', 'دارایی افتتاحیه ذخیره شد.');
+        } catch (InvalidArgumentException|FinanceInputException $error) {
+            $this->addError('assetItem', $error->getMessage());
+        } catch (MathException) {
+            $this->addError('assetItem', 'مقدار یا مبلغ با دقت مجاز ابزار سازگار نیست.');
+        }
+    }
+
+    public function removeAssetItem(int $id, AssetCatalog $catalog, OpeningSetup $setup): void
+    {
+        $catalog->removeOpeningItem($id);
+        $this->seenRevision = (int) $setup->session()->revision;
+    }
+
+    public function addForeignObligation(AssetCatalog $catalog, OpeningSetup $setup): void
+    {
+        try {
+            $catalog->addForeignObligationOpening((int) $this->foreignInstrumentId, $this->foreignKind,
+                $this->foreignName, $this->foreignPrincipal, $this->foreignValueToman);
+            $this->seenRevision = (int) $setup->session()->revision;
+            $this->reset('foreignName', 'foreignPrincipal', 'foreignValueToman');
+            session()->flash('success', 'تعهد ارزی افتتاحیه ذخیره شد.');
+        } catch (InvalidArgumentException|FinanceInputException $error) {
+            $this->addError('foreign', $error->getMessage());
+        } catch (MathException) {
+            $this->addError('foreign', 'مقدار یا مبلغ با دقت مجاز ابزار سازگار نیست.');
+        }
+    }
+
+    public function removeForeignObligation(int $id, AssetCatalog $catalog, OpeningSetup $setup): void
+    {
+        $catalog->removeForeignObligationOpening($id);
+        $this->seenRevision = (int) $setup->session()->revision;
+    }
+
     public function confirm(OpeningSetup $setup): void
     {
         try {
@@ -87,7 +179,7 @@ class CashSetup extends Component
         }
     }
 
-    public function render(OpeningSetup $setup): View
+    public function render(OpeningSetup $setup, AssetCatalog $catalog): View
     {
         Gate::authorize('access-app');
 
@@ -95,6 +187,9 @@ class CashSetup extends Component
             'setup' => $setup->session(),
             'items' => $setup->draftItems(),
             'summary' => $setup->draftSummary(),
+            'instruments' => $catalog->instruments(),
+            'assetItems' => $catalog->openingItems(),
+            'foreignItems' => $catalog->foreignObligationItems(),
         ]);
     }
 }

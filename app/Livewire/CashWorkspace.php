@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Actions\Finance\BackdatedPosting;
 use App\Actions\Finance\CashBook;
 use App\Actions\Finance\CashOverview;
 use App\Actions\Finance\FinanceInputException;
@@ -73,7 +74,7 @@ class CashWorkspace extends Component
         }
     }
 
-    public function post(CashBook $book): void
+    public function post(BackdatedPosting $posting): void
     {
         $this->validate([
             'type' => 'required|in:income,accrue_income,expense,transfer,lend,collect,borrow,repay',
@@ -86,7 +87,7 @@ class CashWorkspace extends Component
         ]);
         try {
             $gregorian = PersianDate::parseInput($this->date);
-            $book->post([
+            $posting->cash([
                 'type' => $this->type, 'date' => $gregorian, 'amount_toman' => $this->amountToman,
                 'source_id' => $this->sourceId, 'target_id' => $this->targetId,
                 'category_id' => $this->categoryId,

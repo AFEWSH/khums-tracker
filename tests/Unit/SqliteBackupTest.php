@@ -78,3 +78,54 @@ it('recognizes the phase-three schema without breaking version-one backups', fun
         @rmdir($directory);
     }
 });
+
+it('verifies and restores the phase-four schema manifest', function () {
+    $directory = sys_get_temp_dir().'/khfb-v3-test-'.bin2hex(random_bytes(6));
+    mkdir($directory, 0700);
+    $source = $directory.'/source.sqlite';
+    $backup = $directory.'/backup.khfb';
+    $restored = $directory.'/restored.sqlite';
+    try {
+        $db = syntheticPhaseTwoDatabase($source);
+        $db->exec("INSERT INTO migrations VALUES (2, '2026_10_14_000000_create_cash_finance_core', 2)");
+        $db->exec("INSERT INTO migrations VALUES (3, '2026_10_14_000001_create_quantity_assets', 3)");
+        $service = new SqliteBackup;
+        $service->create($source, $backup, 'synthetic-strong-passphrase');
+        expect($service->verify($backup, 'synthetic-strong-passphrase')['schema'])->toBe(3);
+        $service->restoreToEmpty($backup, $restored, 'synthetic-strong-passphrase');
+        $copy = new PDO('sqlite:'.$restored);
+        expect((int) $copy->query('SELECT COUNT(*) FROM migrations')->fetchColumn())->toBe(3);
+    } finally {
+        unset($db, $copy);
+        foreach (glob($directory.'/*') ?: [] as $file) {
+            @unlink($file);
+        }
+        @rmdir($directory);
+    }
+});
+
+it('verifies and restores the phase-five schema manifest', function () {
+    $directory = sys_get_temp_dir().'/khfb-v4-test-'.bin2hex(random_bytes(6));
+    mkdir($directory, 0700);
+    $source = $directory.'/source.sqlite';
+    $backup = $directory.'/backup.khfb';
+    $restored = $directory.'/restored.sqlite';
+    try {
+        $db = syntheticPhaseTwoDatabase($source);
+        $db->exec("INSERT INTO migrations VALUES (2, '2026_10_14_000000_create_cash_finance_core', 2)");
+        $db->exec("INSERT INTO migrations VALUES (3, '2026_10_14_000001_create_quantity_assets', 3)");
+        $db->exec("INSERT INTO migrations VALUES (4, '2026_10_14_000002_create_replay_and_facts', 4)");
+        $service = new SqliteBackup;
+        $service->create($source, $backup, 'synthetic-strong-passphrase');
+        expect($service->verify($backup, 'synthetic-strong-passphrase')['schema'])->toBe(4);
+        $service->restoreToEmpty($backup, $restored, 'synthetic-strong-passphrase');
+        $copy = new PDO('sqlite:'.$restored);
+        expect((int) $copy->query('SELECT COUNT(*) FROM migrations')->fetchColumn())->toBe(4);
+    } finally {
+        unset($db, $copy);
+        foreach (glob($directory.'/*') ?: [] as $file) {
+            @unlink($file);
+        }
+        @rmdir($directory);
+    }
+});

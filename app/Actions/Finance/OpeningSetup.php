@@ -50,6 +50,16 @@ final class OpeningSetup
                 $assets = $assets->add(MoneyRial::fromRial((string) $item->amount_rial));
             }
         }
+        foreach (DB::table('asset_opening_items')->where('setup_session_id', 1)->get(['opening_value_rial']) as $item) {
+            $assets = $assets->add(MoneyRial::fromRial((string) $item->opening_value_rial));
+        }
+        foreach (DB::table('foreign_obligation_opening_items')->where('setup_session_id', 1)->get(['kind', 'opening_value_rial']) as $item) {
+            if ($item->kind === 'payable') {
+                $liabilities = $liabilities->add(MoneyRial::fromRial((string) $item->opening_value_rial));
+            } else {
+                $assets = $assets->add(MoneyRial::fromRial((string) $item->opening_value_rial));
+            }
+        }
 
         return [
             'assets_toman' => $assets->toman(),
@@ -153,7 +163,9 @@ final class OpeningSetup
                 throw new FinanceInputException('Opening draft changed; review it again.');
             }
             $items = DB::table('opening_items')->where('setup_session_id', 1)->orderBy('id')->get();
-            if ($items->isEmpty() && ! $confirmNoItems) {
+            $assetItems = DB::table('asset_opening_items')->where('setup_session_id', 1)->orderBy('id')->get();
+            $foreignItems = DB::table('foreign_obligation_opening_items')->where('setup_session_id', 1)->orderBy('id')->get();
+            if ($items->isEmpty() && $assetItems->isEmpty() && $foreignItems->isEmpty() && ! $confirmNoItems) {
                 throw new FinanceInputException('Explicitly confirm that there are no cash opening items.');
             }
             $asset = MoneyRial::fromRial('0');
@@ -166,17 +178,34 @@ final class OpeningSetup
                     $asset = $asset->add($amount);
                 }
             }
+            foreach ($assetItems as $item) {
+                $asset = $asset->add(MoneyRial::fromRial((string) $item->opening_value_rial));
+            }
+            foreach ($foreignItems as $item) {
+                if ($item->kind === 'payable') {
+                    $liability = $liability->add(MoneyRial::fromRial((string) $item->opening_value_rial));
+                } else {
+                    $asset = $asset->add(MoneyRial::fromRial((string) $item->opening_value_rial));
+                }
+            }
             $net = $asset->subtract($liability);
             $operationId = null;
-            if ($items->isNotEmpty() && ($asset->rial() !== '0' || $liability->rial() !== '0')) {
+            if ($assetItems->isNotEmpty() || $foreignItems->isNotEmpty() || ($items->isNotEmpty() && ($asset->rial() !== '0' || $liability->rial() !== '0'))) {
                 $equityId = DB::table('accounts')->insertGetId([
                     'code' => 'opening-equity', 'name' => 'سرمایه افتتاحیه', 'class' => 'equity', 'subtype' => 'opening',
                     'created_at' => now(), 'updated_at' => now(),
                 ]);
-                $payload = hash('sha256', json_encode($items->map(fn ($item) => [
+                $payload = hash('sha256', json_encode(['cash' => $items->map(fn ($item) => [
                     (int) $item->id, $item->kind, $item->name, (string) $item->amount_rial,
                     (string) $item->protected_rial, $item->evidence,
-                ])->all(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+                ])->all(), 'assets' => $assetItems->map(fn ($item) => [
+                    (int) $item->id, (int) $item->instrument_id, $item->name, $item->quantity_atoms,
+                    $item->protected_atoms, (string) $item->opening_value_rial,
+                    $item->protected_basis_rial === null ? null : (string) $item->protected_basis_rial, $item->evidence,
+                ])->all(), 'foreign_obligations' => $foreignItems->map(fn ($item) => [
+                    (int) $item->id, (int) $item->instrument_id, $item->kind,
+                    $item->name, $item->principal_atoms, (string) $item->opening_value_rial,
+                ])->all()], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
                 $operationId = DB::table('operations')->insertGetId([
                     'public_id' => (string) Str::uuid(), 'type' => 'opening', 'effective_date' => self::DATE,
                     'time_precision' => 'date', 'boundary_relation' => 'unknown', 'sequence' => 1,
@@ -222,6 +251,89 @@ final class OpeningSetup
                             'actor_id' => $actorId, 'confirmed_at' => now(), 'created_at' => now(), 'updated_at' => now(),
                         ]);
                     }
+                }
+                $quantityLine = 1;
+                foreach ($assetItems as $item) {
+                    $accountId = DB::table('accounts')->insertGetId([
+                        'code' => 'asset-opening-'.$item->id, 'name' => $item->name,
+                        'class' => 'asset', 'subtype' => 'holding',
+                        'balance_rial' => $item->opening_value_rial,
+                        'created_at' => now(), 'updated_at' => now(),
+                    ]);
+                    DB::table('asset_accounts')->insert([
+                        'account_id' => $accountId, 'instrument_id' => $item->instrument_id,
+                        'opening_item_id' => $item->id,
+                    ]);
+                    if ((string) $item->opening_value_rial !== '0') {
+                        DB::table('journal_lines')->insert([
+                            'operation_id' => $operationId, 'account_id' => $accountId,
+                            'side' => 'debit', 'amount_rial' => $item->opening_value_rial,
+                            'line_no' => $lineNo++,
+                        ]);
+                    }
+                    DB::table('quantity_entries')->insert([
+                        'operation_id' => $operationId, 'account_id' => $accountId,
+                        'instrument_id' => $item->instrument_id, 'signed_atoms' => $item->quantity_atoms,
+                        'line_no' => $quantityLine++,
+                    ]);
+                    $lotId = DB::table('lots')->insertGetId([
+                        'acquisition_operation_id' => $operationId, 'opening_item_id' => $item->id,
+                        'account_id' => $accountId, 'instrument_id' => $item->instrument_id,
+                        'acquired_atoms' => $item->quantity_atoms, 'remaining_atoms' => $item->quantity_atoms,
+                        'cost_rial' => $item->opening_value_rial, 'remaining_cost_rial' => $item->opening_value_rial,
+                        'cost_basis_kind' => 'opening_valuation', 'acquisition_method' => 'opening',
+                        'created_at' => now(), 'updated_at' => now(),
+                    ]);
+                    DB::table('asset_origin_events')->insert([
+                        'operation_id' => $operationId, 'lot_id' => $lotId, 'kind' => 'opening',
+                        'protected_min_atoms' => $item->protected_atoms,
+                        'protected_max_atoms' => $item->quantity_atoms,
+                        'protected_basis_rial' => $item->protected_basis_rial,
+                        'evidence' => $item->evidence, 'created_at' => now(), 'updated_at' => now(),
+                    ]);
+                    if ($item->protected_atoms !== '0') {
+                        DB::table('user_decisions')->insert([
+                            'kind' => 'opening_asset_protected', 'target_type' => 'asset_opening_item', 'target_id' => $item->id,
+                            'payload' => json_encode(['protected_atoms' => $item->protected_atoms, 'basis_rial' => (string) $item->protected_basis_rial], JSON_THROW_ON_ERROR),
+                            'actor_id' => $actorId, 'confirmed_at' => now(), 'created_at' => now(), 'updated_at' => now(),
+                        ]);
+                    }
+                }
+                foreach ($foreignItems as $item) {
+                    $accountId = DB::table('accounts')->insertGetId([
+                        'code' => 'foreign-opening-'.$item->id, 'name' => $item->name,
+                        'class' => $item->kind === 'payable' ? 'liability' : 'asset',
+                        'subtype' => $item->kind === 'payable' ? 'payable_fx' : 'receivable_fx',
+                        'balance_rial' => $item->opening_value_rial,
+                        'created_at' => now(), 'updated_at' => now(),
+                    ]);
+                    DB::table('foreign_obligations')->insert([
+                        'account_id' => $accountId, 'instrument_id' => $item->instrument_id,
+                        'opening_item_id' => $item->id,
+                    ]);
+                    DB::table('obligations')->insert([
+                        'account_id' => $accountId, 'kind' => $item->kind,
+                        'created_at' => now(), 'updated_at' => now(),
+                    ]);
+                    if ((string) $item->opening_value_rial !== '0') {
+                        DB::table('journal_lines')->insert([
+                            'operation_id' => $operationId, 'account_id' => $accountId,
+                            'side' => $item->kind === 'payable' ? 'credit' : 'debit',
+                            'amount_rial' => $item->opening_value_rial, 'line_no' => $lineNo++,
+                        ]);
+                    }
+                    DB::table('quantity_entries')->insert([
+                        'operation_id' => $operationId, 'account_id' => $accountId,
+                        'instrument_id' => $item->instrument_id, 'signed_atoms' => $item->principal_atoms,
+                        'line_no' => $quantityLine++,
+                    ]);
+                    DB::table('provenance_events')->insert([
+                        'operation_id' => $operationId, 'account_id' => $accountId,
+                        'origin_kind' => 'opening', 'balance_after_rial' => $item->opening_value_rial,
+                        'protected_min_after_rial' => '0',
+                        'protected_max_after_rial' => $item->kind === 'payable' ? '0' : $item->opening_value_rial,
+                        'evidence' => 'unknown', 'created_at' => now(), 'updated_at' => now(),
+                    ]);
                 }
                 if ($net->rial() !== '0') {
                     DB::table('journal_lines')->insert([

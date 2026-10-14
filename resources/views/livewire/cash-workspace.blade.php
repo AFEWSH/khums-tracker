@@ -1,9 +1,9 @@
 <div class="space-y-8">
     <section class="space-y-3">
-        <p class="text-sm font-bold text-teal-800">فضای نقدی · فاز ۳</p>
+        <p class="text-sm font-bold text-teal-800">فضای نقدی · ثبت سریع</p>
         <h1 class="text-3xl font-bold text-slate-950">حساب‌ها و گردش ریالی</h1>
         <p class="max-w-3xl text-sm leading-8 text-slate-600">مانده‌ها و درآمد/هزینه از ثبت‌های ریالی محاسبه می‌شوند. وضعیت مخمّس بودن پول مخلوط تا تعیین سهم مصرف‌شده قطعی نیست.</p>
-        <p class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-7 text-amber-900">این نسخه برای آزمون با داده ساختگی است. ورود گذشته و افتتاحیه کامل دارایی‌ها در فازهای بعد تکمیل می‌شوند؛ از آن برای اطلاعات مالی واقعی استفاده نکنید.</p>
+        <p class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-7 text-amber-900">ثبت تاریخ گذشته از همان اعتبارسنجی و بازسازی اتمیک می‌گذرد؛ اگر عملیات بعدی را ناسازگار کند، کل ثبت رد می‌شود. پوشش داده و مانده‌ها را پس از تکمیل ورود بررسی و صریح تأیید کنید.</p>
     </section>
     @if (session('success')) <p role="status" class="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-900">{{ session('success') }}</p> @endif
     @unless ($openingConfirmed)

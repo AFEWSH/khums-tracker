@@ -248,7 +248,7 @@ final class CashBook
                 return (int) $duplicate->id;
             }
             $original = DB::table('operations')->where('id', $operationId)->first();
-            if ($original === null || in_array($original->type, ['opening', 'reversal'], true)) {
+            if ($original === null || ! in_array($original->type, ['income', 'accrue_income', 'expense', 'transfer', 'lend', 'collect', 'borrow', 'repay'], true)) {
                 throw new InvalidArgumentException('This operation cannot be reversed here.');
             }
             if ((int) DB::table('operations')->max('id') !== $operationId

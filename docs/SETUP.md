@@ -1,5 +1,14 @@
 # نصب و اجرای زیرساخت فاز ۱
 
+## بررسی فاز ۵ — 2026-10-14
+
+پیش از migration چهارم، از SQLite فعالِ بدون عملیات مالی backup رمزدار گرفته و verify/restore آزمایشی انجام شد. فایل‌ها در `storage/app/private/backups/before-phase5-*.khfb` و `storage/app/private/recovery-before-phase5-*.key` با مجوز خصوصی‌اند؛ کلید را جدا از دستگاه نگه دارید. schema چهارم اعمال و یک مالک/صفر عملیات مالی، integrity و FK بررسی شد. فرم‌های `/assets` و `/review` فقط با داده ساختگی بررسی شوند؛ اصلاح مقدار/وضعیت مخمّس افتتاحیه و تعهد ارزی بعد از افتتاحیه هنوز آماده نیست. `composer test -- --compact`, `composer format:check`, `npm run build` فرمان‌های بررسی‌اند.
+
+
+## بررسی فاز ۴ — 2026-10-14
+
+پایگاه محلی پس از backup رمزدار و restore drill به migration سوم ارتقا یافت؛ یک مالک حفظ شد و جداول عملیات/دارایی/قیمت خالی‌اند. پشتیبان پیش از فاز ۴ در `storage/app/private/backups/before-phase4-*.khfb` و کلید بازیابی در `storage/app/private/recovery-before-phase4-*.key` با مجوز 0600 و خارج Git هستند. کلید باید جدا از دستگاه/backup نگهداری شود؛ محتوا را در گزارش یا Git نگذارید. برای بررسی فرم‌ها از داده ساختگی استفاده کنید. `composer test`, `composer format:check`, `npm run build` فرمان‌های تأیید هستند. ورود مالی واقعی و فروش/تبدیل فعلاً فعال/توصیه نشده‌اند.
+
 ## اجرای فاز ۳ در همین محیط — 2026-10-14
 
 کاربر فاز ۲ را تأیید و فاز ۳ را مجاز کرد. migration نقدی ریالی روی SQLite محلی اجرا شد؛ یک مالک موجود حفظ شد و جدول‌های مالی تازه خالی‌اند. پیش از migration، `backup:create` معادل با رمز تصادفی اجرا و `verify`/`restore-empty` روی فایل موقت انجام شد. bundle در `storage/app/private/backups/before-phase3-*.khfb` و رمز بازیابی در `storage/app/private/recovery-before-phase3-*.key` با مجوز 0600 است؛ **محتوای کلید را چاپ یا وارد Git نکنید** و یک نسخه امن جدا از دستگاه نگه دارید. این رمز مستقل از `APP_KEY` است. اگر بعداً migration تازه‌ای لازم شد، دوباره backup/restore drill انجام دهید.

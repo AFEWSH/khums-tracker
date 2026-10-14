@@ -87,13 +87,17 @@ it('rechecks authentication on a real update of a private Livewire component', f
         ])->assertUnauthorized();
 });
 
-it('creates only identity and phase-three cash tables and enables SQLite foreign keys', function (): void {
+it('creates only identity, cash and phase-four asset tables and enables SQLite foreign keys', function (): void {
     $tables = collect(DB::select("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'"))
         ->pluck('name')->sort()->values()->all();
 
     expect($tables)->toBe([
-        'accounts', 'audit_events', 'categories', 'financial_state', 'journal_lines', 'migrations',
-        'obligations', 'opening_items', 'operations', 'provenance_events', 'sessions',
+        'accounts', 'amendment_cases', 'asset_accounts', 'asset_fact_versions', 'asset_opening_items',
+        'asset_origin_events', 'asset_prices', 'audit_events', 'categories', 'financial_state',
+        'foreign_obligation_opening_items', 'foreign_obligations', 'instruments', 'journal_lines',
+        'lot_allocation_projections', 'lot_allocations', 'lot_basis_adjustments', 'lots', 'migrations', 'obligations',
+        'opening_items', 'operations', 'projection_revisions', 'provenance_events', 'quantity_entries',
+        'replay_adjustments', 'replay_cash_positions', 'replay_lot_positions', 'sessions',
         'setup_sessions', 'user_decisions', 'users',
     ]);
     expect((int) DB::selectOne('PRAGMA foreign_keys')->foreign_keys)->toBe(1);

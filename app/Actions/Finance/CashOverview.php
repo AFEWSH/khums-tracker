@@ -95,6 +95,8 @@ final class CashOverview
                     'income' => 'درآمد', 'accrue_income' => 'شناسایی طلب درآمد', 'expense' => 'هزینه',
                     'transfer' => 'انتقال', 'lend' => 'قرض دادن', 'collect' => 'وصول طلب',
                     'borrow' => 'دریافت قرض', 'repay' => 'بازپرداخت قرض', 'reversal' => 'برگشت سند',
+                    'asset_buy' => 'خرید دارایی',
+                    'asset_sell' => 'فروش دارایی', 'asset_convert' => 'تبدیل دارایی',
                     default => 'عملیات',
                 },
                 'date' => PersianDate::fromGregorian($row->effective_date),

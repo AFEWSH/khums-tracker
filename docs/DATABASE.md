@@ -1,5 +1,16 @@
 # مدل داده پیشنهادی
 
+## وضعیت اجرایی فاز ۴/۵ — 2026-10-14
+
+migration چهارم `2026_10_14_000002_create_replay_and_facts` جدول‌های `projection_revisions`, `lot_allocation_projections`, `replay_cash_positions`, `replay_lot_positions`, `replay_adjustments`, `lot_basis_adjustments`, `asset_fact_versions`, `amendment_cases` را افزود. `approved_operation_id` اصلاحیه تأییدشده را به سند posted وصل می‌کند. نسخه قدیمی سند/lot به‌جای overwrite حفظ می‌شود؛ projectionهای نقد و lot نسخه‌دارند. schema محلی پس از backup و restore drill از ۳ به ۴ رسید: یک مالک، صفر عملیات مالی، integrity و FK سالم. `SqliteBackup` هر چهار schema را می‌پذیرد.
+
+
+## schema اجراشده فاز ۴ — 2026-10-14
+
+migration سوم `2026_10_14_000001_create_quantity_assets` جدول‌های `instruments`, `asset_opening_items`, `foreign_obligation_opening_items`, `asset_accounts`, `foreign_obligations`, `quantity_entries`, `lots`, `lot_allocations`, `asset_origin_events`, `asset_prices` را افزود. ستون‌های مقدار/قیمت در transport و DB متن دقیق‌اند؛ پول ریالی BIGINT است. `lots.cost_rial` برای افتتاحیه فقط ارزش تأییدشده افتتاحیه است؛ `historical_cost_rial` و `acquired_date` می‌توانند null باشند. `asset_origin_events` مقدار مخمّس اظهارشده/حد نامعلوم و پایه ریالی را جدا دارد. افتتاحیه ارزی در حساب تعهد و quantity ثبت می‌شود، نه در lot سرمایه‌گذاری.
+
+پایگاه محلی پس از backup رمزدار schema ۲ و بازیابی آزمایشی به schema ۳ ارتقا یافت؛ یک مالک و صفر عملیات/دارایی/قیمت حفظ شد. `SqliteBackup` schemaهای ۱/۲/۳ را می‌پذیرد. `lot_allocations` برای فروش بعدی مهیا است اما تا تأیید FIFO و آزمون مسیر فروش مصرف نمی‌شود. جدول‌های CPI، شرعی و replay ساخته نشده‌اند.
+
 ## وضعیت schema اجراشده فاز ۳ — 2026-10-14
 
 migration دوم `2026_10_14_000000_create_cash_finance_core` این جدول‌ها را واقعاً ساخت: `financial_state`, `setup_sessions`, `opening_items`, `accounts`, `categories`, `operations`, `journal_lines`, `provenance_events`, `obligations`, `user_decisions`, `audit_events`. ستون‌های `balance_rial` و `protected_min/max_rial` در accounts projection کنترل‌شده‌اند؛ عملیات posted و خطوط آن منبع حسابرسی‌اند. فقط حساب‌های ریالی در این فاز ایجاد می‌شوند. `operations.effective_at` برای زمان نامعلوم nullable و `boundary_relation` برای روز افتتاحیه صریح است. `operations.idempotency_key` و `reversal_of_id` یکتا هستند. هیچ جدول مقدار/lot/CPI/احکام هنوز موجود نیست.

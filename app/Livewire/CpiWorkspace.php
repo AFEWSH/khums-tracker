@@ -4,10 +4,13 @@ namespace App\Livewire;
 
 use App\Actions\Finance\CpiCatalog;
 use App\Actions\Finance\CpiCsvImport;
+use App\Actions\Finance\EconomicPerformanceReport;
 use App\Actions\Finance\FinanceInputException;
+use App\Support\Dates\PersianDate;
 use App\Support\Numbers\DecimalInput;
 use Brick\Math\Exception\MathException;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -25,9 +28,9 @@ class CpiWorkspace extends Component
 
     public string $previewDigest = '';
 
-    public string $coverage = '';
+    public string $coverage = 'national_all_households';
 
-    public string $baseYear = '';
+    public string $baseYear = '1400';
 
     public string $methodologyVersion = '';
 
@@ -47,9 +50,22 @@ class CpiWorkspace extends Component
 
     public string $revisionReason = '';
 
+    public string $reportStart = '1405-05-20';
+
+    public string $reportEnd = '';
+
+    public string $reportSeriesId = '';
+
+    public string $reportScope = 'personal_net_worth';
+
+    public array $portfolioAccountIds = [];
+
+    public ?array $economicReport = null;
+
     public function mount(): void
     {
         Gate::authorize('access-app');
+        $this->reportEnd = PersianDate::fromGregorian(now()->addDay()->toDateString());
     }
 
     public function addSeries(CpiCatalog $catalog): void
@@ -58,7 +74,7 @@ class CpiWorkspace extends Component
         try {
             $id = $catalog->createSeries($this->coverage, $this->integer($this->baseYear), $this->methodologyVersion, $this->seriesSourceUrl);
             $this->seriesId = (string) $id;
-            $this->reset('baseYear', 'methodologyVersion', 'seriesSourceUrl');
+            $this->reset('methodologyVersion', 'seriesSourceUrl');
             session()->flash('success', 'سری شاخص به‌صورت تأییدنشده ثبت شد.');
         } catch (InvalidArgumentException|FinanceInputException|MathException $error) {
             $this->addError('series', $error->getMessage());
@@ -84,6 +100,9 @@ class CpiWorkspace extends Component
 
         return view('livewire.cpi-workspace', [
             'series' => $catalog->series(),
+            'portfolioAccounts' => DB::table('accounts')->where('class', 'asset')
+                ->whereIn('subtype', ['bank', 'cash', 'broker_cash', 'wallet_cash', 'holding'])
+                ->orderBy('name')->get(['id', 'name', 'subtype']),
             'points' => ctype_digit($this->seriesId) && (int) $this->seriesId > 0
                 ? $catalog->latestPoints((int) $this->seriesId) : [],
             'csvPlan' => ($plan = session()->get('cpi_csv_plan')) && ($plan['digest'] ?? '') === $this->previewDigest ? $plan : null,
@@ -126,6 +145,27 @@ class CpiWorkspace extends Component
             session()->flash('success', $count.' ردیف شاخص ثبت شد.');
         } catch (InvalidArgumentException|FinanceInputException|MathException|\RuntimeException $error) {
             $this->addError('csvFile', $error->getMessage());
+        }
+    }
+
+    public function runReport(EconomicPerformanceReport $report): void
+    {
+        Gate::authorize('access-app');
+        $this->economicReport = null;
+        try {
+            if (! in_array($this->reportScope, ['personal_net_worth', 'investment_portfolio'], true)) {
+                throw new InvalidArgumentException('دامنه گزارش معتبر نیست.');
+            }
+            $accountIds = $this->reportScope === 'investment_portfolio'
+                ? array_map(fn ($id): int => $this->integer((string) $id), $this->portfolioAccountIds) : null;
+            $this->economicReport = $report->between(
+                PersianDate::parseInput($this->reportStart),
+                PersianDate::parseInput($this->reportEnd),
+                $this->integer($this->reportSeriesId),
+                $accountIds,
+            );
+        } catch (InvalidArgumentException|FinanceInputException|MathException $error) {
+            $this->addError('report', $error->getMessage());
         }
     }
 

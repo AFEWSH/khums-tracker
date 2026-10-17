@@ -10,6 +10,8 @@ use App\Livewire\CashWorkspace;
 use App\Livewire\CpiWorkspace;
 use App\Livewire\Dashboard;
 use App\Livewire\FinanceReview;
+use App\Livewire\KhumsWorkspace;
+use App\Livewire\RulingLibrary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +28,7 @@ Route::middleware(['auth', 'auth.session', 'owner'])->group(function (): void {
     Route::get('/assets', AssetWorkspace::class)->name('assets.workspace');
     Route::get('/review', FinanceReview::class)->name('finance.review');
     Route::get('/cpi', CpiWorkspace::class)->name('cpi.workspace');
+    Route::get('/rulings', RulingLibrary::class)->name('rulings.index');
+    Route::get('/khums', KhumsWorkspace::class)->name('khums.workspace');
     Route::post('/logout', LogoutController::class)->name('logout');
 });

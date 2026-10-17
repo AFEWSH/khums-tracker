@@ -32,6 +32,8 @@
             <a href="{{ route('assets.workspace') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">دارایی‌ها</a>
             <a href="{{ route('finance.review') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">مرور و گزارش</a>
             <a href="{{ route('cpi.workspace') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">شاخص تورم</a>
+            <a href="{{ route('rulings.index') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">احکام</a>
+            <a href="{{ route('khums.workspace') }}" class="inline-flex min-h-12 items-center px-3 text-sm font-bold text-slate-700 hover:text-teal-900">پیش‌نویس خمس</a>
         </nav>
     </header>
     <main id="main-content" class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">

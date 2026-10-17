@@ -2,7 +2,8 @@
     <section class="space-y-3">
         <p class="text-sm font-bold text-teal-800">فاز ۶ · شاخص‌های اقتصادی</p>
         <h1 class="text-3xl font-bold text-slate-950">شاخص قیمت مصرف‌کننده</h1>
-        <p class="max-w-3xl text-sm leading-8 text-slate-600">این صفحه فقط شاخص ماهانه و منبع واردشده را ذخیره می‌کند. ثبت لینک، اصالت داده را تأیید نمی‌کند. تا تعیین روش گزارش، از این داده نتیجهٔ قطعی سود واقعی یا خمس ساخته نمی‌شود.</p>
+        <p class="max-w-3xl text-sm leading-8 text-slate-600">مبنای انتخاب‌شده، شاخص کل خانوارهای کشور با سال پایهٔ پیشنهادی ۱۴۰۰ و شاخص ماه وقوع هر جریان است. درگاه رسمی مرکز آمار در این محیط قابل بررسی مستقیم نبود؛ ثبت لینک یا عدد به‌تنهایی اصالت داده را تأیید نمی‌کند. گزارش اقتصادیِ دادهٔ تأییدنشده موقت است و حکم خمس نیست.</p>
+        <p class="text-sm text-slate-600">درگاه ناشر: <a class="text-teal-800 underline" href="https://amar.org.ir/" target="_blank" rel="noopener noreferrer">مرکز آمار ایران</a>؛ برای هر سری و ماه، لینک مستقیم همان انتشار را ثبت کنید. بازشدن لینک برای استفادهٔ آفلاین برنامه لازم نیست.</p>
     </section>
     @if (session('success')) <p role="status" class="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-900">{{ session('success') }}</p> @endif
     <section class="panel space-y-5 p-6">
@@ -47,6 +48,36 @@
                 <p>سری {{ $csvPlan['series_id'] }} · {{ count($csvPlan['rows']) }} ردیف · هنوز ثبت نشده‌اند.</p>
                 <div class="overflow-x-auto"><table class="min-w-full text-right"><thead><tr><th class="p-2">سطر</th><th class="p-2">ماه</th><th class="p-2">سطح شاخص</th></tr></thead><tbody>@foreach ($csvPlan['rows'] as $row)<tr><td class="p-2">{{ $row['line'] }}</td><td class="p-2">{{ $row['year'] }}/{{ $row['month'] }}</td><td class="p-2" dir="ltr">{{ $row['level'] }}</td></tr>@endforeach</tbody></table></div>
                 <button wire:click="confirmCsv" type="button" class="button-primary">تأیید و ثبت همهٔ ردیف‌ها</button>
+            </div>
+        @endif
+    </section>
+    <section class="panel space-y-5 p-6">
+        <h2 class="text-xl font-bold">عملکرد اقتصادی</h2>
+        <p class="text-sm leading-7 text-slate-600">بازه نیمه‌باز است؛ تاریخ پایان در محاسبه وارد نمی‌شود. در نمای ارزش خالص، افتتاحیه مانده آغاز است، درآمد و هزینه جریان خارجی‌اند و انتقال/قرض/تبدیل داخلی جریان تازه نیستند. در سبد انتخابی، انتقال از بیرون سبد ورود سرمایه است؛ معامله یا درآمد با مرز مبهم، نتیجه را ناقص می‌گذارد. این گزارش مالی، مبنای خمس نیست.</p>
+        <form wire:submit="runReport" class="grid gap-4 sm:grid-cols-3">
+            <label class="space-y-1 text-sm"><span>دامنه گزارش</span><select wire:model.live="reportScope" class="field w-full"><option value="personal_net_worth">ارزش خالص کل دارایی</option><option value="investment_portfolio">سبد انتخابی حساب‌ها و دارایی‌ها</option></select></label>
+            <label class="space-y-1 text-sm"><span>شروع شمسی</span><input wire:model="reportStart" class="field w-full" dir="ltr" inputmode="numeric" required></label>
+            <label class="space-y-1 text-sm"><span>پایان شمسی، غیرشامل</span><input wire:model="reportEnd" class="field w-full" dir="ltr" inputmode="numeric" required></label>
+            <label class="space-y-1 text-sm"><span>سری کل خانوارهای کشور</span><select wire:model="reportSeriesId" class="field w-full" required><option value="">انتخاب کنید</option>@foreach ($series as $item)@if ($item->coverage === 'national_all_households')<option value="{{ $item->id }}">پایه {{ $item->base_year }} · {{ $item->methodology_version }} · {{ $item->verification_status === 'verified' ? 'تأییدشده' : 'تأییدنشده' }}</option>@endif @endforeach</select></label>
+            @if ($reportScope === 'investment_portfolio')
+                <fieldset class="space-y-2 rounded-xl border border-slate-200 p-3 text-sm sm:col-span-3"><legend class="font-bold">حساب‌ها و دارایی‌های عضو سبد</legend><div class="grid gap-2 sm:grid-cols-2">@foreach ($portfolioAccounts as $account)<label class="flex items-center gap-2"><input wire:model="portfolioAccountIds" type="checkbox" value="{{ $account->id }}"><span>{{ $account->name }} ({{ $account->subtype }})</span></label>@endforeach</div></fieldset>
+            @endif
+            @error('report') <p role="alert" class="text-sm text-red-700 sm:col-span-3">{{ $message }}</p> @enderror
+            <div class="sm:col-span-3"><button class="button-primary" type="submit">محاسبه عملکرد</button></div>
+        </form>
+        @if ($economicReport)
+            <div class="space-y-3 rounded-xl bg-slate-50 p-4 text-sm leading-7">
+                <p class="font-bold {{ $economicReport['status'] === 'complete' ? 'text-emerald-800' : 'text-amber-800' }}">{{ $economicReport['scope'] === 'personal_net_worth' ? 'ارزش خالص کل دارایی' : 'سبد انتخابی سرمایه‌گذاری' }} · وضعیت: {{ match ($economicReport['status']) {'complete' => 'کامل طبق روش ماهانه', 'provisional' => 'موقت؛ منبع شاخص تأیید نشده', default => 'ناقص؛ داده لازم موجود نیست'} }}</p>
+                <div class="grid gap-3 sm:grid-cols-3">
+                    <p>ارزش آغاز: <bdi>{{ $economicReport['opening_value_rial'] === null ? 'نامعلوم' : \App\Support\Numbers\MoneyRial::fromRial($economicReport['opening_value_rial'])->toman() }}</bdi> تومان</p>
+                    <p>ارزش پایان: <bdi>{{ $economicReport['closing_value_rial'] === null ? 'نامعلوم' : \App\Support\Numbers\MoneyRial::fromRial($economicReport['closing_value_rial'])->toman() }}</bdi> تومان</p>
+                    <p>سود اسمی: <bdi>{{ $economicReport['nominal_gain_rial'] === null ? 'نامعلوم' : \App\Support\Numbers\MoneyRial::fromRial($economicReport['nominal_gain_rial'])->toman() }}</bdi> تومان</p>
+                    <p>سود واقعی: <bdi>{{ $economicReport['real_gain_rial'] === null ? 'نامعلوم' : \App\Support\Numbers\MoneyRial::fromRial($economicReport['real_gain_rial'])->toman() }}</bdi> تومان</p>
+                    <p>تفاوت تورمی: <bdi>{{ $economicReport['inflation_difference_rial'] === null ? 'نامعلوم' : \App\Support\Numbers\MoneyRial::fromRial($economicReport['inflation_difference_rial'])->toman() }}</bdi> تومان</p>
+                    <p>جریان خارجی: {{ count($economicReport['flows']) }} مورد</p>
+                </div>
+                @if ($economicReport['missing_labels'])<p class="text-amber-900">دلایل نقص: {{ implode('، ', $economicReport['missing_labels']) }}</p>@endif
+                <p class="text-xs text-slate-600">سری {{ $economicReport['series_id'] }} با پایه {{ $economicReport['series_base_year'] }} · نسخه داده مالی {{ $economicReport['financial_revision'] }} · نسخه‌های شاخص: {{ implode('، ', $economicReport['cpi_revision_ids']) }}</p>
             </div>
         @endif
     </section>

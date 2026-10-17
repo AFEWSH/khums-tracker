@@ -31,3 +31,9 @@ it('rejects zero or negative CPI levels rather than producing a false return', f
         ['amount_rial' => '10', 'cpi' => '-1'],
     ]))->toThrow(InvalidArgumentException::class);
 });
+
+it('uses the opening once and the dated external contribution once', function (): void {
+    expect(EconomicReturn::calculate('100000000', '150000000', '100', '121', [
+        ['amount_rial' => '20000000', 'cpi' => '110'],
+    ]))->toMatchArray(['nominal_rial' => '30000000', 'real_rial' => '7000000']);
+});

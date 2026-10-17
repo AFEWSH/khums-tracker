@@ -5,6 +5,13 @@
         <p class="max-w-3xl text-sm leading-8 text-slate-600">اگر سال خمسی در تاریخ انتخابی پایان می‌یافت، اقلام زیر نیاز به چه بررسی‌هایی داشتند؟ این پیش‌نمایش فقط خواندنی است و هیچ سال، تعهد یا پرداختی ثبت نمی‌کند.</p>
     </header>
 
+    <section class="panel space-y-2 p-5" aria-label="وضعیت اولین سال خمسی">
+        <h2 class="text-lg font-bold text-slate-900">اولین سال خمسی</h2>
+        <p class="text-sm leading-7 text-slate-700">از {{ $firstPeriod['start_persian'] }} تا {{ $firstPeriod['end_exclusive_persian'] }}، به وقت تهران.</p>
+        <p class="text-sm leading-7 text-slate-700">ساعت <bdi dir="ltr">{{ $planningPeriod['local_clock'] }}</bdi> صبح به پیشنهاد شما فقط برای برنامه‌ریزی نمایش داده می‌شود؛ ساعت واقعی هنوز نامعلوم است و این پیشنهاد مبنای محاسبه یا بستن سال نیست.</p>
+        <p class="text-sm leading-7 text-amber-800">ساعت دقیق مرز هنوز تأیید نشده است؛ وضعیت سررسید: {{ $dueStatus === 'not_due' ? 'هنوز نرسیده' : 'نیازمند تعیین ساعت مرز' }}. بستن قطعی سال در این وضعیت ممکن نیست.</p>
+    </section>
+
     <form wire:submit="simulate" class="panel flex flex-wrap items-end gap-4 p-5">
         <label class="block text-sm font-bold text-slate-800">تاریخ فرضی پایان سال
             <input wire:model="asOfDate" type="text" inputmode="numeric" dir="ltr" class="mt-2 block w-44 rounded-xl border border-slate-300 px-3 py-2 text-left" placeholder="۱۴۰۵-۰۸-۲۰">

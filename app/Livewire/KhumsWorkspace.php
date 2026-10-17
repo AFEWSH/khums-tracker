@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Actions\Finance\KhumsSimulation;
 use App\Support\Dates\PersianDate;
+use App\Support\Khums\KhumsYearSchedule;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
@@ -42,6 +43,12 @@ class KhumsWorkspace extends Component
     {
         Gate::authorize('access-app');
 
-        return view('livewire.khums-workspace');
+        $firstPeriod = KhumsYearSchedule::period(1405);
+        $planningPeriod = KhumsYearSchedule::scenarioPeriod(1405, '09:00');
+        $dueStatus = KhumsYearSchedule::dueStatus($firstPeriod, now('UTC')->format('Y-m-d\TH:i:s.u\Z'));
+
+        return view('livewire.khums-workspace', [
+            'firstPeriod' => $firstPeriod, 'planningPeriod' => $planningPeriod, 'dueStatus' => $dueStatus,
+        ]);
     }
 }

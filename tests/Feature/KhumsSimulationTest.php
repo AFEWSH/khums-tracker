@@ -18,11 +18,14 @@ it('keeps the khums simulation private and read-only with no invented due', func
 
     $report = app(KhumsSimulation::class)->asOf(OpeningSetup::DATE);
     expect($report['purpose'])->toBe('simulation')
+        ->and($report['boundary_status'])->toBe('confirmed')
+        ->and($report['boundary_local_clock'])->toBe('00:00')
+        ->and($report['boundary_timezone'])->toBe('Asia/Tehran')
         ->and($report['status'])->toBe('incomplete')
         ->and($report['total_due_exact_rial'])->toBeNull()
         ->and($report['payment_amount_rial'])->toBeNull()
         ->and($report['positions'][0]['book_rial'])->toBe('1000')
-        ->and($report['issues'])->toContain('boundary_time_unconfirmed')
+        ->and($report['issues'])->toContain('simulation_date_only')
         ->and([DB::table('operations')->count(), DB::table('user_decisions')->count(), DB::table('audit_events')->count()])->toBe($before);
 
     $this->get('/khums')->assertOk()->assertSee('پیش‌نویس و شبیه‌سازی خمس');

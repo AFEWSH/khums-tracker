@@ -1,5 +1,13 @@
 # مدل داده پیشنهادی
 
+## schema اجرایی فاز ۸ — 2026-10-19
+
+schema ۷ جدول‌های `khums_period_closures` (نسخه، snapshot و hash، وابستگی و وضعیت stale)، `khums_assessments` (تعهد دقیق مستقل از پرداخت)، `khums_settlements` (پیوند یکتای سند هزینه و تخصیص)، و `khums_basis_carryovers` (وضعیت پایهٔ سال بعد) را افزود. schema ۸ جدول `khums_schedule_versions` را برای تغییر آینده‌نگر تاریخ/ساعت سررسید افزود. تصمیم واجدبودن قلم و حل پایه با payload نسخه‌دار در `user_decisions`، همراه audit، نگهداری می‌شود؛ محاسبهٔ قواعد در DB نیست. `settled_basis_review` مخمّس قطعی نیست و اصلاحیهٔ دارای پرداخت قبلی `reconciliation_required` می‌ماند. پشتیبان‌های schema ۶ و ۷ پیش از migrationها بازیابی آزمایشی شدند؛ نسخه‌های ۷ و ۸ در `SqliteBackup` قابل verify/restore هستند. جدول‌های زکات ساخته نشده‌اند.
+
+## schema ۶: پیش‌نویس دورهٔ خمس — 2026-10-19
+
+`khums_period_reviews` فقط snapshot بازبینی ناقص پس از سررسید را ذخیره می‌کند: سال، دو مرز UTC، تاریخ داده، نسخه مالی، hash manifest/ورودی/snapshot، payload JSON و actor. کلید `(start_year,input_hash)` تکرار را یکتا می‌کند؛ خواندن hash را می‌سنجد. جدول‌های مقصد `period_closures`، `assessments`، `settlement_allocations` و پایهٔ انتقالی هنوز ساخته نشده‌اند. این جدول جای snapshot کامل بسته‌شده نیست.
+
 یادداشت فاز ۷ — 2026-10-17: فاز ۷ migration جدید ندارد. manifest قواعد در کد نسخه‌دار است و شبیه‌سازی `/khums` هیچ `calculation_run` یا `period_closure` پایداری نمی‌نویسد؛ hash ورودی صرفاً همراه خروجی همان پیش‌نمایش خواندنی است. جدول‌های دوره/محاسبه/بستن پایین صفحه هنوز طرح مقصد فاز ۸ هستند. داده‌های تاریخ‌دار از جداول موجود خوانده می‌شوند و اصل مخمّس با ارزش بازار یا بهای دفتری جایگزین نمی‌شود.
 
 ## مصرف داده CPI در گزارش فاز ۶ — 2026-10-17
@@ -171,7 +179,7 @@ erDiagram
 
 هر قسمت مخمّس/unknown پیش‌نویس با schema مشخص و عدد رشته‌ای داخل details_payload است؛ هنگام posting به religious_basis_events با مبلغ/مقدار پوشش و پایه جدا منتقل می‌شود و مرجع تأیید قلم حفظ می‌شود. محاسبه روی JSON پیش‌نویس یا SQL مبلغ رشته‌ای انجام نمی‌شود. برای دارایی مقداری مجموع covered_atoms = مقدار قلم؛ برای نقد مجموع covered_rial = مانده. basis_rial پایه شرعی است و با covered/value مخلوط نمی‌شود؛ مجهول null است. FK دوطرفه افتتاحیه و obligation ابتدا nullable و سپس در همان تراکنش تکمیل می‌شود؛ constraint فوری نقض نمی‌شود.
 
-تا ساعت مرز مشخص نیست، opening_operation تاریخ استاندارد و precision=date دارد. periods تاریخ‌های قطعی و boundary_status=unconfirmed دارد؛ سرویس سررسید می‌تواند «نیاز به تعیین ساعت» نشان دهد، ولی instant/closure قطعی نمی‌سازد. تنظیمات مؤثر سال در settings_versions با روز/ماه، ساعت nullable، منطقه، زمان تأیید و دامنه اثر است؛ تغییر به نسخه جدید نیاز دارد.
+ساعت مرز در 2026-10-19 به‌صورت ۰۰:۰۰ بامداد ۲۰ مرداد، `Asia/Tehran` تعیین شد (D28/A55). `opening_operation` ثبت‌شده با precision=date بازنویسی نمی‌شود؛ در نسخهٔ اول تقویم، periods باید instant تأییدشده و `boundary_status=confirmed` بگیرند. ساعت تأییدشده به‌تنهایی اجازهٔ closure نیست. تنظیمات مؤثر سال در settings_versions با روز/ماه، ساعت nullable، منطقه، زمان تأیید و دامنه اثر است؛ تغییر آینده به نسخه جدید نیاز دارد.
 
 ## کاهش ساختار و ایجاد مرحله‌ای
 

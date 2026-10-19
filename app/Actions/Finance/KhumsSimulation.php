@@ -4,6 +4,7 @@ namespace App\Actions\Finance;
 
 use App\Support\Dates\EffectiveTime;
 use App\Support\Khums\KhumsDraft;
+use App\Support\Khums\KhumsYearSchedule;
 use App\Support\Khums\RuleCatalog;
 use App\Support\Numbers\MoneyRial;
 use Illuminate\Support\Facades\DB;
@@ -67,7 +68,7 @@ final class KhumsSimulation
                 $id = 'account:'.$account->id;
                 $positions[] = [
                     'component_id' => $id, 'account_id' => (int) $account->id,
-                    'name' => $account->name, 'class' => $account->class,
+                    'name' => $account->name, 'class' => $account->class, 'subtype' => $account->subtype,
                     'book_rial' => $book->rial(), 'book_toman' => $book->toman(),
                     'market_rial' => $market?->rial(), 'market_toman' => $market?->toman(),
                     'price_date' => $priceDate, 'price_revision' => $priceRevision,
@@ -79,9 +80,11 @@ final class KhumsSimulation
                 ];
             }
             $catalog = app(RuleCatalog::class);
-            $draft = KhumsDraft::evaluate($components, array_column($catalog->active(), 'id'), false);
+            $period = KhumsYearSchedule::confirmedPeriod(1405);
+            $draft = KhumsDraft::evaluate($components, array_column($catalog->active(), 'id'), true);
             $state = DB::table('financial_state')->where('id', 1)->first();
             $issues = $draft['issues'];
+            $issues[] = 'simulation_date_only';
             if ($state->opening_confirmed_at === null) {
                 $issues[] = 'opening_not_confirmed';
             }
@@ -93,7 +96,9 @@ final class KhumsSimulation
 
             return [
                 'purpose' => 'simulation', 'as_of_date' => $date,
-                'period_start_date' => OpeningSetup::DATE, 'boundary_status' => 'unconfirmed',
+                'period_start_date' => OpeningSetup::DATE, 'boundary_status' => $period['boundary_status'],
+                'boundary_local_clock' => $period['local_clock'], 'boundary_timezone' => $period['timezone'],
+                'schedule_version' => $period['schedule_version'],
                 'rule_version' => $catalog->version(), 'rule_manifest_hash' => $catalog->manifestHash(),
                 'financial_revision' => (int) $state->revision,
                 'positions' => $positions, 'items' => $draft['items'],
@@ -102,15 +107,15 @@ final class KhumsSimulation
                 'status' => 'incomplete',
                 'known_subtotal_exact_rial' => $draft['known_subtotal_exact_rial'],
                 'total_due_exact_rial' => null, 'payment_amount_rial' => null,
-                'input_hash' => hash('sha256', json_encode([$date, $state->revision, $catalog->manifestHash(), $positions], JSON_THROW_ON_ERROR)),
+                'input_hash' => hash('sha256', json_encode([$date, $state->revision, $catalog->manifestHash(), $period['schedule_version'], $period['local_clock'], $positions], JSON_THROW_ON_ERROR)),
             ];
         });
     }
 
-    private function label(string $code): string
+    public function label(string $code): string
     {
         return match ($code) {
-            'boundary_time_unconfirmed' => 'ساعت مرز سال خمسی تأیید نشده است',
+            'simulation_date_only' => 'این شبیه‌سازی روزانه جای گزارش دقیق مرز سال را نمی‌گیرد',
             'opening_not_confirmed' => 'افتتاحیه هنوز تأیید نشده است',
             'coverage_not_confirmed' => 'پوشش ثبت تراکنش‌ها تا این تاریخ تأیید نشده است',
             'no_components' => 'هیچ قلم مالی برای ارزیابی وجود ندارد',
@@ -120,6 +125,10 @@ final class KhumsSimulation
             'negative_position_requires_review' => 'ماندهٔ منفی نیازمند بررسی و اصلاح است',
             'evidence_unconfirmed' => 'شواهد منشأ برخی اقلام تأیید نشده است',
             'rule_not_active' => 'قاعدهٔ معتبر و فعال برای برخی اقلام موجود نیست',
+            'previous_period_unresolved' => 'سال پیش هنوز بسته نشده یا وابستگی آن نیازمند بررسی است',
+            'carryover_basis_requires_review' => 'پایهٔ ارزیابی‌شدهٔ سال پیش هنوز برای سال جدید تعیین تکلیف نشده است',
+            'intraday_boundary_requires_review' => 'مرز غیرنیمه‌شب به تاریخ و ساعت دقیق عملیات نیاز دارد؛ گزارش روزانه برای بستن کافی نیست',
+            'quantity_basis_requires_review' => 'پایهٔ دارایی مقداری باید در سطح lot و منشأ بررسی شود',
             default => 'وضعیت نیازمند بررسی است',
         };
     }

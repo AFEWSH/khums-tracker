@@ -19,6 +19,9 @@ final class SqliteBackup
         3 => ['2026_10_13_000000_create_identity_tables', '2026_10_14_000000_create_cash_finance_core', '2026_10_14_000001_create_quantity_assets'],
         4 => ['2026_10_13_000000_create_identity_tables', '2026_10_14_000000_create_cash_finance_core', '2026_10_14_000001_create_quantity_assets', '2026_10_14_000002_create_replay_and_facts'],
         5 => ['2026_10_13_000000_create_identity_tables', '2026_10_14_000000_create_cash_finance_core', '2026_10_14_000001_create_quantity_assets', '2026_10_14_000002_create_replay_and_facts', '2026_10_14_000003_create_cpi_catalog'],
+        6 => ['2026_10_13_000000_create_identity_tables', '2026_10_14_000000_create_cash_finance_core', '2026_10_14_000001_create_quantity_assets', '2026_10_14_000002_create_replay_and_facts', '2026_10_14_000003_create_cpi_catalog', '2026_10_19_000000_create_khums_period_reviews'],
+        7 => ['2026_10_13_000000_create_identity_tables', '2026_10_14_000000_create_cash_finance_core', '2026_10_14_000001_create_quantity_assets', '2026_10_14_000002_create_replay_and_facts', '2026_10_14_000003_create_cpi_catalog', '2026_10_19_000000_create_khums_period_reviews', '2026_10_19_000001_create_khums_year_lifecycle'],
+        8 => ['2026_10_13_000000_create_identity_tables', '2026_10_14_000000_create_cash_finance_core', '2026_10_14_000001_create_quantity_assets', '2026_10_14_000002_create_replay_and_facts', '2026_10_14_000003_create_cpi_catalog', '2026_10_19_000000_create_khums_period_reviews', '2026_10_19_000001_create_khums_year_lifecycle', '2026_10_19_000002_create_khums_schedule_versions'],
     ];
 
     public function create(string $source, string $target, #[SensitiveParameter] string $password): void

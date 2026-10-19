@@ -11,6 +11,34 @@ use InvalidArgumentException;
 /** Pure date and instant boundaries; a missing clock remains missing. */
 final class KhumsYearSchedule
 {
+    /** User-confirmed local boundary for the first schedule version. */
+    public const CONFIRMED_LOCAL_CLOCK = '00:00';
+
+    public static function confirmedPeriod(int $startYear): array
+    {
+        return self::period($startYear, self::CONFIRMED_LOCAL_CLOCK);
+    }
+
+    /** List overdue candidates in order. A candidate never implies an approved closure. */
+    public static function pendingPeriods(string $nowUtc, ?string $confirmedLocalClock = self::CONFIRMED_LOCAL_CLOCK): array
+    {
+        $first = self::period(1405, $confirmedLocalClock);
+        self::dueStatus($first, $nowUtc);
+        $localYear = (int) explode('-', PersianDate::fromGregorian(
+            (new DateTimeImmutable($nowUtc))->setTimezone(new DateTimeZone('Asia/Tehran'))->format('Y-m-d')
+        ))[0];
+        $periods = [];
+        for ($year = 1405; $year < $localYear && $year <= 9998; $year++) {
+            $period = $year === 1405 ? $first : self::period($year, $confirmedLocalClock);
+            $status = self::dueStatus($period, $nowUtc);
+            if ($status !== 'not_due') {
+                $periods[] = ['period' => $period, 'due_status' => $status];
+            }
+        }
+
+        return $periods;
+    }
+
     /** A planning clock is never a confirmed religious boundary. */
     public static function scenarioPeriod(int $startYear, string $planningLocalClock): array
     {

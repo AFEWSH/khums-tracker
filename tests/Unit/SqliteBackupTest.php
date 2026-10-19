@@ -55,6 +55,108 @@ it('takes a consistent encrypted WAL snapshot and restores only into an empty pa
     }
 });
 
+it('recognizes the phase-eight review schema in a private backup', function (): void {
+    $directory = sys_get_temp_dir().'/khfb-phase8-'.bin2hex(random_bytes(6));
+    mkdir($directory, 0700);
+    $source = $directory.'/source.sqlite';
+    $bundle = $directory.'/bundle.khfb';
+    $restored = $directory.'/restored.sqlite';
+    try {
+        $db = syntheticPhaseTwoDatabase($source);
+        foreach ([
+            '2026_10_14_000000_create_cash_finance_core',
+            '2026_10_14_000001_create_quantity_assets',
+            '2026_10_14_000002_create_replay_and_facts',
+            '2026_10_14_000003_create_cpi_catalog',
+            '2026_10_19_000000_create_khums_period_reviews',
+        ] as $index => $migration) {
+            $statement = $db->prepare('INSERT INTO migrations (migration, batch) VALUES (?, ?)');
+            $statement->execute([$migration, $index + 2]);
+        }
+        $backup = new SqliteBackup;
+        $backup->create($source, $bundle, 'synthetic-phase-eight-passphrase');
+        expect($backup->verify($bundle, 'synthetic-phase-eight-passphrase')['schema'])->toBe(6);
+        $backup->restoreToEmpty($bundle, $restored, 'synthetic-phase-eight-passphrase');
+        $copy = new PDO('sqlite:'.$restored);
+        expect((int) $copy->query('SELECT COUNT(*) FROM migrations')->fetchColumn())->toBe(6);
+    } finally {
+        unset($db, $copy);
+        foreach (glob($directory.'/*') ?: [] as $file) {
+            @unlink($file);
+        }
+        @rmdir($directory);
+    }
+});
+
+it('recognizes the phase-eight lifecycle schema in a private backup', function (): void {
+    $directory = sys_get_temp_dir().'/khfb-lifecycle-'.bin2hex(random_bytes(6));
+    mkdir($directory, 0700);
+    $source = $directory.'/source.sqlite';
+    $bundle = $directory.'/bundle.khfb';
+    $restored = $directory.'/restored.sqlite';
+    try {
+        $db = syntheticPhaseTwoDatabase($source);
+        foreach ([
+            '2026_10_14_000000_create_cash_finance_core',
+            '2026_10_14_000001_create_quantity_assets',
+            '2026_10_14_000002_create_replay_and_facts',
+            '2026_10_14_000003_create_cpi_catalog',
+            '2026_10_19_000000_create_khums_period_reviews',
+            '2026_10_19_000001_create_khums_year_lifecycle',
+        ] as $index => $migration) {
+            $statement = $db->prepare('INSERT INTO migrations (migration, batch) VALUES (?, ?)');
+            $statement->execute([$migration, $index + 2]);
+        }
+        $service = new SqliteBackup;
+        $service->create($source, $bundle, 'synthetic-lifecycle-passphrase');
+        expect($service->verify($bundle, 'synthetic-lifecycle-passphrase')['schema'])->toBe(7);
+        $service->restoreToEmpty($bundle, $restored, 'synthetic-lifecycle-passphrase');
+        $copy = new PDO('sqlite:'.$restored);
+        expect((int) $copy->query('SELECT COUNT(*) FROM migrations')->fetchColumn())->toBe(7);
+    } finally {
+        unset($db, $copy);
+        foreach (glob($directory.'/*') ?: [] as $file) {
+            @unlink($file);
+        }
+        @rmdir($directory);
+    }
+});
+
+it('recognizes the versioned khums schedule schema in a private backup', function (): void {
+    $directory = sys_get_temp_dir().'/khfb-schedule-'.bin2hex(random_bytes(6));
+    mkdir($directory, 0700);
+    $source = $directory.'/source.sqlite';
+    $bundle = $directory.'/bundle.khfb';
+    $restored = $directory.'/restored.sqlite';
+    try {
+        $db = syntheticPhaseTwoDatabase($source);
+        foreach ([
+            '2026_10_14_000000_create_cash_finance_core',
+            '2026_10_14_000001_create_quantity_assets',
+            '2026_10_14_000002_create_replay_and_facts',
+            '2026_10_14_000003_create_cpi_catalog',
+            '2026_10_19_000000_create_khums_period_reviews',
+            '2026_10_19_000001_create_khums_year_lifecycle',
+            '2026_10_19_000002_create_khums_schedule_versions',
+        ] as $index => $migration) {
+            $statement = $db->prepare('INSERT INTO migrations (migration, batch) VALUES (?, ?)');
+            $statement->execute([$migration, $index + 2]);
+        }
+        $backup = new SqliteBackup;
+        $backup->create($source, $bundle, 'synthetic-schedule-passphrase');
+        expect($backup->verify($bundle, 'synthetic-schedule-passphrase')['schema'])->toBe(8);
+        $backup->restoreToEmpty($bundle, $restored, 'synthetic-schedule-passphrase');
+        $copy = new PDO('sqlite:'.$restored);
+        expect((int) $copy->query('SELECT COUNT(*) FROM migrations')->fetchColumn())->toBe(8);
+    } finally {
+        unset($db, $copy);
+        foreach (glob($directory.'/*') ?: [] as $file) {
+            @unlink($file);
+        }
+        @rmdir($directory);
+    }
+});
+
 it('recognizes the phase-three schema without breaking version-one backups', function () {
     $directory = sys_get_temp_dir().'/khfb-v2-test-'.bin2hex(random_bytes(6));
     mkdir($directory, 0700);

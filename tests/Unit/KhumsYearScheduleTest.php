@@ -15,6 +15,18 @@ it('creates the first Persian-year period without inventing a clock', function (
         ->and(KhumsYearSchedule::dueStatus($period, '2027-08-11T20:30:00.000000Z'))->toBe('past_due_boundary_unconfirmed');
 });
 
+it('uses the owner-confirmed midnight boundary in Tehran as the exclusive end', function (): void {
+    $first = KhumsYearSchedule::confirmedPeriod(1405);
+    $second = KhumsYearSchedule::confirmedPeriod(1406);
+    expect($first['local_clock'])->toBe('00:00')
+        ->and($first['boundary_status'])->toBe('confirmed')
+        ->and($first['start_at_utc'])->toBe('2026-08-10T20:30:00.000000Z')
+        ->and($first['end_exclusive_at_utc'])->toBe('2027-08-10T20:30:00.000000Z')
+        ->and($second['start_at_utc'])->toBe($first['end_exclusive_at_utc'])
+        ->and(KhumsYearSchedule::dueStatus($first, '2027-08-10T20:29:59.999999Z'))->toBe('not_due')
+        ->and(KhumsYearSchedule::dueStatus($first, '2027-08-10T20:30:00.000000Z'))->toBe('due');
+});
+
 it('resolves an explicitly confirmed Tehran clock to UTC and keeps the end exclusive', function (): void {
     $period = KhumsYearSchedule::period(1405, '12:30');
     expect($period['start_at_utc'])->toBe('2026-08-11T09:00:00.000000Z')
@@ -45,6 +57,27 @@ it('uses Persian calendar conversion across later leap years rather than adding 
         ->and($next['end_exclusive_persian'])->toBe('1408-05-20')
         ->and($leap['start_date'])->toBe('2029-08-10')
         ->and($leap['end_exclusive_date'])->toBe('2030-08-11');
+});
+
+it('finds missed periods in order without promoting an unknown clock to a due instant', function (): void {
+    expect(KhumsYearSchedule::pendingPeriods('2027-08-10T20:29:59.000000Z', null))->toBe([]);
+    $boundaryDay = KhumsYearSchedule::pendingPeriods('2027-08-10T20:30:00.000000Z', null);
+    expect($boundaryDay)->toHaveCount(1)
+        ->and($boundaryDay[0]['due_status'])->toBe('boundary_day_unconfirmed')
+        ->and($boundaryDay[0]['period']['end_exclusive_at_utc'])->toBeNull();
+
+    $missed = KhumsYearSchedule::pendingPeriods('2029-09-01T00:00:00.000000Z', null);
+    expect($missed)->toHaveCount(3)
+        ->and(array_column(array_column($missed, 'period'), 'start_persian'))->toBe(['1405-05-20', '1406-05-20', '1407-05-20'])
+        ->and(array_column($missed, 'due_status'))->toBe([
+            'past_due_boundary_unconfirmed', 'past_due_boundary_unconfirmed', 'past_due_boundary_unconfirmed',
+        ]);
+    $confirmed = KhumsYearSchedule::pendingPeriods('2027-08-11T05:29:59.000000Z', '09:00');
+    expect($confirmed)->toBe([]);
+    $confirmed = KhumsYearSchedule::pendingPeriods('2027-08-11T05:30:00.000000Z', '09:00');
+    expect($confirmed)->toHaveCount(1)->and($confirmed[0]['due_status'])->toBe('due');
+    expect(KhumsYearSchedule::pendingPeriods('2027-08-10T20:30:00.000000Z'))->toHaveCount(1)
+        ->and(KhumsYearSchedule::pendingPeriods('2027-08-10T20:30:00.000000Z')[0]['due_status'])->toBe('due');
 });
 
 it('never closes a simulation or an incomplete report even with an approval flag', function (): void {

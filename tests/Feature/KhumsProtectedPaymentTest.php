@@ -33,8 +33,8 @@ it('keeps the assessed asset intact when its khums is paid from a separately pro
     $base = app(KhumsPeriodReport::class)->forYear(1405);
     $decisions = app(KhumsComponentDecision::class);
     $facts = ['منشأ' => 'شرح ساختگی منشأ حساب برای آزمون'];
-    $decisions->confirm(1405, $assessedAccountId, $base['simulation_input_hash'], '1000', 'SYNTHETIC', $facts, 'khums-other-protected-first-001');
-    $decisions->confirm(1405, $protectedAccountId, $base['simulation_input_hash'], '0', 'SYNTHETIC', $facts, 'khums-other-protected-second-001');
+    $decisions->confirm(1405, $assessedAccountId, $base['component_input_hash'], '1000', 'SYNTHETIC', $facts, 'khums-other-protected-first-001');
+    $decisions->confirm(1405, $protectedAccountId, $base['component_input_hash'], '0', 'SYNTHETIC', $facts, 'khums-other-protected-second-001');
     $report = app(KhumsPeriodReport::class)->forYear(1405);
     expect($report['total_due_exact_rial'])->toBe('200');
     $reviewId = app(KhumsPeriodReview::class)->save(1405, $report['input_hash']);
@@ -62,6 +62,6 @@ it('keeps the assessed asset intact when its khums is paid from a separately pro
     app(CoverageConfirmation::class)->confirm('2028-08-10', $next['revision'], 'khums-other-next-coverage-001', true);
     $reportNext = app(KhumsPeriodReport::class)->forYear(1406);
     expect(fn () => app(KhumsComponentDecision::class)->confirm(1406, $assessedAccountId,
-        $reportNext['simulation_input_hash'], '100', 'SYNTHETIC', $facts, 'khums-other-next-decision-001'))
+        $reportNext['component_input_hash'], '100', 'SYNTHETIC', $facts, 'khums-other-next-decision-001'))
         ->toThrow(FinanceInputException::class);
 });

@@ -6,6 +6,7 @@ use App\Support\Khums\KhumsYearSchedule;
 use App\Support\Khums\RuleCatalog;
 use App\Support\Numbers\MoneyRial;
 use Brick\Math\BigDecimal;
+use Brick\Math\BigRational;
 use DateTimeImmutable;
 use DateTimeZone;
 use Illuminate\Support\Facades\DB;
@@ -47,16 +48,50 @@ final class KhumsComponentDecision
             $date = (new DateTimeImmutable($period['end_exclusive_date'], new DateTimeZone('Asia/Tehran')))
                 ->modify('-1 day')->format('Y-m-d');
             $simulation = app(KhumsSimulation::class)->asOf($date);
-            if (! hash_equals($simulation['input_hash'], $seenBaseHash)) {
-                throw new FinanceInputException('Financial data changed; review the component again.');
+            $dependencies = app(KhumsYearDependencies::class)->forYear($startYear);
+            $assetBasisTrace = app(KhumsAssetBasisTrace::class)->asOf($date);
+            $dependencyHash = hash('sha256', json_encode($dependencies, JSON_THROW_ON_ERROR));
+            $componentInputHash = hash('sha256', json_encode([$simulation['input_hash'], $dependencyHash, $assetBasisTrace['hash']], JSON_THROW_ON_ERROR));
+            if (! hash_equals($componentInputHash, $seenBaseHash)) {
+                throw new FinanceInputException('Financial data or inherited basis changed; review the component again.');
+            }
+            if ($dependencies['issues'] !== []) {
+                throw new FinanceInputException('Resolve the preceding year and its basis before confirming this component.');
             }
             $componentId = 'account:'.$accountId;
             $item = collect($simulation['items'])->firstWhere('component_id', $componentId);
             $account = DB::table('accounts')->where('id', $accountId)->first();
-            if ($item === null || $account === null || $account->class !== 'asset' || $account->subtype === 'holding'
+            if ($item === null || $account === null || $account->class !== 'asset'
                 || $item['value_rial'] === null
                 || BigDecimal::of($eligible->rial())->isGreaterThan($item['value_rial'])) {
                 throw new FinanceInputException('This component has no reviewed value or the eligible amount exceeds it.');
+            }
+            if ($account->subtype === 'holding') {
+                $lotBasis = collect($assetBasisTrace['holdings'])->firstWhere('account_id', $accountId);
+                if ($lotBasis === null || $lotBasis['status'] !== 'traced' || $lotBasis['remaining_atoms'] === '0') {
+                    throw new FinanceInputException('This holding requires an evidenced physical lot allocation.');
+                }
+                $catalog->requireActive('K01');
+                $available = BigRational::of($item['value_rial'])->minus($lotBasis['protected_basis_exact_rial']);
+                if ($available->isNegative()) {
+                    $available = BigRational::zero();
+                }
+                if (BigRational::of($eligible->rial())->isGreaterThan($available)) {
+                    throw new FinanceInputException('Eligible amount would count the protected lot basis again.');
+                }
+            }
+            $saleBasis = collect($assetBasisTrace['cash_positions'])->firstWhere('account_id', $accountId);
+            if ($saleBasis !== null) {
+                if ($saleBasis['status'] !== 'traced') {
+                    throw new FinanceInputException('Sale proceeds require an evidenced religious basis allocation.');
+                }
+                if ($saleBasis['protected_basis_exact_rial'] !== '0') {
+                    $catalog->requireActive('K01');
+                    $available = BigRational::of($item['value_rial'])->minus($saleBasis['protected_basis_exact_rial']);
+                    if (BigRational::of($eligible->rial())->isGreaterThan($available)) {
+                        throw new FinanceInputException('Eligible amount would count protected sale proceeds again.');
+                    }
+                }
             }
             if ($startYear > 1405) {
                 $prior = DB::table('khums_period_closures')->where('start_year', $startYear - 1)
@@ -77,20 +112,22 @@ final class KhumsComponentDecision
                         throw new FinanceInputException('The protected basis evidence is missing.');
                     }
                     $resolved = json_decode($resolution->payload, true, flags: JSON_THROW_ON_ERROR);
-                    if ((int) DB::table('operations')->max('id') !== ($resolved['last_operation_id'] ?? null)) {
+                    if ($account->subtype !== 'holding' && (int) DB::table('operations')->max('id') !== ($resolved['last_operation_id'] ?? null)) {
                         throw new FinanceInputException('Later operations need a replayed protected-basis allocation.');
                     }
                     $protected = BigDecimal::of($resolved['protected_basis_rial']);
-                    if (BigDecimal::of($eligible->rial())->isGreaterThan(BigDecimal::of($item['value_rial'])->minus($protected))) {
+                    if ($account->subtype !== 'holding' && BigDecimal::of($eligible->rial())->isGreaterThan(BigDecimal::of($item['value_rial'])->minus($protected))) {
                         throw new FinanceInputException('Eligible amount would count a previously settled basis again.');
                     }
                 }
             }
             $payload = [
                 'start_year' => $startYear, 'component_id' => $componentId,
-                'base_hash' => $seenBaseHash, 'value_rial' => $item['value_rial'],
+                'base_hash' => $simulation['input_hash'], 'value_rial' => $item['value_rial'],
                 'eligible_rial' => $eligible->rial(), 'rule_id' => $ruleId,
                 'rule_manifest_hash' => $catalog->manifestHash(), 'facts' => $facts,
+                'dependency_hash' => $dependencyHash,
+                'asset_basis_hash' => $assetBasisTrace['hash'],
                 'idempotency_key' => $key,
             ];
             $hash = hash('sha256', json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));

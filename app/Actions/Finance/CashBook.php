@@ -292,6 +292,7 @@ final class CashBook
                 'operation_id' => $reversalId, 'actor_id' => auth()->id(), 'action' => 'cash_reversed',
                 'facts_hash' => $hash, 'recorded_at' => now(),
             ]);
+            app(KhumsPaymentReversal::class)->record($operationId, $reversalId);
 
             return $reversalId;
         });

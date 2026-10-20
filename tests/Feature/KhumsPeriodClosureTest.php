@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Finance\CashBook;
 use App\Actions\Finance\CoverageConfirmation;
 use App\Actions\Finance\FinanceInputException;
 use App\Actions\Finance\KhumsAmendmentReconciliation;
@@ -30,7 +31,7 @@ it('closes a fully reviewed synthetic period once and leaves payment separate', 
     $preview = $coverage->preview('2027-08-10');
     $coverage->confirm('2027-08-10', $preview['revision'], 'khums-closure-coverage-001', true);
     $report = app(KhumsPeriodReport::class)->forYear(1405);
-    app(KhumsComponentDecision::class)->confirm(1405, $accountId, $report['simulation_input_hash'], '1000', 'SYNTHETIC', [
+    app(KhumsComponentDecision::class)->confirm(1405, $accountId, $report['component_input_hash'], '1000', 'SYNTHETIC', [
         'منشأ' => 'اظهار ساختگی برای آزمون حساب',
     ], 'khums-closure-component-001');
     $computed = app(KhumsPeriodReport::class)->forYear(1405);
@@ -86,10 +87,10 @@ it('closes a fully reviewed synthetic period once and leaves payment separate', 
     $nextCoverage = $coverage->preview('2028-08-10');
     $coverage->confirm('2028-08-10', $nextCoverage['revision'], 'khums-next-coverage-001', true);
     $nextBase = app(KhumsPeriodReport::class)->forYear(1406);
-    expect(fn () => app(KhumsComponentDecision::class)->confirm(1406, $accountId, $nextBase['simulation_input_hash'], '1', 'SYNTHETIC', [
+    expect(fn () => app(KhumsComponentDecision::class)->confirm(1406, $accountId, $nextBase['component_input_hash'], '1', 'SYNTHETIC', [
         'منشأ' => 'افزایش ساختگی ناسازگار با پایه',
     ], 'khums-next-invalid-001'))->toThrow(FinanceInputException::class);
-    app(KhumsComponentDecision::class)->confirm(1406, $accountId, $nextBase['simulation_input_hash'], '0', 'SYNTHETIC', [
+    app(KhumsComponentDecision::class)->confirm(1406, $accountId, $nextBase['component_input_hash'], '0', 'SYNTHETIC', [
         'منشأ' => 'بدون درآمد جدید و با پایه مخمّس آزمون',
     ], 'khums-next-component-001');
     $nextComputed = app(KhumsPeriodReport::class)->forYear(1406);
@@ -104,7 +105,7 @@ it('closes a fully reviewed synthetic period once and leaves payment separate', 
         ->and(DB::table('khums_assessments')->where('closure_id', $nextClosureId)->value('due_exact_rial'))->toBe('0');
 
     $baseAfterPayment = app(KhumsPeriodReport::class)->forYear(1405);
-    app(KhumsComponentDecision::class)->confirm(1405, $accountId, $baseAfterPayment['simulation_input_hash'], '800', 'SYNTHETIC', [
+    app(KhumsComponentDecision::class)->confirm(1405, $accountId, $baseAfterPayment['component_input_hash'], '800', 'SYNTHETIC', [
         'منشأ' => 'اصلاح اظهار ساختگی برای آزمون',
     ], 'khums-amendment-component-001');
     $revised = app(KhumsPeriodReport::class)->forYear(1405);
@@ -137,4 +138,20 @@ it('closes a fully reviewed synthetic period once and leaves payment separate', 
         ->and($reconciliation->approve($newId, $reconciliationPreview['hash'], 'تطبیق ساختگی پرداخت‌های قبلی', true))->toBe($reconciledId)
         ->and(DB::table('khums_settlements')->count())->toBe(2)
         ->and(DB::table('operations')->where('type', 'expense')->count())->toBe(2);
+    $secondPaymentOperation = (int) DB::table('khums_settlements')->where('idempotency_key', 'khums-settlement-second-001')->value('payment_operation_id');
+    $cashBook = app(CashBook::class);
+    $reversalId = $cashBook->reverseLatest($secondPaymentOperation, 'برگشت ساختگی پرداخت دوم', 'khums-payment-reversal-001');
+    expect($cashBook->reverseLatest($secondPaymentOperation, 'برگشت ساختگی پرداخت دوم', 'khums-payment-reversal-001'))->toBe($reversalId)
+        ->and((string) DB::table('khums_assessments')->where('closure_id', $id)->value('settled_rial'))->toBe('100')
+        ->and((string) DB::table('khums_assessments')->where('closure_id', $newId)->value('settled_rial'))->toBe('100')
+        ->and(DB::table('khums_assessments')->where('closure_id', $newId)->value('status'))->toBe('reconciliation_required')
+        ->and(DB::table('khums_basis_carryovers')->where('closure_id', $id)->value('status'))->toBe('assessed_unsettled')
+        ->and(DB::table('user_decisions')->where('kind', 'khums_payment_reversed')->count())->toBe(1);
+    $afterReversal = $reconciliation->preview($newId);
+    expect($afterReversal['prior_paid_rial'])->toBe('100')
+        ->and($afterReversal['remaining_exact_rial'])->toBe('60');
+    $reconciliation->approve($newId, $afterReversal['hash'], 'تطبیق مجدد پس از برگشت پرداخت', true);
+    expect(DB::table('khums_assessments')->where('closure_id', $newId)->value('status'))->toBe('partially_paid')
+        ->and(DB::table('user_decisions')->where('kind', 'khums_reconciliation')->count())->toBe(2)
+        ->and($closures->read($id)['report']['total_due_exact_rial'])->toBe('200');
 });

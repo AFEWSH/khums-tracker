@@ -31,6 +31,10 @@ final class KhumsAmendmentReconciliation
         }
         $payments = DB::table('khums_settlements')->join('khums_assessments', 'khums_assessments.id', '=', 'khums_settlements.assessment_id')
             ->whereIn('khums_assessments.closure_id', $ancestorIds)
+            ->whereNotExists(function ($query): void {
+                $query->selectRaw('1')->from('operations as payment_reversals')
+                    ->whereColumn('payment_reversals.reversal_of_id', 'khums_settlements.payment_operation_id');
+            })
             ->orderBy('khums_settlements.id')
             ->get(['khums_settlements.id', 'khums_settlements.payment_operation_id', 'khums_settlements.amount_rial',
                 'khums_settlements.method', 'khums_settlements.source_account_id']);
@@ -92,7 +96,9 @@ final class KhumsAmendmentReconciliation
                         return (int) $existing->id;
                     }
 
-                    throw new FinanceInputException('This assessment already has a different reconciliation.');
+                    if (DB::table('khums_assessments')->where('id', $assessmentId)->value('status') !== 'reconciliation_required') {
+                        throw new FinanceInputException('This assessment already has a different reconciliation.');
+                    }
                 }
             }
             $preview = $this->preview($closureId);

@@ -83,6 +83,19 @@
                     </ul>
                 </div>
             @endif
+            @if (($periodReport['asset_basis_trace']['sales'] ?? []) !== [])
+                <details class="rounded-xl border border-slate-200 p-3 text-sm leading-7">
+                    <summary class="cursor-pointer font-bold">منشأ وجه فروش و پایهٔ مخمّس</summary>
+                    <p class="mt-2 text-amber-900">اعداد زیر ردیابی پایه‌اند؛ افزایشِ نشان‌داده‌شده به‌تنهایی مبلغ مشمول خمس نیست و به قاعده و شواهد تأییدشده نیاز دارد.</p>
+                    @foreach ($periodReport['asset_basis_trace']['sales'] as $sale)
+                        <div class="mt-3 border-t border-slate-100 pt-2">
+                            <p>عملیات فروش {{ $sale['operation_id'] }} در {{ \App\Support\Dates\PersianDate::fromGregorian($sale['effective_date']) }}</p>
+                            <p>وجه خالص: <bdi dir="ltr">{{ $sale['net_proceeds_rial'] }}</bdi> ریال · بهای اقتصادی: <bdi dir="ltr">{{ $sale['economic_cost_rial'] }}</bdi> ریال</p>
+                            <p>پایهٔ مخمّس تخصیص‌یافته: <bdi dir="ltr">{{ $sale['allocated_basis_exact_rial'] }}</bdi> ریال · افزایش نیازمند بررسی: <bdi dir="ltr">{{ $sale['increase_candidate_exact_rial'] }}</bdi> ریال</p>
+                        </div>
+                    @endforeach
+                </details>
+            @endif
             <p class="break-all text-xs text-slate-500" dir="ltr">{{ $periodReport['input_hash'] }}</p>
             @if ($savedPeriodReviewId === null)
                 <button type="button" wire:click="savePeriodReview" class="button-primary">ذخیرهٔ نسخهٔ پیش‌نویس برای بازبینی</button>
@@ -97,7 +110,7 @@
                         <select wire:model="componentAccountId" class="mt-1 block w-full rounded-lg border p-2">
                             <option value="0">انتخاب کنید</option>
                             @foreach ($periodReport['positions'] as $position)
-                                @if ($position['class'] === 'asset' && $position['subtype'] !== 'holding')
+                                @if ($position['class'] === 'asset')
                                     <option value="{{ $position['account_id'] }}">{{ $position['name'] }}</option>
                                 @endif
                             @endforeach
@@ -155,9 +168,20 @@
             <h2 class="text-lg font-bold text-slate-900">سال‌های بسته‌شده و پرداخت مستقل</h2>
             <div class="flex flex-wrap gap-2">
                 @foreach ($closedPeriods as $closed)
-                    <button type="button" wire:click="$set('closedClosureId', {{ $closed['id'] }})" class="rounded-lg border border-slate-300 px-3 py-2 text-sm">سال {{ $closed['start_year'] }} · نسخه {{ $closed['revision'] }} · تعهد <bdi dir="ltr">{{ $closed['due_exact_rial'] }}</bdi> ریال</button>
+                    <button type="button" wire:click="showClosedPeriod({{ $closed['id'] }})" class="rounded-lg border border-slate-300 px-3 py-2 text-sm">سال {{ $closed['start_year'] }} · نسخه {{ $closed['revision'] }} · تعهد <bdi dir="ltr">{{ $closed['due_exact_rial'] }}</bdi> ریال{{ $closed['dependency_stale'] ? ' · وابستگی نیازمند بررسی' : '' }}</button>
                 @endforeach
             </div>
+            @if ($closedReport)
+                <div class="space-y-2 rounded-xl bg-slate-50 p-4 text-sm leading-7" aria-label="نسخهٔ ثابت گزارش بسته‌شده">
+                    <h3 class="font-bold">نسخهٔ ثابت گزارش بسته‌شده</h3>
+                    <p>{{ $closedReport['period']['start_persian'] }} تا {{ $closedReport['period']['end_exclusive_persian'] }} · مبلغ ثبت‌شده: <bdi dir="ltr">{{ $closedReport['total_due_exact_rial'] }}</bdi> ریال</p>
+                    <p>نسخهٔ قواعد: <bdi>{{ $closedReport['rule_version'] }}</bdi> · نسخهٔ داده: {{ $closedReport['financial_revision'] }}</p>
+                    <p class="break-all text-xs text-slate-500" dir="ltr">{{ $closedReport['input_hash'] }}</p>
+                    @foreach ($closedReport['items'] as $item)
+                        <p>قلم <bdi dir="ltr">{{ $item['component_id'] }}</bdi> · مبنای تأییدشده: <bdi dir="ltr">{{ $item['eligible_rial'] }}</bdi> ریال · یک‌پنجم دقیق: <bdi dir="ltr">{{ $item['one_fifth_exact_rial'] }}</bdi> ریال · قاعده <bdi>{{ $item['rule_id'] }}</bdi></p>
+                    @endforeach
+                </div>
+            @endif
             @if ($closedClosureId !== null)
                 <form wire:submit="payKhums" class="space-y-3 rounded-xl border border-slate-200 p-4">
                     <h3 class="font-bold">ثبت پرداخت واقعی برای نسخهٔ انتخاب‌شده</h3>

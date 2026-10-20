@@ -43,8 +43,7 @@ final class KhumsPeriodAmendment
             throw new FinanceInputException('The replacement must be current and different.');
         }
         $assessment = DB::table('khums_assessments')->where('closure_id', $closureId)->first();
-        $affected = DB::table('khums_period_closures')->where('depends_on_closure_id', $closureId)
-            ->orderBy('start_year')->pluck('id')->all();
+        $affected = app(KhumsYearDependencies::class)->affectedClosureIds($closureId);
         $delta = BigDecimal::of($fresh['total_due_exact_rial'])->minus($old->due_exact_rial);
         $preview = [
             'old_closure_id' => $closureId, 'new_review_id' => $reviewId,
@@ -54,6 +53,8 @@ final class KhumsPeriodAmendment
             'delta_exact_rial' => (string) $delta,
             'prior_settled_rial' => (string) $assessment->settled_rial,
             'dependent_closure_ids' => $affected,
+            'old_dependency_closure_id' => $old->depends_on_closure_id === null ? null : (int) $old->depends_on_closure_id,
+            'new_dependency_closure_id' => $fresh['dependencies']['previous_closure_id'],
             'input_hash' => $fresh['input_hash'],
         ];
         $preview['diff_hash'] = hash('sha256', json_encode($preview, JSON_THROW_ON_ERROR));
@@ -101,7 +102,7 @@ final class KhumsPeriodAmendment
             }
             $blockers = KhumsClosureGate::blockers($fresh['period'], 'due', $fresh, [
                 'input_current' => true, 'coverage_confirmed' => ! in_array('coverage_not_confirmed', $fresh['issues'], true),
-                'dependencies_valid' => ! $old->dependency_stale,
+                'dependencies_valid' => $fresh['dependencies']['issues'] === [],
                 'rules_validated' => $rulesValid, 'backup_verified' => true, 'snapshot_complete' => true,
             ], true);
             if ($blockers !== []) {
@@ -119,7 +120,7 @@ final class KhumsPeriodAmendment
             $newId = DB::table('khums_period_closures')->insertGetId([
                 'start_year' => $old->start_year, 'revision' => (int) $old->revision + 1,
                 'review_id' => $reviewId, 'previous_closure_id' => $closureId,
-                'depends_on_closure_id' => $old->depends_on_closure_id,
+                'depends_on_closure_id' => $fresh['dependencies']['previous_closure_id'],
                 'input_hash' => $fresh['input_hash'], 'snapshot_hash' => $snapshotHash,
                 'snapshot_json' => $snapshot, 'due_exact_rial' => $fresh['total_due_exact_rial'],
                 'backup_sha256' => $backupHash, 'active' => true, 'reason' => $reason,
@@ -147,8 +148,10 @@ final class KhumsPeriodAmendment
                     'eligible_rial' => $item['eligible_rial'], 'rule_id' => $item['rule_id'],
                 ]);
             }
-            DB::table('khums_period_closures')->where('depends_on_closure_id', $closureId)
-                ->update(['dependency_stale' => true]);
+            if ($diff['dependent_closure_ids'] !== []) {
+                DB::table('khums_period_closures')->whereIn('id', $diff['dependent_closure_ids'])
+                    ->update(['dependency_stale' => true]);
+            }
             DB::table('audit_events')->insert([
                 'actor_id' => auth()->id(), 'action' => 'khums_period_amended',
                 'facts_hash' => $snapshotHash, 'recorded_at' => now(),

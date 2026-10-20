@@ -44,6 +44,13 @@ final class KhumsSimulation
                 if ($book->rial() === '0' && $lines->isEmpty()) {
                     continue;
                 }
+                if ($account->subtype === 'holding'
+                    && ($holdings[(int) $account->id]['quantity'] ?? null) === '0' && $book->rial() === '0') {
+                    continue;
+                }
+                if ($book->rial() === '0' && ! in_array($account->subtype, ['holding', 'receivable_fx', 'payable_fx'], true)) {
+                    continue;
+                }
                 $value = $account->class === 'liability' ? null : $book->rial();
                 $issue = $account->class === 'liability' ? 'liability_deduction_requires_review' : 'religious_basis_requires_review';
                 if (str_starts_with($book->rial(), '-')) {
@@ -126,9 +133,12 @@ final class KhumsSimulation
             'evidence_unconfirmed' => 'شواهد منشأ برخی اقلام تأیید نشده است',
             'rule_not_active' => 'قاعدهٔ معتبر و فعال برای برخی اقلام موجود نیست',
             'previous_period_unresolved' => 'سال پیش هنوز بسته نشده یا وابستگی آن نیازمند بررسی است',
+            'previous_assessment_requires_review' => 'تطبیق تعهد و پرداخت سال پیش هنوز نیازمند بررسی است',
             'carryover_basis_requires_review' => 'پایهٔ ارزیابی‌شدهٔ سال پیش هنوز برای سال جدید تعیین تکلیف نشده است',
             'intraday_boundary_requires_review' => 'مرز غیرنیمه‌شب به تاریخ و ساعت دقیق عملیات نیاز دارد؛ گزارش روزانه برای بستن کافی نیست',
             'quantity_basis_requires_review' => 'پایهٔ دارایی مقداری باید در سطح lot و منشأ بررسی شود',
+            'asset_proceeds_basis_requires_review' => 'منشأ وجه فروش دارایی یا مصرف بعدی آن نیازمند تخصیص مستند است',
+            'asset_basis_rule_not_active' => 'برای انتقال پایهٔ مخمّسِ دارایی به وجه فروش، قاعدهٔ معتبر فعال موجود نیست',
             default => 'وضعیت نیازمند بررسی است',
         };
     }

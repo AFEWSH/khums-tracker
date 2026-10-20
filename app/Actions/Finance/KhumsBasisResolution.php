@@ -7,7 +7,7 @@ use Brick\Math\BigDecimal;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
-/** Narrow cash-basis resolution; complex post-boundary movements remain review-only. */
+/** Evidence-backed cash or unchanged single-lot resolution; mixed movements remain review-only. */
 final class KhumsBasisResolution
 {
     public function confirm(int $closureId, int $accountId, string $ruleId, array $facts, bool $approved): int
@@ -36,7 +36,7 @@ final class KhumsBasisResolution
             if ($closure === null || $carry === null || $assessment === null || $assessment->status !== 'settled') {
                 throw new FinanceInputException('A fully settled active assessment is required.');
             }
-            if ($account === null || ! in_array($account->subtype, ['bank', 'cash', 'broker_cash', 'wallet_cash'], true)) {
+            if ($account === null || ! in_array($account->subtype, ['bank', 'cash', 'broker_cash', 'wallet_cash', 'holding'], true)) {
                 throw new FinanceInputException('This asset needs quantity-aware protected-basis review.');
             }
             if ($carry->status === 'resolved_protected') {
@@ -57,7 +57,9 @@ final class KhumsBasisResolution
             $payments = DB::table('khums_settlements')->where('assessment_id', $assessment->id)->get();
             $paymentIds = $payments->pluck('payment_operation_id')->all();
             $samePaid = BigDecimal::zero();
+            $paymentMethods = [];
             foreach ($payments as $payment) {
+                $paymentMethods[] = $payment->method;
                 if ($payment->method === 'from_current_income') {
                     throw new FinanceInputException('Current-income payment needs a separate basis ruling.');
                 }
@@ -71,6 +73,7 @@ final class KhumsBasisResolution
             if ($reconciliation !== null) {
                 $payload = json_decode($reconciliation->payload, true, flags: JSON_THROW_ON_ERROR);
                 foreach ($payload['allocations'] as $allocation) {
+                    $paymentMethods[] = $allocation['method'];
                     $paymentIds[] = $allocation['payment_operation_id'];
                     if ($allocation['method'] === 'from_current_income') {
                         throw new FinanceInputException('Current-income payment needs a separate basis ruling.');
@@ -80,19 +83,37 @@ final class KhumsBasisResolution
                     }
                 }
             }
-            $movements = DB::table('journal_lines')->join('operations', 'operations.id', '=', 'journal_lines.operation_id')
-                ->where('journal_lines.account_id', $accountId)
-                ->where('operations.effective_date', '>=', $endDate)
-                ->get(['operations.id', 'operations.type']);
-            foreach ($movements as $movement) {
-                if (! in_array($movement->id, $paymentIds, false) && $movement->type !== 'income') {
-                    throw new FinanceInputException('Post-boundary movements need a traced basis allocation.');
+            $lotBases = [];
+            if ($account->subtype === 'holding') {
+                if ($paymentMethods === [] || array_diff($paymentMethods, ['from_other_protected']) !== []) {
+                    throw new FinanceInputException('Holding basis needs a fully evidenced payment from other protected cash.');
                 }
-            }
-            $protected = BigDecimal::of((string) $carry->eligible_rial)->minus($samePaid);
-            $balance = $account->balance_rial;
-            if ($protected->isNegative() || $balance === null || $protected->isGreaterThan((string) $balance)) {
-                throw new FinanceInputException('Protected basis exceeds the remaining asset.');
+                $holding = collect($snapshot['report']['asset_basis_trace']['holdings'] ?? [])->firstWhere('account_id', $accountId);
+                $position = collect($snapshot['report']['positions'])->firstWhere('account_id', $accountId);
+                $quantityChanged = DB::table('quantity_entries')->join('operations', 'operations.id', '=', 'quantity_entries.operation_id')
+                    ->where('quantity_entries.account_id', $accountId)->where('operations.effective_date', '>=', $endDate)->exists();
+                if ($holding === null || $holding['status'] !== 'traced' || count($holding['lot_ids']) !== 1
+                    || $holding['remaining_atoms'] === '0' || $quantityChanged || ($position['market_rial'] ?? null) === null) {
+                    throw new FinanceInputException('Holding quantity or valuation changed; review the lot basis again.');
+                }
+                $protected = BigDecimal::of($position['market_rial']);
+                $lotBases[] = ['lot_id' => (int) $holding['lot_ids'][0], 'covered_atoms' => $holding['remaining_atoms'],
+                    'protected_basis_rial' => (string) $protected, 'effective_date' => $endDate];
+            } else {
+                $movements = DB::table('journal_lines')->join('operations', 'operations.id', '=', 'journal_lines.operation_id')
+                    ->where('journal_lines.account_id', $accountId)
+                    ->where('operations.effective_date', '>=', $endDate)
+                    ->get(['operations.id', 'operations.type']);
+                foreach ($movements as $movement) {
+                    if (! in_array($movement->id, $paymentIds, false) && $movement->type !== 'income') {
+                        throw new FinanceInputException('Post-boundary movements need a traced basis allocation.');
+                    }
+                }
+                $protected = BigDecimal::of((string) $carry->eligible_rial)->minus($samePaid);
+                $balance = $account->balance_rial;
+                if ($protected->isNegative() || $balance === null || $protected->isGreaterThan((string) $balance)) {
+                    throw new FinanceInputException('Protected basis exceeds the remaining asset.');
+                }
             }
             $payload = [
                 'closure_id' => $closureId, 'account_id' => $accountId,
@@ -100,6 +121,7 @@ final class KhumsBasisResolution
                 'rule_id' => $ruleId, 'rule_manifest_hash' => app(RuleCatalog::class)->manifestHash(),
                 'facts' => $facts, 'same_asset_paid_rial' => (string) $samePaid,
                 'last_operation_id' => (int) DB::table('operations')->max('id'),
+                'lot_bases' => $lotBases, 'closure_snapshot_hash' => $closure->snapshot_hash,
             ];
             $id = DB::table('user_decisions')->insertGetId([
                 'kind' => 'khums_basis_resolved', 'target_type' => 'account', 'target_id' => $accountId,

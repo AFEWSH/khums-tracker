@@ -53,6 +53,8 @@ class KhumsWorkspace extends Component
 
     public ?int $closedClosureId = null;
 
+    public ?array $closedReport = null;
+
     public string $paymentAccountId = '';
 
     public string $paymentDate = '';
@@ -160,7 +162,7 @@ class KhumsWorkspace extends Component
             $facts[$label] = $this->componentFacts[$index] ?? '';
         }
         $year = (int) substr($this->periodReport['period']['start_persian'], 0, 4);
-        $decisions->confirm($year, $this->componentAccountId, $this->periodReport['simulation_input_hash'],
+        $decisions->confirm($year, $this->componentAccountId, $this->periodReport['component_input_hash'],
             $this->componentEligibleRial, $this->componentRuleId, $facts, $this->componentDecisionKey);
         $this->periodReport = $reports->forYear($year);
         $this->savedPeriodReviewId = null;
@@ -178,7 +180,19 @@ class KhumsWorkspace extends Component
         $this->closedClosureId = $closures->closeWithLocalBackup(
             $this->savedPeriodReviewId, $this->periodReport['input_hash'], $this->closureApproved
         );
+        $this->closedReport = $closures->read($this->closedClosureId)['report'];
         $this->closureApproved = false;
+    }
+
+    public function showClosedPeriod(int $id, KhumsPeriodClosure $closures): void
+    {
+        Gate::authorize('access-app');
+        $this->closedReport = $closures->read($id)['report'];
+        $this->closedClosureId = $id;
+        $this->amendmentDiff = null;
+        $this->reconciliationPreview = null;
+        $this->paymentApproved = false;
+        $this->basisApproved = false;
     }
 
     public function payKhums(KhumsSettlement $settlements): void
@@ -233,6 +247,7 @@ class KhumsWorkspace extends Component
             $this->closedClosureId, $this->savedPeriodReviewId, $this->amendmentDiff['diff_hash'],
             $this->amendmentReason, $this->amendmentApproved
         );
+        $this->closedReport = app(KhumsPeriodClosure::class)->read($this->closedClosureId)['report'];
         $this->amendmentDiff = null;
         $this->amendmentApproved = false;
         $this->amendmentReason = '';
@@ -317,7 +332,7 @@ class KhumsWorkspace extends Component
             'savedReviews' => app(KhumsPeriodReview::class)->history(),
             'activeRules' => app(RuleCatalog::class)->active(),
             'closedPeriods' => DB::table('khums_period_closures')->where('active', true)
-                ->orderByDesc('start_year')->get(['id', 'start_year', 'revision', 'due_exact_rial'])
+                ->orderByDesc('start_year')->get(['id', 'start_year', 'revision', 'due_exact_rial', 'dependency_stale'])
                 ->map(fn ($row): array => (array) $row)->all(),
             'paymentAccounts' => DB::table('accounts')->where('class', 'asset')
                 ->whereIn('subtype', ['bank', 'cash', 'broker_cash', 'wallet_cash'])

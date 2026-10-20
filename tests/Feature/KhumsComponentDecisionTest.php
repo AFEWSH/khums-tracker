@@ -23,7 +23,7 @@ it('requires an active rule and explicit facts for every component before a peri
     $initial = $reports->forYear(1405);
     $decisions = app(KhumsComponentDecision::class);
     expect($initial['status'])->toBe('incomplete')
-        ->and(fn () => $decisions->confirm(1405, $accountId, $initial['simulation_input_hash'], '1000', 'SYNTHETIC', [
+        ->and(fn () => $decisions->confirm(1405, $accountId, $initial['component_input_hash'], '1000', 'SYNTHETIC', [
             'منشأ' => 'اظهار ساختگی درباره منشأ این حساب',
         ], 'khums-component-choice-001'))->toThrow(LogicException::class);
 
@@ -32,13 +32,13 @@ it('requires an active rule and explicit facts for every component before a peri
         'required_facts' => ['منشأ', 'مؤونه'],
     ]]);
     $base = $reports->forYear(1405);
-    expect(fn () => $decisions->confirm(1405, $accountId, $base['simulation_input_hash'], '1000', 'SYNTHETIC', [
+    expect(fn () => $decisions->confirm(1405, $accountId, $base['component_input_hash'], '1000', 'SYNTHETIC', [
         'منشأ' => 'اظهار ساختگی درباره منشأ این حساب',
     ], 'khums-component-choice-002'))->toThrow(FinanceInputException::class);
     $facts = ['منشأ' => 'اظهار ساختگی درباره منشأ این حساب', 'مؤونه' => 'اظهار ساختگی درباره مؤونه سال'];
-    $id = $decisions->confirm(1405, $accountId, $base['simulation_input_hash'], '1000', 'SYNTHETIC', $facts, 'khums-component-choice-003');
+    $id = $decisions->confirm(1405, $accountId, $base['component_input_hash'], '1000', 'SYNTHETIC', $facts, 'khums-component-choice-003');
     $computed = $reports->forYear(1405);
-    expect($decisions->confirm(1405, $accountId, $base['simulation_input_hash'], '1000', 'SYNTHETIC', $facts, 'khums-component-choice-003'))->toBe($id)
+    expect($decisions->confirm(1405, $accountId, $base['component_input_hash'], '1000', 'SYNTHETIC', $facts, 'khums-component-choice-003'))->toBe($id)
         ->and($computed['status'])->toBe('computed')
         ->and($computed['issues'])->toBe([])
         ->and($computed['total_due_exact_rial'])->toBe('200')

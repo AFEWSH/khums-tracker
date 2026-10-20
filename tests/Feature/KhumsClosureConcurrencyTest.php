@@ -44,7 +44,7 @@ it('serializes two independent closure processes to one snapshot and carryover',
         $coveragePreview = $coverage->preview('2027-08-10');
         $coverage->confirm('2027-08-10', $coveragePreview['revision'], 'khums-concurrent-coverage-001', true);
         $base = app(KhumsPeriodReport::class)->forYear(1405);
-        app(KhumsComponentDecision::class)->confirm(1405, $accountId, $base['simulation_input_hash'], '1000', 'SYNTHETIC', [
+        app(KhumsComponentDecision::class)->confirm(1405, $accountId, $base['component_input_hash'], '1000', 'SYNTHETIC', [
             'منشأ' => 'اظهار ساختگی آزمون همزمانی',
         ], 'khums-concurrent-component-001');
         $report = app(KhumsPeriodReport::class)->forYear(1405);

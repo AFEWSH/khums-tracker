@@ -59,18 +59,7 @@ final class KhumsPeriodClosure
                 || ! hash_equals($saved['input_hash'], $seenInputHash)) {
                 throw new FinanceInputException('Financial data or decisions changed; review the period again.');
             }
-            $previousClosure = $year === 1405 ? null : DB::table('khums_period_closures')
-                ->where('start_year', $year - 1)->where('active', true)->first();
-            $previousValid = $year === 1405 || ($previousClosure !== null && ! $previousClosure->dependency_stale);
-            // Until a reviewed basis allocation exists, later years cannot
-            // silently tax or protect the same amount again.
-            if ($year > 1405 && DB::table('khums_basis_carryovers')
-                ->join('khums_period_closures', 'khums_period_closures.id', '=', 'khums_basis_carryovers.closure_id')
-                ->where('khums_period_closures.start_year', $year - 1)
-                ->where('khums_period_closures.active', true)
-                ->whereIn('khums_basis_carryovers.status', ['assessed_unsettled', 'settled_basis_review'])->exists()) {
-                $previousValid = false;
-            }
+            $dependencies = $fresh['dependencies'];
             $catalog = app(RuleCatalog::class);
             $active = array_column($catalog->active(), 'id');
             $rulesValid = $fresh['rule_manifest_hash'] === $catalog->manifestHash();
@@ -85,7 +74,7 @@ final class KhumsPeriodClosure
                 [
                     'input_current' => true,
                     'coverage_confirmed' => ! in_array('coverage_not_confirmed', $fresh['issues'], true),
-                    'dependencies_valid' => $previousValid,
+                    'dependencies_valid' => $dependencies['issues'] === [],
                     'rules_validated' => $rulesValid,
                     'backup_verified' => true,
                     'snapshot_complete' => $source !== [],
@@ -105,7 +94,7 @@ final class KhumsPeriodClosure
             $snapshotHash = hash('sha256', $snapshot);
             $closureId = DB::table('khums_period_closures')->insertGetId([
                 'start_year' => $year, 'revision' => 1, 'review_id' => $reviewId,
-                'depends_on_closure_id' => $previousClosure?->id,
+                'depends_on_closure_id' => $dependencies['previous_closure_id'],
                 'input_hash' => $seenInputHash, 'snapshot_hash' => $snapshotHash,
                 'snapshot_json' => $snapshot, 'due_exact_rial' => (string) $due,
                 'backup_sha256' => $backupHash, 'active' => true,

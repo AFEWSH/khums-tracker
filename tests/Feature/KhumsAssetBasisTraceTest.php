@@ -8,15 +8,25 @@ use App\Actions\Finance\FinanceInputException;
 use App\Actions\Finance\KhumsAssetBasisTrace;
 use App\Actions\Finance\KhumsComponentDecision;
 use App\Actions\Finance\KhumsPeriodReport;
+use App\Actions\Finance\KhumsProceedsAllocation;
 use App\Actions\Finance\OpeningSetup;
+use App\Livewire\KhumsWorkspace;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\DB;
+use Livewire\Livewire;
+
+it('rejects proceeds allocation without owner authentication', function (): void {
+    expect(fn () => app(KhumsProceedsAllocation::class)->confirm('2027-08-10', 1, str_repeat('a', 64), '0', [], true))
+        ->toThrow(AuthorizationException::class);
+});
 
 it('keeps a declared protected lot basis separate from economic cost after sale and blocks ambiguous spending', function (): void {
     $this->actingAs(User::factory()->create());
     config()->set('khums_rules.rules', [
         ['id' => 'SYNTHETIC', 'status' => 'active', 'review' => 'validated', 'required_facts' => ['منشأ']],
         ['id' => 'K01', 'status' => 'active', 'review' => 'validated', 'required_facts' => ['پایه']],
+        ['id' => 'K12', 'status' => 'active', 'review' => 'validated', 'required_facts' => ['اختلاط']],
     ]);
     $setup = app(OpeningSetup::class);
     $setup->addItem('bank', 'بانک فروش پایه', '0', '0', 'unknown');
@@ -59,4 +69,39 @@ it('keeps a declared protected lot basis separate from economic cost after sale 
     expect($afterSpending['issues'])->toContain('asset_proceeds_basis_requires_review:account:'.$bankId)
         ->and(fn () => $decisions->confirm(1405, $bankId, $afterSpending['component_input_hash'], '200', 'SYNTHETIC', $facts, 'khums-sale-basis-ambiguous-001'))
         ->toThrow(FinanceInputException::class);
+    $trace = app(KhumsAssetBasisTrace::class)->asOf('2027-08-10');
+    $allocation = app(KhumsProceedsAllocation::class);
+    $allocationFacts = ['اختلاط' => 'شاهد ساختگی تخصیص پنجاه ریال از اصل و پنجاه ریال از افزایش'];
+    foreach (['899', '1001'] as $invalid) {
+        expect(fn () => $allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], $invalid, $allocationFacts, true))
+            ->toThrow(FinanceInputException::class);
+    }
+    expect(fn () => $allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], '950', $allocationFacts, false))
+        ->toThrow(FinanceInputException::class);
+    $allocationId = $allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], '950', $allocationFacts, true);
+    expect($allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], '950', $allocationFacts, true))->toBe($allocationId)
+        ->and(fn () => $allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], '900', $allocationFacts, true))
+        ->toThrow(FinanceInputException::class);
+    Livewire::test(KhumsWorkspace::class)->set('periodReport', $afterSpending)
+        ->set('proceedsAccountId', $bankId)->set('proceedsProtectedRial', '۹۵۰')
+        ->set('proceedsFacts', array_values($allocationFacts))->set('proceedsApproved', true)
+        ->call('allocateProceeds')->assertHasNoErrors()
+        ->assertSet('periodReport.asset_basis_trace.cash_positions.0.allocation_decision_id', $allocationId)
+        ->assertSet('proceedsApproved', false);
+    $rules = config('khums_rules.rules');
+    config()->set('khums_rules.rules', array_filter($rules, fn ($rule) => $rule['id'] !== 'K12'));
+    expect(app(KhumsAssetBasisTrace::class)->asOf('2027-08-10')['cash_positions'][0]['status'])->toBe('needs_review')
+        ->and(fn () => $allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], '950', $allocationFacts, true))
+        ->toThrow(LogicException::class);
+    config()->set('khums_rules.rules', $rules);
+    $reviewed = app(KhumsPeriodReport::class)->forYear(1405);
+    expect(fn () => $decisions->confirm(1405, $bankId, $reviewed['component_input_hash'], '251', 'SYNTHETIC', $facts, 'khums-sale-allocation-invalid-001'))
+        ->toThrow(FinanceInputException::class);
+    $decisions->confirm(1405, $bankId, $reviewed['component_input_hash'], '250', 'SYNTHETIC', $facts, 'khums-sale-allocation-valid-001');
+    expect(app(KhumsPeriodReport::class)->forYear(1405)['total_due_exact_rial'])->toBe('50');
+    app(CashBook::class)->post(['type' => 'income', 'date' => '2027-08-10', 'amount_toman' => '1',
+        'target_id' => $bankId, 'idempotency_key' => 'khums-sale-allocation-new-income-001']);
+    expect(fn () => $allocation->confirm('2027-08-10', $bankId, $trace['raw_hash'], '950', $allocationFacts, true))
+        ->toThrow(FinanceInputException::class)
+        ->and(app(KhumsAssetBasisTrace::class)->asOf('2027-08-10')['cash_positions'][0]['status'])->toBe('needs_review');
 });

@@ -10,6 +10,7 @@
 /public/storage
 /storage/**/*.key
 /storage/**/*.pem
+/storage/framework/testing/
 /auth.json
 /npm-debug.log*
 /backups/

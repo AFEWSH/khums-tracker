@@ -30,7 +30,7 @@ final class KhumsAmendmentReconciliation
             $priorId = $prior->previous_closure_id;
         }
         $payments = DB::table('khums_settlements')->join('khums_assessments', 'khums_assessments.id', '=', 'khums_settlements.assessment_id')
-            ->whereIn('khums_assessments.closure_id', $ancestorIds)
+            ->whereIn('khums_assessments.closure_id', [...$ancestorIds, $closureId])
             ->whereNotExists(function ($query): void {
                 $query->selectRaw('1')->from('operations as payment_reversals')
                     ->whereColumn('payment_reversals.reversal_of_id', 'khums_settlements.payment_operation_id');
@@ -38,7 +38,8 @@ final class KhumsAmendmentReconciliation
             ->orderBy('khums_settlements.id')
             ->get(['khums_settlements.id', 'khums_settlements.payment_operation_id', 'khums_settlements.amount_rial',
                 'khums_settlements.method', 'khums_settlements.source_account_id']);
-        $due = BigDecimal::of($assessment->due_exact_rial);
+        $terms = app(KhumsSettlementTerms::class)->forAssessment((int) $assessment->id);
+        $due = BigDecimal::of($terms['payable_due_exact_rial']);
         $remaining = $due;
         $paid = BigDecimal::zero();
         $allocations = [];
@@ -63,6 +64,8 @@ final class KhumsAmendmentReconciliation
             'closure_id' => $closureId, 'assessment_id' => (int) $assessment->id,
             'closure_snapshot_hash' => $closure->snapshot_hash,
             'due_exact_rial' => (string) $due,
+            'computed_due_exact_rial' => (string) $assessment->due_exact_rial,
+            'settlement_terms_decision_id' => $terms['decision_id'],
             'prior_paid_rial' => (string) $paid,
             'allocated_rial' => (string) $allocated,
             'remaining_exact_rial' => (string) $remaining,

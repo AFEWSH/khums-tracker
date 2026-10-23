@@ -154,4 +154,31 @@ it('closes a fully reviewed synthetic period once and leaves payment separate', 
     expect(DB::table('khums_assessments')->where('closure_id', $newId)->value('status'))->toBe('partially_paid')
         ->and(DB::table('user_decisions')->where('kind', 'khums_reconciliation')->count())->toBe(2)
         ->and($closures->read($id)['report']['total_due_exact_rial'])->toBe('200');
+    $newAssessment = (int) DB::table('khums_assessments')->where('closure_id', $newId)->value('id');
+    DB::table('khums_period_closures')->where('id', $newId)->update(['dependency_stale' => true]);
+    $operationCount = DB::table('operations')->count();
+    expect(fn () => $settlements->pay($newAssessment, $accountId, '2028-08-11', '30', 'from_same_asset',
+        'پرداخت ساختگی سال نیازمند بازبینی', 'khums-stale-payment-001', true))->toThrow(FinanceInputException::class);
+    expect(DB::table('operations')->count())->toBe($operationCount);
+    DB::table('khums_period_closures')->where('id', $newId)->update(['dependency_stale' => false]);
+    $direct = $settlements->pay($newAssessment, $accountId, '2028-08-11', '30', 'from_same_asset',
+        'پرداخت مستقیم تعهد اصلاح‌شده ساختگی', 'khums-direct-amended-payment-001', true);
+    $last = $settlements->pay($newAssessment, $accountId, '2028-08-11', '30', 'from_same_asset',
+        'پرداخت نهایی تعهد اصلاح‌شده ساختگی', 'khums-last-amended-payment-001', true);
+    $lastOperation = (int) DB::table('khums_settlements')->where('id', $last)->value('payment_operation_id');
+    $cashBook->reverseLatest($lastOperation, 'برگشت پرداخت نهایی ساختگی', 'khums-last-amended-reversal-001');
+    $retry = $reconciliation->preview($newId);
+    expect($retry['prior_paid_rial'])->toBe('130')
+        ->and($retry['remaining_exact_rial'])->toBe('30')
+        ->and(array_column($retry['allocations'], 'settlement_id'))->toContain($direct);
+    $reconciliation->approve($newId, $retry['hash'], 'تطبیق با حفظ پرداخت مستقیم قبلی', true);
+    expect((string) DB::table('khums_assessments')->where('id', $newAssessment)->value('settled_rial'))->toBe('130');
+    $settlements->pay($newAssessment, $accountId, '2028-08-11', '30', 'from_same_asset',
+        'پرداخت تکمیلی پس از تطبیق ساختگی', 'khums-final-after-reconciliation-001', true);
+    $resolved = app(KhumsBasisResolution::class)->confirm($newId, $accountId, 'K01', [
+        'پایه' => 'بررسی مستقل پرداخت‌های مستقیم و تطبیق‌شده بدون تکرار',
+    ], true);
+    $resolvedPayload = json_decode(DB::table('user_decisions')->where('id', $resolved)->value('payload'), true);
+    expect($resolvedPayload['same_asset_paid_rial'])->toBe('160')
+        ->and($resolvedPayload['protected_basis_rial'])->toBe('640');
 });

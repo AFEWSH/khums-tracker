@@ -112,11 +112,12 @@ final class KhumsComponentDecision
                         throw new FinanceInputException('The protected basis evidence is missing.');
                     }
                     $resolved = json_decode($resolution->payload, true, flags: JSON_THROW_ON_ERROR);
-                    if ($account->subtype !== 'holding' && (int) DB::table('operations')->max('id') !== ($resolved['last_operation_id'] ?? null)) {
+                    $replayedCash = isset($assetBasisTrace['origin_plan_decision_id']) && ($saleBasis['status'] ?? null) === 'traced';
+                    if ($account->subtype !== 'holding' && ! $replayedCash && (int) DB::table('operations')->max('id') !== ($resolved['last_operation_id'] ?? null)) {
                         throw new FinanceInputException('Later operations need a replayed protected-basis allocation.');
                     }
                     $protected = BigDecimal::of($resolved['protected_basis_rial']);
-                    if ($account->subtype !== 'holding' && BigDecimal::of($eligible->rial())->isGreaterThan(BigDecimal::of($item['value_rial'])->minus($protected))) {
+                    if ($account->subtype !== 'holding' && ! $replayedCash && BigDecimal::of($eligible->rial())->isGreaterThan(BigDecimal::of($item['value_rial'])->minus($protected))) {
                         throw new FinanceInputException('Eligible amount would count a previously settled basis again.');
                     }
                 }

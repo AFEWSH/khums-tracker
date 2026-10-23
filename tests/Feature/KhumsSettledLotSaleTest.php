@@ -3,6 +3,7 @@
 use App\Actions\Finance\AssetCatalog;
 use App\Actions\Finance\AssetDisposal;
 use App\Actions\Finance\CoverageConfirmation;
+use App\Actions\Finance\FinanceInputException;
 use App\Actions\Finance\KhumsAssetBasisTrace;
 use App\Actions\Finance\KhumsBackupVerifier;
 use App\Actions\Finance\KhumsBasisResolution;
@@ -12,8 +13,8 @@ use App\Actions\Finance\KhumsPeriodReport;
 use App\Actions\Finance\KhumsPeriodReview;
 use App\Actions\Finance\KhumsSettlement;
 use App\Actions\Finance\OpeningSetup;
-use App\Models\User;
 use App\Livewire\KhumsWorkspace;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Livewire;
 
@@ -55,6 +56,15 @@ it('carries the reviewed market basis after settlement into a next-year sale wit
     $assessment = (int) DB::table('khums_assessments')->where('closure_id', $closure)->value('id');
     app(KhumsSettlement::class)->pay($assessment, $payer, '2027-08-11', '100', 'from_other_protected',
         'رسید ساختگی از حساب مخمّس دیگر', 'khums-settled-lot-payment-001', true);
+    DB::table('khums_period_closures')->where('id', $closure)->update(['dependency_stale' => true]);
+    $decisionCount = DB::table('user_decisions')->count();
+    expect(fn () => app(KhumsBasisResolution::class)->confirm($closure, $holding, 'K01', [
+        'پایه' => 'تأیید ساختگی پایه با حفظ تمام مقدار دارایی',
+    ], true))->toThrow(FinanceInputException::class);
+    expect(DB::table('user_decisions')->count())->toBe($decisionCount)
+        ->and(DB::table('khums_basis_carryovers')->where('closure_id', $closure)->where('account_id', $holding)->value('status'))
+        ->toBe('settled_basis_review');
+    DB::table('khums_period_closures')->where('id', $closure)->update(['dependency_stale' => false]);
     $basisDecision = app(KhumsBasisResolution::class)->confirm($closure, $holding, 'K01', [
         'پایه' => 'تأیید ساختگی پایه با حفظ تمام مقدار دارایی',
     ], true);

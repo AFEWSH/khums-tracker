@@ -52,6 +52,7 @@ final class KhumsYearDependencies
             'assessment' => $assessment === null ? null : [
                 'id' => (int) $assessment->id, 'due_exact_rial' => $assessment->due_exact_rial,
                 'settled_rial' => (string) $assessment->settled_rial, 'status' => $assessment->status,
+                'settlement_terms' => app(KhumsSettlementTerms::class)->forAssessment((int) $assessment->id),
             ],
             'carryovers' => $carryovers, 'basis_resolutions' => $resolutions,
             'issues' => array_values(array_unique($issues)),

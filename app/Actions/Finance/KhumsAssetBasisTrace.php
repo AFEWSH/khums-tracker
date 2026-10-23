@@ -4,18 +4,30 @@ namespace App\Actions\Finance;
 
 use App\Support\Dates\EffectiveTime;
 use App\Support\Khums\ProtectedLotBasis;
+use App\Support\Khums\RuleCatalog;
+use Brick\Math\BigDecimal;
 use Brick\Math\BigInteger;
 use Brick\Math\BigRational;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
-/** Read-only trace of evidenced, single-lot holdings. Economic FIFO never selects a religious lot. */
+/** Read-only opening evidence or an approved multi-lot plan; economic FIFO never chooses religious origin. */
 final class KhumsAssetBasisTrace
 {
     public function asOf(string $date): array
     {
         Gate::authorize('access-app');
         EffectiveTime::dateOnly($date);
+
+        return DB::transaction(fn (): array => $this->build($date));
+    }
+
+    private function build(string $date): array
+    {
+        $explicit = app(KhumsOriginPlan::class)->read($date);
+        if ($explicit !== null) {
+            return $explicit;
+        }
         $holdings = [];
         $cash = [];
         $sales = [];
@@ -73,9 +85,14 @@ final class KhumsAssetBasisTrace
                         continue;
                     }
                     $sourceClosure = DB::table('khums_period_closures')->where('id', $resolution['closure_id'])->first();
-                    $settled = $sourceClosure === null ? false : DB::table('khums_assessments')
-                        ->where('closure_id', $sourceClosure->id)->where('status', 'settled')->exists();
+                    $assessment = $sourceClosure === null ? null : DB::table('khums_assessments')->where('closure_id', $sourceClosure->id)->first();
+                    $terms = $assessment === null ? null : app(KhumsSettlementTerms::class)->forAssessment((int) $assessment->id);
+                    $settled = $assessment !== null && $assessment->status === 'settled'
+                        && BigDecimal::of((string) $assessment->settled_rial)->isEqualTo($terms['payable_due_exact_rial']);
+                    $resolved = $sourceClosure !== null && DB::table('khums_basis_carryovers')
+                        ->where('closure_id', $sourceClosure->id)->where('account_id', $accountId)->where('status', 'resolved_protected')->exists();
                     if ($sourceClosure === null || ! $sourceClosure->active || $sourceClosure->dependency_stale || ! $settled
+                        || ! $resolved || ($resolution['settlement_terms_decision_id'] ?? null) !== ($terms['decision_id'] ?? null)
                         || ($resolution['closure_snapshot_hash'] ?? null) !== $sourceClosure->snapshot_hash) {
                         $invalidAnchorYears[] = $sourceClosure === null ? 'closure:'.$resolution['closure_id'] : (string) $sourceClosure->start_year;
 
@@ -205,7 +222,33 @@ final class KhumsAssetBasisTrace
                 $cash[$cashId]['issues'][] = 'source_lot_history_requires_review';
             }
         }
-        $result = ['holdings' => array_values($holdings), 'cash_positions' => array_values($cash), 'sales' => $sales];
+        $result = ['holdings' => array_values($holdings), 'cash_positions' => array_values($cash), 'sales' => $sales,
+            'financial_revision' => (int) DB::table('financial_state')->where('id', 1)->value('revision')];
+        $result['raw_hash'] = hash('sha256', json_encode($result, JSON_THROW_ON_ERROR));
+        $catalog = app(RuleCatalog::class);
+        $mixedRuleActive = collect($catalog->active())->contains('id', 'K12');
+        if ($mixedRuleActive) {
+            $decisions = DB::table('user_decisions')->where('kind', 'khums_proceeds_allocation')->orderByDesc('id')->get();
+            foreach ($result['cash_positions'] as &$position) {
+                foreach ($decisions as $decision) {
+                    if ((int) $decision->target_id !== $position['account_id']) {
+                        continue;
+                    }
+                    $payload = json_decode($decision->payload, true, flags: JSON_THROW_ON_ERROR);
+                    if (($payload['date'] ?? null) !== $date || ($payload['raw_hash'] ?? null) !== $result['raw_hash']
+                        || ($payload['rule_manifest_hash'] ?? null) !== $catalog->manifestHash()) {
+                        continue;
+                    }
+                    $position['status'] = 'traced';
+                    $position['protected_basis_exact_rial'] = $payload['protected_basis_rial'];
+                    $position['reviewed_issues'] = $position['issues'];
+                    $position['issues'] = [];
+                    $position['allocation_decision_id'] = (int) $decision->id;
+                    break;
+                }
+            }
+            unset($position);
+        }
         $result['hash'] = hash('sha256', json_encode($result, JSON_THROW_ON_ERROR));
 
         return $result;

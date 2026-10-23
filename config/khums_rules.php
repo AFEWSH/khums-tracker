@@ -2,9 +2,17 @@
 
 // Source summaries are offline references, not executable rulings. Activation requires a separate reviewed version.
 return [
-    'version' => 'khums-draft-v0.2-2026-10-17',
+    'version' => 'khums-draft-v0.3-2026-10-23',
     'source_checked_at' => '2026-10-17',
     'rules' => [
+        [
+            'id' => 'K-EXCESS', 'title' => 'اشتباه در محاسبه و پرداخت اضافی', 'source' => 'R-K-EXCESS',
+            'issue' => '۸۵۵ و پاورقی‌های آن', 'url' => 'https://www.sistani.org/persian/book/26576/6865/',
+            'kind' => 'فتوا با شرایط و مجوز موردی', 'review' => 'observed', 'status' => 'inactive',
+            'observed_at' => '2026-10-23',
+            'summary' => 'اضافه‌پرداخت به‌صورت خودکار اعتبار سال بعد نیست؛ احتساب آینده و امکان استرداد به شرایط و بررسی موردی وابسته‌اند.',
+            'required_facts' => ['منشأ اشتباه محاسبه', 'استحقاق گیرنده هنگام پرداخت', 'دامنه مجوز معتبر', 'وضعیت استرداد وجه'],
+        ],
         [
             'id' => 'K02', 'title' => 'درآمد باقیمانده در پایان سال', 'source' => 'R-K01',
             'issue' => '۵۸۴، ۵۸۵', 'url' => 'https://www.sistani.org/persian/book/26576/6151/',

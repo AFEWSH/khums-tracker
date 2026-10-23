@@ -5,6 +5,7 @@ namespace App\Actions\Finance;
 use App\Support\Dates\EffectiveTime;
 use App\Support\Numbers\MoneyRial;
 use Brick\Math\BigDecimal;
+use Brick\Math\BigRational;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
@@ -43,8 +44,8 @@ final class KhumsSettlement
             $assessment = DB::table('khums_assessments')
                 ->join('khums_period_closures', 'khums_period_closures.id', '=', 'khums_assessments.closure_id')
                 ->where('khums_assessments.id', $assessmentId)
-                ->first(['khums_assessments.*', 'khums_period_closures.active']);
-            if ($assessment === null || ! $assessment->active) {
+                ->first(['khums_assessments.*', 'khums_period_closures.active', 'khums_period_closures.dependency_stale']);
+            if ($assessment === null || ! $assessment->active || $assessment->dependency_stale) {
                 throw new FinanceInputException('The assessment is not active.');
             }
             $closureSnapshot = app(KhumsPeriodClosure::class)->read((int) $assessment->closure_id);
@@ -55,7 +56,9 @@ final class KhumsSettlement
             if (in_array($assessment->status, ['reconciliation_required', 'reconciliation_review', 'settled_excess_review'], true)) {
                 throw new FinanceInputException('Amended assessment needs reconciliation before another payment.');
             }
-            $remaining = BigDecimal::of($assessment->due_exact_rial)->minus((string) $assessment->settled_rial);
+            $terms = app(KhumsSettlementTerms::class)->forAssessment($assessmentId);
+            $payable = $terms['payable_due_exact_rial'];
+            $remaining = BigDecimal::of($payable)->minus((string) $assessment->settled_rial);
             if (BigDecimal::of($amount->rial())->isGreaterThan($remaining)) {
                 throw new FinanceInputException('Payment exceeds the remaining assessment.');
             }
@@ -64,9 +67,13 @@ final class KhumsSettlement
                 || ! in_array($account->subtype, ['bank', 'cash', 'broker_cash', 'wallet_cash'], true)) {
                 throw new FinanceInputException('Payment requires a cash or bank source account.');
             }
+            $originProof = null;
             if ($method === 'from_other_protected'
                 && BigDecimal::of((string) $account->protected_min_rial)->isLessThan($amount->rial())) {
-                throw new FinanceInputException('The source has no confirmed protected amount for this payment.');
+                $originProof = app(KhumsOriginPlan::class)->paymentSource($date, $sourceAccountId);
+                if ($originProof === null || BigRational::of($originProof['protected_basis_exact_rial'])->isLessThan($amount->rial())) {
+                    throw new FinanceInputException('The source has no confirmed protected amount for this payment.');
+                }
             }
             if ($method === 'from_same_asset' && ! DB::table('khums_basis_carryovers')
                 ->where('closure_id', $assessment->closure_id)->where('account_id', $sourceAccountId)->exists()) {
@@ -83,14 +90,29 @@ final class KhumsSettlement
                 'amount_rial' => $amount->rial(), 'method' => $method, 'evidence' => $evidence,
                 'idempotency_key' => $key, 'confirmed_by' => auth()->id(), 'confirmed_at' => now(),
             ]);
+            if ($originProof !== null) {
+                DB::table('user_decisions')->insert([
+                    'kind' => 'khums_payment_origin', 'target_type' => 'settlement', 'target_id' => $id,
+                    'payload' => json_encode(['payment_operation_id' => $operationId, 'origin_plan' => $originProof], JSON_THROW_ON_ERROR),
+                    'actor_id' => auth()->id(), 'confirmed_at' => now(), 'created_at' => now(), 'updated_at' => now(),
+                ]);
+            }
+            if ($terms['decision_id'] !== null) {
+                DB::table('user_decisions')->insert([
+                    'kind' => 'khums_payment_terms', 'target_type' => 'settlement', 'target_id' => $id,
+                    'payload' => json_encode(['terms_decision_id' => $terms['decision_id'], 'payment_operation_id' => $operationId,
+                        'payable_due_exact_rial' => $payable], JSON_THROW_ON_ERROR),
+                    'actor_id' => auth()->id(), 'confirmed_at' => now(), 'created_at' => now(), 'updated_at' => now(),
+                ]);
+            }
             $settled = BigDecimal::of((string) $assessment->settled_rial)->plus($amount->rial());
             DB::table('khums_assessments')->where('id', $assessmentId)->update([
                 'settled_rial' => (string) $settled,
-                'status' => $settled->isEqualTo($assessment->due_exact_rial) ? 'settled' : 'partially_paid',
+                'status' => $settled->isEqualTo($payable) ? 'settled' : 'partially_paid',
             ]);
             // The method is recorded, but a payment does not by itself establish
             // which remaining asset acquired a protected religious basis.
-            if ($settled->isEqualTo($assessment->due_exact_rial)) {
+            if ($settled->isEqualTo($payable)) {
                 DB::table('khums_basis_carryovers')->where('closure_id', $assessment->closure_id)
                     ->where('status', 'assessed_unsettled')->update(['status' => 'settled_basis_review']);
             }

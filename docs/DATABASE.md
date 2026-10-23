@@ -1,5 +1,21 @@
 # مدل داده پیشنهادی
 
+## مستند مستقل مبلغ پرداختیِ کسری ریال — 2026-10-23
+
+migration جدید ندارد؛ schema ۸ حفظ شد. user_decisions.kind=khums_settlement_terms شامل assessment_id، closure_snapshot_hash، computed_due_exact_rial، payable_rial، case_reference، rule_snapshot، policy_version و proposal (hash مشاهده، manifest، facts، مرجع، replaces_id و دلیل) است. اصلاح رکورد تازه می‌سازد. khums_payment_terms هر پرداخت واقعی را به پروندهٔ موردی استفاده‌شده پیوند می‌دهد. khums_basis_resolved اکنون settlement_terms_decision_id را ثبت می‌کند. due_exact_rial جدول assessment و snapshot محاسبه ثابت می‌مانند؛ settled_rial مبلغ واقعیِ تخصیص‌یافته است. کنترل سقف پرداخت و برابری تسویه باید با payable_due_exact_rial انجام شود، نه با بازنویسی مبلغ محاسبه. در نبود پرونده، این دو مقدار برابرند.
+
+## ردیابی چندمرحله‌ای منشأ در فاز ۸ — 2026-10-23
+
+migration تازه‌ای لازم نشد؛ schema محلی ۸ است. user_decisions.kind=khums_origin_plan شامل date/source_hash/plan/facts/rule_manifest_hash/policy_version و در اصلاحیه replaces_decision_id/reason است؛ رکورد قبلی حذف یا بازنویسی نمی‌شود. khums_origin_plan_impact شناسهٔ سال‌های نیازمند بازبینی را نگه می‌دارد. khums_payment_origin ارجاع مدرک منشأ پرداخت را، در صورت مصرف شاهد دقیق‌تر از projection محافظه‌کارانه، ذخیره می‌کند. payload هر origin plan با hash حسابرسی متناظر تطبیق داده می‌شود. lot_bases در تأیید پایه می‌تواند چند lot همگن با سهم بازارِ rational داشته باشد. جمع پایهٔ نقدیِ تازه در نقطهٔ basis_after_operation_id (آخرین عملیات به ترتیب زمان/sequence، با حفظ last_operation_id برای کنترل نسخه)، و بازپایه‌گذاری lot در مرز سال اعمال می‌شود؛ فقط closure فعال/بدون stale، تعهد تسویه‌شده و carryover حل‌شده معتبرند.
+
+## تخصیص مستند وجه فروش — 2026-10-23
+
+تصمیم جدید khums_proceeds_allocation در user_decisions موجود ذخیره می‌شود: تاریخ، حساب، raw_hash، protected_basis_rial، rule_id، hash manifest و facts. ثبت آن audit مستقل دارد، دفترکل یا بهای اقتصادی را تغییر نمی‌دهد و migration جدید لازم ندارد. تخصیص متفاوت روی همان ورودی تأییدشده رد می‌شود؛ تاریخچه حذف نمی‌شود.
+
+## تطبیق داده‌های ادامهٔ فاز ۸ — 2026-10-23
+
+این ادامه migration جدید ندارد و schema ۸ حفظ شده است. payload تصمیم قلم شامل dependency_hash و asset_basis_hash است. تصمیم khums_basis_resolved می‌تواند lot_bases و closure_snapshot_hash داشته باشد؛ بهای اقتصادی lots بازنویسی نمی‌شود. تصمیم khums_payment_reversed سابقهٔ برگشت را نگه می‌دارد؛ تخصیص‌های تطبیق و پرداخت‌های قبلی حذف نمی‌شوند. dependency_stale مانع تأیید پایهٔ جدید است.
+
 ## schema اجرایی فاز ۸ — 2026-10-19
 
 schema ۷ جدول‌های `khums_period_closures` (نسخه، snapshot و hash، وابستگی و وضعیت stale)، `khums_assessments` (تعهد دقیق مستقل از پرداخت)، `khums_settlements` (پیوند یکتای سند هزینه و تخصیص)، و `khums_basis_carryovers` (وضعیت پایهٔ سال بعد) را افزود. schema ۸ جدول `khums_schedule_versions` را برای تغییر آینده‌نگر تاریخ/ساعت سررسید افزود. تصمیم واجدبودن قلم و حل پایه با payload نسخه‌دار در `user_decisions`، همراه audit، نگهداری می‌شود؛ محاسبهٔ قواعد در DB نیست. `settled_basis_review` مخمّس قطعی نیست و اصلاحیهٔ دارای پرداخت قبلی `reconciliation_required` می‌ماند. پشتیبان‌های schema ۶ و ۷ پیش از migrationها بازیابی آزمایشی شدند؛ نسخه‌های ۷ و ۸ در `SqliteBackup` قابل verify/restore هستند. جدول‌های زکات ساخته نشده‌اند.

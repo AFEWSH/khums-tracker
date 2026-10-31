@@ -1,0 +1,6273 @@
+{
+ "book": "توضیح المسائل جامع جلد ۲، چاپ ۱۴۰۳",
+ "observed_at": "2026-10-31",
+ "pages": [
+  {
+   "page_id": 5997,
+   "title": "خمس / فضیلت خمس و اهمیّت آن",
+   "url": "https://www.sistani.org/persian/book/26576/5997/",
+   "file": "khums/5997.md",
+   "sha256": "1141be69cb297ff408d5794284fc6f8da9166200bcb13d5b53d041cd39c98a33",
+   "issues": []
+  },
+  {
+   "page_id": 5998,
+   "title": "موارد خمس به‌طور اجمالی",
+   "url": "https://www.sistani.org/persian/book/26576/5998/",
+   "file": "khums/5998.md",
+   "sha256": "9c5ee4c8d9b9c96d67e2f5149864077a65f7ea9442203c97c38a75d940e538f7",
+   "issues": [
+    559
+   ]
+  },
+  {
+   "page_id": 5999,
+   "title": "خمس اموال نابالغ و مجنون و سفیه",
+   "url": "https://www.sistani.org/persian/book/26576/5999/",
+   "file": "khums/5999.md",
+   "sha256": "1bf7e09b33e3f4f3fc9577d323759af7c94cc190fd85f3d83017bdfd31566f4c",
+   "issues": [
+    560,
+    561,
+    562
+   ]
+  },
+  {
+   "page_id": 6000,
+   "title": "موارد خمس به‌طور مفصّل / 1. درآمد کسبی و غیر کسبی",
+   "url": "https://www.sistani.org/persian/book/26576/6000/",
+   "file": "khums/6000.md",
+   "sha256": "c55313c067a236b70afb6adaf12cd6053f3c2bc6cdfdf649767a684ea9f3c9d5",
+   "issues": []
+  },
+  {
+   "page_id": 6001,
+   "title": "سال خمسی و احکام مربوط به آن / سال خمسی افراد شاغل",
+   "url": "https://www.sistani.org/persian/book/26576/6001/",
+   "file": "khums/6001.md",
+   "sha256": "82b7c5d412180b52e6ac5fa24c42f253d74738ca4539c31d6e986b0bb2565e3b",
+   "issues": [
+    563
+   ]
+  },
+  {
+   "page_id": 6002,
+   "title": "ملاک شاغل بودن فرد",
+   "url": "https://www.sistani.org/persian/book/26576/6002/",
+   "file": "khums/6002.md",
+   "sha256": "35dcdd123d74fc3fdaea8213236d1a2f33ee9cbd250290e5a81372242613129c",
+   "issues": [
+    564
+   ]
+  },
+  {
+   "page_id": 6003,
+   "title": "فرد شاغلی که چند نوع کسب دارد",
+   "url": "https://www.sistani.org/persian/book/26576/6003/",
+   "file": "khums/6003.md",
+   "sha256": "94b6a8552693679d456b84148350989471f41831750fbec3dccf96768f228297",
+   "issues": [
+    565,
+    566
+   ]
+  },
+  {
+   "page_id": 6004,
+   "title": "افرادی که درآمد کسبی آنان در مواقع خاصّی از سال است",
+   "url": "https://www.sistani.org/persian/book/26576/6004/",
+   "file": "khums/6004.md",
+   "sha256": "c5c6f74267ceb50263effb323f159f772fa15c715d63c23b9a93c29b6d34c119",
+   "issues": [
+    567
+   ]
+  },
+  {
+   "page_id": 6005,
+   "title": "افرادی که اموالشان را به مضاربه یا اجاره و مانند آن داده‌اند",
+   "url": "https://www.sistani.org/persian/book/26576/6005/",
+   "file": "khums/6005.md",
+   "sha256": "0d2852b49cabffb84c5d0b210a34902d30d36dd422e82440c55a05e7513a68ca",
+   "issues": [
+    568
+   ]
+  },
+  {
+   "page_id": 6006,
+   "title": "درآمدهای اتّفاقی افراد شاغل",
+   "url": "https://www.sistani.org/persian/book/26576/6006/",
+   "file": "khums/6006.md",
+   "sha256": "19aed024f25d10140a106829b1668d46c8cc93b16d1516add9c293c5e6d229ed",
+   "issues": [
+    569,
+    570
+   ]
+  },
+  {
+   "page_id": 6007,
+   "title": "پایان سال خمسی (ساعت خمسی)",
+   "url": "https://www.sistani.org/persian/book/26576/6007/",
+   "file": "khums/6007.md",
+   "sha256": "dcbf217ec240c2a4f8f97a4954952a363e8e708bd5090577120c1b4fed4fe9f5",
+   "issues": [
+    571,
+    572
+   ]
+  },
+  {
+   "page_id": 6008,
+   "title": "سال خمسی غیر شاغلین",
+   "url": "https://www.sistani.org/persian/book/26576/6008/",
+   "file": "khums/6008.md",
+   "sha256": "948535beed300755b761e3b257201d7e8989a2b3d276b46663525f0b3e4d473c",
+   "issues": [
+    573,
+    574,
+    575
+   ]
+  },
+  {
+   "page_id": 6009,
+   "title": "فرد شاغلی که در بین سال باز نشسته شده یا شغل خویش را رها کرده",
+   "url": "https://www.sistani.org/persian/book/26576/6009/",
+   "file": "khums/6009.md",
+   "sha256": "6b98a77b656476d6dcd90688eba5bec84e4a16eed4593114c69c159a3877d2c9",
+   "issues": [
+    576
+   ]
+  },
+  {
+   "page_id": 6010,
+   "title": "قمری، شمسی یا میلادی قرار دادن سال خمسی",
+   "url": "https://www.sistani.org/persian/book/26576/6010/",
+   "file": "khums/6010.md",
+   "sha256": "8856ecbf0ca8c4a4b4f72560ed3bf2d56a6ad8467cafc8a0bfe9e32469ac794f",
+   "issues": [
+    577
+   ]
+  },
+  {
+   "page_id": 6011,
+   "title": "تغییر سال خمسی",
+   "url": "https://www.sistani.org/persian/book/26576/6011/",
+   "file": "khums/6011.md",
+   "sha256": "9d86d7165dff81f898dd4cee9a4d2fbc616be8a9a5473f1fbd15167648a99096",
+   "issues": [
+    578,
+    579
+   ]
+  },
+  {
+   "page_id": 6012,
+   "title": "شک در فرا رسیدن سال خمسی",
+   "url": "https://www.sistani.org/persian/book/26576/6012/",
+   "file": "khums/6012.md",
+   "sha256": "bfc7ce549b8672b71db20cb46ceaaa460351957db0ff45418db40f36faf44988",
+   "issues": [
+    580
+   ]
+  },
+  {
+   "page_id": 6148,
+   "title": "فرا رسیدن سال خمسی با فوت فرد",
+   "url": "https://www.sistani.org/persian/book/26576/6148/",
+   "file": "khums/6148.md",
+   "sha256": "a7a5b1c3893d3759e97147bf2221c014df80c251c881c830c1bf58ef3c4b2f62",
+   "issues": [
+    581
+   ]
+  },
+  {
+   "page_id": 6149,
+   "title": "پرداخت خمس هنگام حصول درآمد، ‌قبل از فرا رسیدن سال خمسی",
+   "url": "https://www.sistani.org/persian/book/26576/6149/",
+   "file": "khums/6149.md",
+   "sha256": "ce7cdee8e44d8d017efb02335623b91b519fa73f5bb8cd3369582739800de764",
+   "issues": [
+    582
+   ]
+  },
+  {
+   "page_id": 6150,
+   "title": "اموالی که هم متعلّق خمس می‌شوند و هم زکات",
+   "url": "https://www.sistani.org/persian/book/26576/6150/",
+   "file": "khums/6150.md",
+   "sha256": "930a7606ccd7fde75d56e29adc1391b2dd8764a134c69f5af7bb6739b815ff12",
+   "issues": [
+    583
+   ]
+  },
+  {
+   "page_id": 6151,
+   "title": "درآمدهایی که خمس آنها واجب است",
+   "url": "https://www.sistani.org/persian/book/26576/6151/",
+   "file": "khums/6151.md",
+   "sha256": "29a73decc3b0969c85c19a11661b8444e9ee2ddb910071a5c441570dc4f10c5a",
+   "issues": [
+    584,
+    585
+   ]
+  },
+  {
+   "page_id": 6152,
+   "title": "برخی از موارد استثنا یا عدم استثنا از پرداخت خمس و احکام آن / مهریّه، عوض خلع؛ دیه",
+   "url": "https://www.sistani.org/persian/book/26576/6152/",
+   "file": "khums/6152.md",
+   "sha256": "d9daec1cc8930f1b35651a35ea3ee16445865b86118d71b53baf0c0fbf98041b",
+   "issues": [
+    586
+   ]
+  },
+  {
+   "page_id": 6153,
+   "title": "درآمد حاصل از فروش خون یا اعضای بدن",
+   "url": "https://www.sistani.org/persian/book/26576/6153/",
+   "file": "khums/6153.md",
+   "sha256": "3990579f8e048c68e1463cdce5f0e3e5659381e0f03bdf013a9af722b4e45bc3",
+   "issues": [
+    587
+   ]
+  },
+  {
+   "page_id": 6154,
+   "title": "ارث",
+   "url": "https://www.sistani.org/persian/book/26576/6154/",
+   "file": "khums/6154.md",
+   "sha256": "13c3e993b1084216e4403c71d45db5ad9cae7d3e18f21715150746b45ff5527a",
+   "issues": [
+    588,
+    589,
+    590,
+    591
+   ]
+  },
+  {
+   "page_id": 6155,
+   "title": "وقف و نمائات آن",
+   "url": "https://www.sistani.org/persian/book/26576/6155/",
+   "file": "khums/6155.md",
+   "sha256": "d7a0c0705595c833519f752ad2dfee46122061d0b133fd2ff9ffd223af6b2422",
+   "issues": [
+    592,
+    593
+   ]
+  },
+  {
+   "page_id": 6156,
+   "title": "مالی که فقیر بابت خمس یا زکات دریافت کرده",
+   "url": "https://www.sistani.org/persian/book/26576/6156/",
+   "file": "khums/6156.md",
+   "sha256": "3a0b63829e5efa3adaf237bc5197cf3fff26c1714cc84be218ce45939980c841",
+   "issues": [
+    594
+   ]
+  },
+  {
+   "page_id": 6157,
+   "title": "مالی که فقیر بابت کفّارات، ردّ مظالم، صدقات مستحبی دریافت کرده",
+   "url": "https://www.sistani.org/persian/book/26576/6157/",
+   "file": "khums/6157.md",
+   "sha256": "4925965370602af97ccef9b0299849f1c3ba5e2c084033083fdee8222498dddd",
+   "issues": [
+    595
+   ]
+  },
+  {
+   "page_id": 6158,
+   "title": "مؤونه",
+   "url": "https://www.sistani.org/persian/book/26576/6158/",
+   "file": "khums/6158.md",
+   "sha256": "aa438b508abca429e38aaa4601dcdf66084fe727faf48e0e29ecff26fa1d7196",
+   "issues": [
+    596
+   ]
+  },
+  {
+   "page_id": 6159,
+   "title": "مؤونه تحصیل درآمد (مؤونه کسب و کار)",
+   "url": "https://www.sistani.org/persian/book/26576/6159/",
+   "file": "khums/6159.md",
+   "sha256": "4c826663a48d0cefaf631da9be4b20d2011c967da09dac519b8ee022653018be",
+   "issues": [
+    597
+   ]
+  },
+  {
+   "page_id": 6160,
+   "title": "مؤونه سال (مؤونه زندگی شخصی و خانوادگی)",
+   "url": "https://www.sistani.org/persian/book/26576/6160/",
+   "file": "khums/6160.md",
+   "sha256": "9d76d14b096b115cd82ed84c9f58e819996bc4ab954e2405adfe5c3443d1dca9",
+   "issues": [
+    598
+   ]
+  },
+  {
+   "page_id": 6161,
+   "title": "مصرف مال در مسیر حرام یا بیشتر از شأن",
+   "url": "https://www.sistani.org/persian/book/26576/6161/",
+   "file": "khums/6161.md",
+   "sha256": "2f37311e20e4ecdab1a82822c0d22b3f227d75d1054513cee9f269d9e9ece86f",
+   "issues": [
+    599
+   ]
+  },
+  {
+   "page_id": 6162,
+   "title": "ملاک در تعیین شأن افراد و حکم موارد مشکوک",
+   "url": "https://www.sistani.org/persian/book/26576/6162/",
+   "file": "khums/6162.md",
+   "sha256": "963f0b2e158b55725d339d280a17c5be3707b47d51c84e617e3549c4c79716a3",
+   "issues": [
+    600,
+    601
+   ]
+  },
+  {
+   "page_id": 6163,
+   "title": "شک در استفاده از مال و تحقّق مؤونه",
+   "url": "https://www.sistani.org/persian/book/26576/6163/",
+   "file": "khums/6163.md",
+   "sha256": "fcb952d89b954e167de558cb4d6339dfcdba1a93b36e67cd24c4c4aff6824135",
+   "issues": [
+    602
+   ]
+  },
+  {
+   "page_id": 6164,
+   "title": "خمس مقدار باقیمانده از کالاهای مصرفی",
+   "url": "https://www.sistani.org/persian/book/26576/6164/",
+   "file": "khums/6164.md",
+   "sha256": "db09bfa1e79db68b884005071e4baa3e292901f66a742a4e8eb09c6f65115e20",
+   "issues": [
+    603
+   ]
+  },
+  {
+   "page_id": 6165,
+   "title": "محاسبه شدن خمس اموالی که با درآمد بین سال تهیّه شده و مؤونه نشده، به «قیمت فعلی»",
+   "url": "https://www.sistani.org/persian/book/26576/6165/",
+   "file": "khums/6165.md",
+   "sha256": "146d1bfbe3aa65ceba4fc3fde18b87d022b2c3fc97c0b64d25d5ff9055aa7a74",
+   "issues": [
+    604
+   ]
+  },
+  {
+   "page_id": 6166,
+   "title": "خمس اموالی که در معرض استفاده بوده، ولی استفاده نشده",
+   "url": "https://www.sistani.org/persian/book/26576/6166/",
+   "file": "khums/6166.md",
+   "sha256": "fc44d2600d30142f5e409fcabe927335fa0dd33b6b1d973ed86309a1f09f4d91",
+   "issues": [
+    605
+   ]
+  },
+  {
+   "page_id": 6167,
+   "title": "خمس مالی که به واسطۀ قناعت و مانند آن باقی ‌مانده",
+   "url": "https://www.sistani.org/persian/book/26576/6167/",
+   "file": "khums/6167.md",
+   "sha256": "531b50ebb2f3ac59109b65d34fc2b30d52dca4972426e736a50eaba5fecd0d8a",
+   "issues": [
+    606
+   ]
+  },
+  {
+   "page_id": 6168,
+   "title": "استفاده از مال یا بخشش آن به جهت فرار از خمس",
+   "url": "https://www.sistani.org/persian/book/26576/6168/",
+   "file": "khums/6168.md",
+   "sha256": "68a84b57c0777a3dda2195d9185173e72e9da0e0d97e5d7e12703b5a89789f95",
+   "issues": [
+    607
+   ]
+  },
+  {
+   "page_id": 6169,
+   "title": "خمس اشیاء و لوازم دوره‌ای",
+   "url": "https://www.sistani.org/persian/book/26576/6169/",
+   "file": "khums/6169.md",
+   "sha256": "b4ac26ed2e1fc7ed9fe21625c96e60d8c191b093b421725a4d1be41615839c8a",
+   "issues": [
+    608
+   ]
+  },
+  {
+   "page_id": 6170,
+   "title": "خمس اموالی که بدون تملیک برای استفاده در اختیار اطرافیان قرار گرفته",
+   "url": "https://www.sistani.org/persian/book/26576/6170/",
+   "file": "khums/6170.md",
+   "sha256": "999b48ab40075f3f6c29d7c30ed93c242a13152b8c1f53009fe566362630d6f2",
+   "issues": [
+    609
+   ]
+  },
+  {
+   "page_id": 6171,
+   "title": "خمس اشیائی که هم مورد استفادۀ شخصی و هم کسبی است",
+   "url": "https://www.sistani.org/persian/book/26576/6171/",
+   "file": "khums/6171.md",
+   "sha256": "eb84c8c4404507b39dc7bcea4d81f243ddff136cece50eb8721e319807986f24",
+   "issues": [
+    610
+   ]
+  },
+  {
+   "page_id": 6172,
+   "title": "خمس کفن",
+   "url": "https://www.sistani.org/persian/book/26576/6172/",
+   "file": "khums/6172.md",
+   "sha256": "3b5b4c48ca98f7a125ab48f9a2d5fe7a3d6752bdfcdaeaf260d190616081cf26",
+   "issues": [
+    611
+   ]
+  },
+  {
+   "page_id": 6173,
+   "title": "خمس جهیزیه و پس‌انداز ازدواج",
+   "url": "https://www.sistani.org/persian/book/26576/6173/",
+   "file": "khums/6173.md",
+   "sha256": "afec9ecb1d07a7ee80da039473dfae6ad0efdc9d09c1fc7d15156c3fede8af27",
+   "issues": [
+    612,
+    613
+   ]
+  },
+  {
+   "page_id": 6174,
+   "title": "خمس ساخت تدریجی مسکن و پس‌انداز مسکن",
+   "url": "https://www.sistani.org/persian/book/26576/6174/",
+   "file": "khums/6174.md",
+   "sha256": "6f3c35a361695ad94166d2e0ca7ce2b2753be1e22750e30e8a5329c93461c31e",
+   "issues": [
+    614
+   ]
+  },
+  {
+   "page_id": 6175,
+   "title": "خمس منزلی که به جهت تأمین قیمت خرید آن، اجاره یا رهن داده شده",
+   "url": "https://www.sistani.org/persian/book/26576/6175/",
+   "file": "khums/6175.md",
+   "sha256": "f10d7bfd58953a5a8b97035bfd4fa34de39645ab9f3809598a0f7b04bc0db610",
+   "issues": [
+    615
+   ]
+  },
+  {
+   "page_id": 6176,
+   "title": "خمس منزلی که قبلاً مؤونه بوده و اجاره داده شده و تهیه منزل دوم جهت سکونت",
+   "url": "https://www.sistani.org/persian/book/26576/6176/",
+   "file": "khums/6176.md",
+   "sha256": "a0449a9d3737abb2635aa5a1048d055471e1296a744d9c81fb758b3944f03df3",
+   "issues": [
+    616
+   ]
+  },
+  {
+   "page_id": 6177,
+   "title": "خمس منزلی که به صورت مسلوب المنافع صلح شده",
+   "url": "https://www.sistani.org/persian/book/26576/6177/",
+   "file": "khums/6177.md",
+   "sha256": "4ee12f243e6bc54e4c8741e0249ceb5f18f042ffbce6ee84d37a3fe3120f1be7",
+   "issues": [
+    617
+   ]
+  },
+  {
+   "page_id": 6178,
+   "title": "خمس مالی که با فسخ صلح دوباره به ملکیّت انسان در آمده",
+   "url": "https://www.sistani.org/persian/book/26576/6178/",
+   "file": "khums/6178.md",
+   "sha256": "e153cd1be1257de162ff457545c1d0675bade5abec5e8624416c2539008bd8a9",
+   "issues": [
+    618
+   ]
+  },
+  {
+   "page_id": 6179,
+   "title": "خمس مال در صورت اقالۀ معامله",
+   "url": "https://www.sistani.org/persian/book/26576/6179/",
+   "file": "khums/6179.md",
+   "sha256": "3a265a98766b8c43b1e5d9fb454a6fe1c72a893445fa535873e04f95fcc44d6e",
+   "issues": [
+    619
+   ]
+  },
+  {
+   "page_id": 6180,
+   "title": "خمس یارانۀ دولت",
+   "url": "https://www.sistani.org/persian/book/26576/6180/",
+   "file": "khums/6180.md",
+   "sha256": "cc916f9abaf745a979019b8c8925f4e0614917a1902f719a4c1c5a760a1de270",
+   "issues": [
+    620,
+    621
+   ]
+  },
+  {
+   "page_id": 6181,
+   "title": "خمس پولی که با انتقال اعتباری هدیه داده شده",
+   "url": "https://www.sistani.org/persian/book/26576/6181/",
+   "file": "khums/6181.md",
+   "sha256": "14d308676349ac58a703960421dfd02a894dbc25d18295ea49025ac839878556",
+   "issues": [
+    622
+   ]
+  },
+  {
+   "page_id": 6182,
+   "title": "خمس کارت هدیه",
+   "url": "https://www.sistani.org/persian/book/26576/6182/",
+   "file": "khums/6182.md",
+   "sha256": "716533ffdcdba19badecc0b968ee0c12f2a5cfaa90bb7892ef82189949966352",
+   "issues": [
+    623
+   ]
+  },
+  {
+   "page_id": 6183,
+   "title": "خمس بیمه",
+   "url": "https://www.sistani.org/persian/book/26576/6183/",
+   "file": "khums/6183.md",
+   "sha256": "681e30ea57a5f2c34dbcfdf4670a88a7f2dc7d93303af11a32f8f4d43836d1c7",
+   "issues": [
+    624,
+    625
+   ]
+  },
+  {
+   "page_id": 6184,
+   "title": "خمس پاداش یا حقوق و مستمرّی بازنشستگی",
+   "url": "https://www.sistani.org/persian/book/26576/6184/",
+   "file": "khums/6184.md",
+   "sha256": "a9b5b8ccb184c6300daa149f4177b467964eaa1b22687444b735aae3987e775d",
+   "issues": [
+    626
+   ]
+  },
+  {
+   "page_id": 6185,
+   "title": "خمس درآمدی که در حج و زیارت هزینه می‌شود",
+   "url": "https://www.sistani.org/persian/book/26576/6185/",
+   "file": "khums/6185.md",
+   "sha256": "3394f3695195b77b18f255c55726a3c5b53dba06f7ae844c4e2d70c75dd10ca4",
+   "issues": [
+    627
+   ]
+  },
+  {
+   "page_id": 6186,
+   "title": "خمس پولی که بابت ثبت نام حج و عمره داده شده",
+   "url": "https://www.sistani.org/persian/book/26576/6186/",
+   "file": "khums/6186.md",
+   "sha256": "fca4ad4f8d9b93a6a4f2957dc199e56f76d4e4de117fd52bf0e6baa6199584eb",
+   "issues": [
+    628,
+    629,
+    630
+   ]
+  },
+  {
+   "page_id": 6187,
+   "title": "خمس گیاهان و حیواناتی که مورد استفاده شخصی و خانوادگی است",
+   "url": "https://www.sistani.org/persian/book/26576/6187/",
+   "file": "khums/6187.md",
+   "sha256": "252b20ccb647caaa2b1bada4399d3e8e7c278dcb5d5595b1299a6806e9d43ec3",
+   "issues": [
+    631
+   ]
+  },
+  {
+   "page_id": 6188,
+   "title": "الف. خود آنها؛",
+   "url": "https://www.sistani.org/persian/book/26576/6188/",
+   "file": "khums/6188.md",
+   "sha256": "143499dae57955ca419c3ff5ad40be46fe16d43670aef0e9fa723d16c4271e32",
+   "issues": []
+  },
+  {
+   "page_id": 6189,
+   "title": "ب. محصول و رشد آنها؛",
+   "url": "https://www.sistani.org/persian/book/26576/6189/",
+   "file": "khums/6189.md",
+   "sha256": "a2288ebb5432d7046556e4ca0f92d92a0970d8ebf7edc3bf2606a874908e9a2b",
+   "issues": []
+  },
+  {
+   "page_id": 6190,
+   "title": "خمس فروش مؤونه",
+   "url": "https://www.sistani.org/persian/book/26576/6190/",
+   "file": "khums/6190.md",
+   "sha256": "c4d67299dacabf9f1e1e6a73c27916514c4bebaad9d71f87167664cc4619ac7d",
+   "issues": [
+    632,
+    633
+   ]
+  },
+  {
+   "page_id": 6191,
+   "title": "خمس مال در صورت برطرف شدن احتیاج به آن بدون فروش مال",
+   "url": "https://www.sistani.org/persian/book/26576/6191/",
+   "file": "khums/6191.md",
+   "sha256": "c9198656324755a43017112798f6ad26f809ab8841d48281982c9d6eea0d5e25",
+   "issues": [
+    634
+   ]
+  },
+  {
+   "page_id": 6192,
+   "title": "خمس کسی که دیگری مخارج زندگی او را می‌دهد",
+   "url": "https://www.sistani.org/persian/book/26576/6192/",
+   "file": "khums/6192.md",
+   "sha256": "ec6a6f29fa7ff9e341fb0ee578582ef2691a3cfc4c5bc92d13fb603d608f7464",
+   "issues": [
+    635
+   ]
+  },
+  {
+   "page_id": 6349,
+   "title": "صرف درآمد در مؤونه با وجود داشتن مال مخمّس یا در حکم مخمّس",
+   "url": "https://www.sistani.org/persian/book/26576/6349/",
+   "file": "khums/6349.md",
+   "sha256": "4cd48a9daa9235b8b034937c6715732b57d2fcd49d8b94ccbce0d0466394b52a",
+   "issues": [
+    636
+   ]
+  },
+  {
+   "page_id": 6350,
+   "title": "خمس تبدیل منزل و مانند آن به مغازه و تهیۀ منزل جدید یا غیر آن با درآمد بین سال",
+   "url": "https://www.sistani.org/persian/book/26576/6350/",
+   "file": "khums/6350.md",
+   "sha256": "4b317e8e2fc5a52b9433133054dfb4a4c2cbde499aedc2d0caca0dad726a932d",
+   "issues": [
+    637
+   ]
+  },
+  {
+   "page_id": 6351,
+   "title": "مخلوط شدن مال مخمّس با درآمد و جدا کردن آنها با نیّت",
+   "url": "https://www.sistani.org/persian/book/26576/6351/",
+   "file": "khums/6351.md",
+   "sha256": "f6f459020c02f079893582d4fbacf70dd2c2442767374251754f4b6bf622e089",
+   "issues": [
+    638,
+    639
+   ]
+  },
+  {
+   "page_id": 6352,
+   "title": "خمس سرمایۀ اساسی و سرمایۀ توسعه ای",
+   "url": "https://www.sistani.org/persian/book/26576/6352/",
+   "file": "khums/6352.md",
+   "sha256": "5f4d9fc8b71b31c2328354ad4234ba4d9ffd0e4cdd31c57d7318284abad413a4",
+   "issues": [
+    640
+   ]
+  },
+  {
+   "page_id": 6353,
+   "title": "خمس مغازه، مکان تجاری و ابزار کسب و کار",
+   "url": "https://www.sistani.org/persian/book/26576/6353/",
+   "file": "khums/6353.md",
+   "sha256": "ecd77e7d91b333fe9cc3743ee4b310d1ac237ab85d2b0eb6b0d6d761e822de76",
+   "issues": [
+    641
+   ]
+  },
+  {
+   "page_id": 6354,
+   "title": "خمس سرقفلی مغازه و مکان تجاری",
+   "url": "https://www.sistani.org/persian/book/26576/6354/",
+   "file": "khums/6354.md",
+   "sha256": "7076ce461537daccb3cafee8a7bf2c8dfb77cfdbc226865bc16462d5580ae752",
+   "issues": [
+    642
+   ]
+  },
+  {
+   "page_id": 6355,
+   "title": "خمس مربوط به پرورش دام و طیور و سایر حیوانات",
+   "url": "https://www.sistani.org/persian/book/26576/6355/",
+   "file": "khums/6355.md",
+   "sha256": "0073bec5f05f1ae74095b6776d1d2a9891c7117d2fa245ade02256c80e14ac77",
+   "issues": [
+    643,
+    644
+   ]
+  },
+  {
+   "page_id": 6356,
+   "title": "ترقّی قیمت مال التّجاره",
+   "url": "https://www.sistani.org/persian/book/26576/6356/",
+   "file": "khums/6356.md",
+   "sha256": "65a9e5485278e141cdee7b1bb60854dd4bd9ca50e04564ca66b3f105d643a4b6",
+   "issues": [
+    645
+   ]
+  },
+  {
+   "page_id": 6357,
+   "title": "ترقّی قیمت غیر مال التّجاره",
+   "url": "https://www.sistani.org/persian/book/26576/6357/",
+   "file": "khums/6357.md",
+   "sha256": "aff6fcc5b8312e16f481130f5ace23377c4c6915faef96276ca05b803a923015",
+   "issues": [
+    646
+   ]
+  },
+  {
+   "page_id": 6358,
+   "title": "ترقّی قیمت ناشی از تورّم",
+   "url": "https://www.sistani.org/persian/book/26576/6358/",
+   "file": "khums/6358.md",
+   "sha256": "9a2dccbda3caab19a8f2544d6631fe25c1a0bb8b20890bcdec23fb03b4a3a237",
+   "issues": [
+    647
+   ]
+  },
+  {
+   "page_id": 6359,
+   "title": "ترقّی قیمت مال التجارهای که بابت آن بدهکار است",
+   "url": "https://www.sistani.org/persian/book/26576/6359/",
+   "file": "khums/6359.md",
+   "sha256": "00b0e5eb886b7f09cf24b8a55c90f7f6098b9bfdae26246d4937bae6850fc85d",
+   "issues": [
+    648
+   ]
+  },
+  {
+   "page_id": 6360,
+   "title": "تبدیل پول مخمّس به طلا، ملک و مانند آن به جهت حفظ مالیّت آن",
+   "url": "https://www.sistani.org/persian/book/26576/6360/",
+   "file": "khums/6360.md",
+   "sha256": "ec22389c185d67f7e5627f4dd2901a8991381a876fd3fd41178f31c3dfe8e6a5",
+   "issues": [
+    649
+   ]
+  },
+  {
+   "page_id": 6361,
+   "title": "کاهش قیمت مال التجاره و غیر آن،‌ پس از افزایش قبلی",
+   "url": "https://www.sistani.org/persian/book/26576/6361/",
+   "file": "khums/6361.md",
+   "sha256": "82d66fd4615d6157691324b70cc628d016a86085ba1a8f3d7c9a7581bfdf9e54",
+   "issues": [
+    650,
+    651
+   ]
+  },
+  {
+   "page_id": 6362,
+   "title": "فروش مؤونه‌ای که هدیه بوده یا با پول هدیه تهیّه شده با ترقّی قیمت",
+   "url": "https://www.sistani.org/persian/book/26576/6362/",
+   "file": "khums/6362.md",
+   "sha256": "efd9e9a1432463687bf6c1f2f765f9a36b751b983e6d3f634677e4289b287117",
+   "issues": [
+    652
+   ]
+  },
+  {
+   "page_id": 6363,
+   "title": "نکته‌ای در کیفیّت محاسبۀ خمس ترقّی قیمت مال مخمّس",
+   "url": "https://www.sistani.org/persian/book/26576/6363/",
+   "file": "khums/6363.md",
+   "sha256": "32cd3b98d47cc5fb784e570312a925b25e98764056e1187a445af5876c0af00b",
+   "issues": [
+    653
+   ]
+  },
+  {
+   "page_id": 6364,
+   "title": "ترقّی قیمت در ساخت و ساز آپارتمان",
+   "url": "https://www.sistani.org/persian/book/26576/6364/",
+   "file": "khums/6364.md",
+   "sha256": "11d4b55861f35ef829f16ea22c2e1268866edc65cd95e4e8ed1dd8de6e23b57a",
+   "issues": [
+    654
+   ]
+  },
+  {
+   "page_id": 6365,
+   "title": "مغازه ای که ترقّی قیمت پیدا کرده و با مغازۀ دیگر معاوضه شده (طاق زده شده)",
+   "url": "https://www.sistani.org/persian/book/26576/6365/",
+   "file": "khums/6365.md",
+   "sha256": "fc1ba5ad102b0c9a95713275d6fc0440f13cece3554a8816ea49ed816ab8850c",
+   "issues": [
+    655
+   ]
+  },
+  {
+   "page_id": 6366,
+   "title": "خمس واحد آپارتمانی که با واگذاری منزل مؤونه به پیمانکار احداث شده",
+   "url": "https://www.sistani.org/persian/book/26576/6366/",
+   "file": "khums/6366.md",
+   "sha256": "8f716f3cc1de6cfcf922c36b8e20a3a366e11f3fdbf5fe941d3331c706ca7ae3",
+   "issues": [
+    656
+   ]
+  },
+  {
+   "page_id": 6367,
+   "title": "خمس ترقّی قیمت مغازه به جهت تعمیرات و مانند آن",
+   "url": "https://www.sistani.org/persian/book/26576/6367/",
+   "file": "khums/6367.md",
+   "sha256": "664f279ad981c28196b98955e6b9da61b5b083e1666fe989c8e9c5d040ce8b55",
+   "issues": [
+    657
+   ]
+  },
+  {
+   "page_id": 6368,
+   "title": "ترقّی قیمت ملک به جهت دریافت مجوّز تجاری برای آن",
+   "url": "https://www.sistani.org/persian/book/26576/6368/",
+   "file": "khums/6368.md",
+   "sha256": "026d76760ca808f313702e8fecb2049990e5fdc06c4074c907ac981a9950fc7b",
+   "issues": [
+    658
+   ]
+  },
+  {
+   "page_id": 6369,
+   "title": "خمس منزلی که زمین و مصالح آن با مال مخمّس تهیه شده، ولی هزینۀ ساخت آن با درآمد بین سال بوده",
+   "url": "https://www.sistani.org/persian/book/26576/6369/",
+   "file": "khums/6369.md",
+   "sha256": "68e686384f42231ae69cfc750e144c0ca23ea405c6388dc40d555ada087486f1",
+   "issues": [
+    659
+   ]
+  },
+  {
+   "page_id": 6370,
+   "title": "ترقّی قیمت کفن به جهت نوشتن قرآن و اسمای متبرّکه بر روی آن",
+   "url": "https://www.sistani.org/persian/book/26576/6370/",
+   "file": "khums/6370.md",
+   "sha256": "59b1d7e9c88030962e6cf0382000727f59a150e0b51112156c6bcb6c2ed93e5c",
+   "issues": [
+    660
+   ]
+  },
+  {
+   "page_id": 6371,
+   "title": "نماء و رشد مال مخمّس یا در حکم مخمّس",
+   "url": "https://www.sistani.org/persian/book/26576/6371/",
+   "file": "khums/6371.md",
+   "sha256": "90b56ed33eee965219af976f497dec570766bc110d4b45ef02e18e785692f3f6",
+   "issues": [
+    661,
+    662
+   ]
+  },
+  {
+   "page_id": 6372,
+   "title": "خمس درختانی که به جهت استفادۀ تجاری از چوب آن کاشته می‌شود",
+   "url": "https://www.sistani.org/persian/book/26576/6372/",
+   "file": "khums/6372.md",
+   "sha256": "2599709afd5e3182c0cf2683296c3151ab33a1f749adfc3e97c8db0d48f68458",
+   "issues": [
+    663
+   ]
+  },
+  {
+   "page_id": 6373,
+   "title": "خمس محصولاتی که قسمتی از آن به ثمر رسیده و قسمتی نرسیده است",
+   "url": "https://www.sistani.org/persian/book/26576/6373/",
+   "file": "khums/6373.md",
+   "sha256": "21f895607ffbc149efe1930737db7ce62e0841a3685c888283b684b09681209b",
+   "issues": [
+    664
+   ]
+  },
+  {
+   "page_id": 6374,
+   "title": "خمس احداث باغ و بستان",
+   "url": "https://www.sistani.org/persian/book/26576/6374/",
+   "file": "khums/6374.md",
+   "sha256": "b01a51e9c888db7c6a0f81ac9eb242c30e4f9ac9e0428f4707879cfa2e2f1c3e",
+   "issues": [
+    665,
+    666
+   ]
+  },
+  {
+   "page_id": 6375,
+   "title": "خمس زمین موات",
+   "url": "https://www.sistani.org/persian/book/26576/6375/",
+   "file": "khums/6375.md",
+   "sha256": "ba2af4b21640200f4a8ba323c8fe41c4315a0f44828d3c59014bfa536552632b",
+   "issues": [
+    667
+   ]
+  },
+  {
+   "page_id": 6376,
+   "title": "الف. کسی که شغلش فروش طلا یا ارز است",
+   "url": "https://www.sistani.org/persian/book/26576/6376/",
+   "file": "khums/6376.md",
+   "sha256": "4684350c91d8f93c4c8e884a2b47d83851a9541f30cb1a31e4c5615cff55290e",
+   "issues": [
+    668
+   ]
+  },
+  {
+   "page_id": 6377,
+   "title": "ب. کسی که شغلش غیر از فروش طلا و ارز است",
+   "url": "https://www.sistani.org/persian/book/26576/6377/",
+   "file": "khums/6377.md",
+   "sha256": "23fc9d8bb9060b8e2a1ce0d3d9440476954e217014561f60f37fe5ac0d0b254e",
+   "issues": [
+    669
+   ]
+  },
+  {
+   "page_id": 6378,
+   "title": "کیفیّت قیمت‌گذاری کالا جهت پرداخت خمس",
+   "url": "https://www.sistani.org/persian/book/26576/6378/",
+   "file": "khums/6378.md",
+   "sha256": "0a9605ef22fe12039580f401d47ae6eba56acbb88875a6df46d71e3a5f044e63",
+   "issues": [
+    670
+   ]
+  },
+  {
+   "page_id": 6379,
+   "title": "خمس اجیری که قسمتی از عمل را بعد از سال خمسی انجام می‌دهد",
+   "url": "https://www.sistani.org/persian/book/26576/6379/",
+   "file": "khums/6379.md",
+   "sha256": "b1683c9b729e7940f8a03f7ab037ecd76a77959fe7b5feb446dae159f2cde839",
+   "issues": [
+    671
+   ]
+  },
+  {
+   "page_id": 6380,
+   "title": "محاسبۀ میزان درآمد هر سال در قراردادهای چند ساله (سال خمسی)",
+   "url": "https://www.sistani.org/persian/book/26576/6380/",
+   "file": "khums/6380.md",
+   "sha256": "8e346e334e2718b87eaaed9768df7a43df922468bc433e86e71ef4cd249d073e",
+   "issues": [
+    672,
+    673,
+    674,
+    675
+   ]
+  },
+  {
+   "page_id": 6381,
+   "title": "خمس سرمایه‌گذاری بانکی و سود آن",
+   "url": "https://www.sistani.org/persian/book/26576/6381/",
+   "file": "khums/6381.md",
+   "sha256": "8b8df7568717757e7d508b19ee84228e33881987976fb0186e91fce393c3be60",
+   "issues": [
+    676,
+    677,
+    678
+   ]
+  },
+  {
+   "page_id": 6382,
+   "title": "خمس سهام و سود آن",
+   "url": "https://www.sistani.org/persian/book/26576/6382/",
+   "file": "khums/6382.md",
+   "sha256": "443014e316d23b67af86d48902d72fb656e5db99d6e7f91d428b08ae575ed6f9",
+   "issues": [
+    679,
+    680,
+    681,
+    682,
+    683
+   ]
+  },
+  {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "url": "https://www.sistani.org/persian/book/26576/6383/",
+   "file": "khums/6383.md",
+   "sha256": "f14f4eb1f286e35feb08ff905299f3c682fbf34f7d1a84f9fa0dc8789cb9c62b",
+   "issues": [
+    684,
+    685,
+    686,
+    687,
+    688,
+    689,
+    690
+   ]
+  },
+  {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "url": "https://www.sistani.org/persian/book/26576/6384/",
+   "file": "khums/6384.md",
+   "sha256": "ed53c68b0fe78956ec1166711ae6ccb9ae58e74bb8fa9663c28894161a5a4c37",
+   "issues": [
+    691,
+    692,
+    693,
+    694,
+    695,
+    696,
+    697,
+    698,
+    699,
+    700
+   ]
+  },
+  {
+   "page_id": 6385,
+   "title": "جبران خسارت و مانند آن در یک رشتۀ کسبی از رشتۀ کسبی دیگر",
+   "url": "https://www.sistani.org/persian/book/26576/6385/",
+   "file": "khums/6385.md",
+   "sha256": "d817e1eaa388fd920513e2744ce0cdf6f0a6aa1b02ac1375a90311446f3efdf7",
+   "issues": [
+    701,
+    702
+   ]
+  },
+  {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "url": "https://www.sistani.org/persian/book/26576/6386/",
+   "file": "khums/6386.md",
+   "sha256": "7c2f356897f2cd564d21ce9517fd91f9c8b5932b45bc13c2707902a029ff44cb",
+   "issues": [
+    703,
+    704,
+    705,
+    706,
+    707,
+    708,
+    709,
+    710,
+    711
+   ]
+  },
+  {
+   "page_id": 6387,
+   "title": "سایر احکام بدهکاری‌ها",
+   "url": "https://www.sistani.org/persian/book/26576/6387/",
+   "file": "khums/6387.md",
+   "sha256": "a633ef501a7f407478673cf6079695c36b90754281aaefb1f961ad03ea382559",
+   "issues": [
+    712,
+    713,
+    714
+   ]
+  },
+  {
+   "page_id": 6388,
+   "title": "مطالبات",
+   "url": "https://www.sistani.org/persian/book/26576/6388/",
+   "file": "khums/6388.md",
+   "sha256": "872a7bfbc4313df5542034ea05f6932ccca7793dfffee8ffa47d7a9b1a3e671c",
+   "issues": [
+    715,
+    716
+   ]
+  },
+  {
+   "page_id": 6389,
+   "title": "خمس پول رهن منزل",
+   "url": "https://www.sistani.org/persian/book/26576/6389/",
+   "file": "khums/6389.md",
+   "sha256": "7141b18527d5c709eb2bb0a2cebd4ea607d977f014081b9d32adc33d276ea7c8",
+   "issues": [
+    717
+   ]
+  },
+  {
+   "page_id": 6390,
+   "title": "خمس مربوط به وام‌های جلسات فامیلی و مانند آن",
+   "url": "https://www.sistani.org/persian/book/26576/6390/",
+   "file": "khums/6390.md",
+   "sha256": "798ad7351c1618ba63876a6158b8c2c3825cff41237630a6c5539e5a13f6bea7",
+   "issues": [
+    718
+   ]
+  },
+  {
+   "page_id": 6391,
+   "title": "احکام مربوط به مصالحه یا دستگردان و قاعدۀ رُبع",
+   "url": "https://www.sistani.org/persian/book/26576/6391/",
+   "file": "khums/6391.md",
+   "sha256": "af81ae6b89e66fe39c53d1af728e22746a4fd69fe125cbaf1a2fbf5829636969",
+   "issues": [
+    719,
+    720,
+    721,
+    722,
+    723
+   ]
+  },
+  {
+   "page_id": 6392,
+   "title": "احکام مربوط به مال خمس داده نشده / تصرّف در مال خمس نداده",
+   "url": "https://www.sistani.org/persian/book/26576/6392/",
+   "file": "khums/6392.md",
+   "sha256": "96d842bd44e76a99a9ddb8b9c9ea8dfeec8dfb4a5e1c612b6930a0d09357305b",
+   "issues": [
+    724
+   ]
+  },
+  {
+   "page_id": 6393,
+   "title": "شرایط مربوط به جواز تأخیر در پرداخت خمس با اجازه حاکم شرع",
+   "url": "https://www.sistani.org/persian/book/26576/6393/",
+   "file": "khums/6393.md",
+   "sha256": "b413ac901749964a924341f95e5a50edf6acc787349bdc5c7af1cb1c8c9d7d05",
+   "issues": [
+    725
+   ]
+  },
+  {
+   "page_id": 6394,
+   "title": "خرید کالا با عین پول خمس نداده",
+   "url": "https://www.sistani.org/persian/book/26576/6394/",
+   "file": "khums/6394.md",
+   "sha256": "99e3c1915b9fbe06e79b7b669b552177bdf55b7e6d6ddeb902c46cd214e7961e",
+   "issues": [
+    726
+   ]
+  },
+  {
+   "page_id": 6395,
+   "title": "خرید کالا بالذمّه و پرداخت بدهی آن از مال خمس نداده",
+   "url": "https://www.sistani.org/persian/book/26576/6395/",
+   "file": "khums/6395.md",
+   "sha256": "eca564bf676c102240bb68d0d1a020c0a953553b8bc1e96d76ecca5f9cd0af9e",
+   "issues": [
+    727
+   ]
+  },
+  {
+   "page_id": 6396,
+   "title": "بخشش طلب قبل از گذشت سال و بعد از آن",
+   "url": "https://www.sistani.org/persian/book/26576/6396/",
+   "file": "khums/6396.md",
+   "sha256": "0502396c9860bea214733129064c86c255b6121c3b47b96700c292f62b265236",
+   "issues": [
+    728
+   ]
+  },
+  {
+   "page_id": 6397,
+   "title": "تصرّف یا استفاده از اموال کسانی که خمس نمی‌دهند",
+   "url": "https://www.sistani.org/persian/book/26576/6397/",
+   "file": "khums/6397.md",
+   "sha256": "c9bb48808ab25579887df160c6c407984921eb23dcf741d6aeb03abfef6441f3",
+   "issues": [
+    729
+   ]
+  },
+  {
+   "page_id": 6398,
+   "title": "شراکت با کسی که خمس نمی‌دهد",
+   "url": "https://www.sistani.org/persian/book/26576/6398/",
+   "file": "khums/6398.md",
+   "sha256": "b545dba1f3b4134c11e8324bb38f96ce880e71dc9102f259d2b819eafe0d8e00",
+   "issues": [
+    730
+   ]
+  },
+  {
+   "page_id": 6399,
+   "title": "تصرّف وکیل در مالی که به آن خمس تعلّق گرفته است",
+   "url": "https://www.sistani.org/persian/book/26576/6399/",
+   "file": "khums/6399.md",
+   "sha256": "13289885d9376c47739dd19087cf4e373d271f80c6d610c424d2e84bdedf0953",
+   "issues": [
+    731
+   ]
+  },
+  {
+   "page_id": 6549,
+   "title": "برخی از آثار تأخیر در پرداخت خمس",
+   "url": "https://www.sistani.org/persian/book/26576/6549/",
+   "file": "khums/6549.md",
+   "sha256": "e846e3f8807d4f90e5b1dd0b446c29f54252873050b230a395965c16905596c0",
+   "issues": [
+    732,
+    733,
+    734,
+    735
+   ]
+  },
+  {
+   "page_id": 6550,
+   "title": "خمس اموال مشکوک و افرادی که مدّتی خمس نداده‌اند / مشخّص نمودن سال خمسی افرادی که مدّتی خمس نداده اند",
+   "url": "https://www.sistani.org/persian/book/26576/6550/",
+   "file": "khums/6550.md",
+   "sha256": "0f0e6846cd2af5c2cf841aa899e934309d2f96cda14cf724f64e7f4eed96b5c2",
+   "issues": [
+    736
+   ]
+  },
+  {
+   "page_id": 6551,
+   "title": "تقسیم‌بندی اموال افرادی که مدّتی خمس نداده‌اند جهت محاسبۀ خمس",
+   "url": "https://www.sistani.org/persian/book/26576/6551/",
+   "file": "khums/6551.md",
+   "sha256": "b00c1701b99551308046446f38839b421d991cd434019320646d3114f65f9188",
+   "issues": [
+    737
+   ]
+  },
+  {
+   "page_id": 6552,
+   "title": "خمس اموال تلف یا هزینه شده در مؤونۀ کسب و کار یا مؤونه زندگی",
+   "url": "https://www.sistani.org/persian/book/26576/6552/",
+   "file": "khums/6552.md",
+   "sha256": "8dc4421917633d9dcf69c97b85702c36e2247cf2135ba708ba0c3ecd9e9bc0cb",
+   "issues": [
+    738
+   ]
+  },
+  {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "url": "https://www.sistani.org/persian/book/26576/6553/",
+   "file": "khums/6553.md",
+   "sha256": "c051ece519aa0cc40499f3304c22e03fd0a0937ae987c74a7a5802a3d92cc98f",
+   "issues": [
+    739,
+    740,
+    741,
+    742,
+    743,
+    744
+   ]
+  },
+  {
+   "page_id": 6554,
+   "title": "2. مال حلال مخلوط به حرام",
+   "url": "https://www.sistani.org/persian/book/26576/6554/",
+   "file": "khums/6554.md",
+   "sha256": "86b5185fb7ef646215d7b99c23bc9937337b41175a5eb51f7605aea6058de374",
+   "issues": []
+  },
+  {
+   "page_id": 6555,
+   "title": "صاحب مال حرام و مقدار آن معلوم نباشد",
+   "url": "https://www.sistani.org/persian/book/26576/6555/",
+   "file": "khums/6555.md",
+   "sha256": "8abfb88c1585f3d7278ce37e18c294f8e251f07693c3655f874bcaa965fce5e6",
+   "issues": [
+    745
+   ]
+  },
+  {
+   "page_id": 6556,
+   "title": "مصرف خمس حلال مخلوط به حرام",
+   "url": "https://www.sistani.org/persian/book/26576/6556/",
+   "file": "khums/6556.md",
+   "sha256": "c47980e7535b7c55a5ce02cb70241f41bb2aec4843dac177d6ef71ec7fe1b6eb",
+   "issues": [
+    746
+   ]
+  },
+  {
+   "page_id": 6557,
+   "title": "صاحب مال حرام معلوم نباشد، ولی مقدار حرام معلوم باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6557/",
+   "file": "khums/6557.md",
+   "sha256": "da8e15cac95f8e2fe5d806aa004d4bdbcabae18087d7d4fcab816daa0f73507d",
+   "issues": [
+    747
+   ]
+  },
+  {
+   "page_id": 6558,
+   "title": "صاحب مال حرام معلوم نباشد، ولی اجمالاً بداند مقدار حرام کمتر از خمس است",
+   "url": "https://www.sistani.org/persian/book/26576/6558/",
+   "file": "khums/6558.md",
+   "sha256": "58bdfde2ee16f6f642bffbb8346bf20601125fe5666ecd87eb5b5ef6d47f8cec",
+   "issues": [
+    748
+   ]
+  },
+  {
+   "page_id": 6559,
+   "title": "صاحب مال حرام معلوم نباشد، ولی اجمالاً بداند مقدار حرام بیشتر از خمس است",
+   "url": "https://www.sistani.org/persian/book/26576/6559/",
+   "file": "khums/6559.md",
+   "sha256": "3cbdd0d56f719833ec6f82d888bb8c3384e68ebe6aa0a9bb415180507377d45b",
+   "issues": [
+    749
+   ]
+  },
+  {
+   "page_id": 6560,
+   "title": "مقدار حرام و صاحب مال، هر دو معلوم باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6560/",
+   "file": "khums/6560.md",
+   "sha256": "c62daafc584ff7136b7042a9287aa2365af34906d4d688ff793678850eedee18",
+   "issues": [
+    750
+   ]
+  },
+  {
+   "page_id": 6561,
+   "title": "مقدار حرام معلوم نباشد، ولی صاحب مال معلوم باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6561/",
+   "file": "khums/6561.md",
+   "sha256": "4ca1698de22f95b858632ddaf18790fda6d468064483d4d3e2fc15d0fe2f8cc2",
+   "issues": [
+    751
+   ]
+  },
+  {
+   "page_id": 6562,
+   "title": "مقدار حرام معلوم باشد و صاحب مال به‌طور اجمالی معلوم باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6562/",
+   "file": "khums/6562.md",
+   "sha256": "43f4c651344b1b21bd19a8ce1949f44a2f7546345880b0c2a2593012e4554c1f",
+   "issues": [
+    752
+   ]
+  },
+  {
+   "page_id": 6563,
+   "title": "حکم موردی که بعد از پرداخت خمس، معلوم شود مقدار حرام بیشتر بوده است",
+   "url": "https://www.sistani.org/persian/book/26576/6563/",
+   "file": "khums/6563.md",
+   "sha256": "fdb6f344099965cb6f8e824748fdaf4d5780864b1c9f3b88c44f0bd3543735db",
+   "issues": [
+    753
+   ]
+  },
+  {
+   "page_id": 6564,
+   "title": "حکم موردی که بعد از پرداخت خمس، معلوم شود مقدار حرام کمتر بوده است",
+   "url": "https://www.sistani.org/persian/book/26576/6564/",
+   "file": "khums/6564.md",
+   "sha256": "7a2d83071b1b19e0f7643429e33cc2423cbe787de29fa0a12131c0d9cc1feb76",
+   "issues": [
+    754
+   ]
+  },
+  {
+   "page_id": 6565,
+   "title": "پیدا شدن صاحب مال، بعد از پرداخت خمس حلال مخلوط به حرام یا صدقه",
+   "url": "https://www.sistani.org/persian/book/26576/6565/",
+   "file": "khums/6565.md",
+   "sha256": "7b60670e8540b2339aa61fc0191c1b1a79d9662bc4867e121d9165884da49f1c",
+   "issues": [
+    755
+   ]
+  },
+  {
+   "page_id": 6566,
+   "title": "مال حلال مخلوط به حرام، که از بابت درآمد به آن خمس تعلّق گرفته",
+   "url": "https://www.sistani.org/persian/book/26576/6566/",
+   "file": "khums/6566.md",
+   "sha256": "058002ff1cd3ca12783453dfab4a7dff0ccf96cfa98ad9a1ea2cea2feb820e84",
+   "issues": [
+    756
+   ]
+  },
+  {
+   "page_id": 6567,
+   "title": "موردی که مال حرام مخلوط شده با حلال، خمس یا زکات یا وقف باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6567/",
+   "file": "khums/6567.md",
+   "sha256": "00b1b5d6de32f1f0a2f711ac96ead69847af3537370c5d5bf2376f60d8c8bf99",
+   "issues": [
+    757
+   ]
+  },
+  {
+   "page_id": 6568,
+   "title": "مال حرام، در صورتی که به صورت دین در ذمّۀ شخص باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6568/",
+   "file": "khums/6568.md",
+   "sha256": "8429dc56fd7c83d4b6ecd0296c6be1112a2f2b11e854da2c01158597bf9291a8",
+   "issues": [
+    758,
+    759,
+    760,
+    761,
+    762
+   ]
+  },
+  {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "url": "https://www.sistani.org/persian/book/26576/6569/",
+   "file": "khums/6569.md",
+   "sha256": "b3e5bd27102950c729594d89b4d916fa085c3e6e9f265a01b2bdb1f3545677f7",
+   "issues": [
+    763,
+    764,
+    765,
+    766,
+    767,
+    768,
+    769,
+    770,
+    771
+   ]
+  },
+  {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "url": "https://www.sistani.org/persian/book/26576/6570/",
+   "file": "khums/6570.md",
+   "sha256": "6f83e623b9e2f4fc2db4d3aa498d08f63e9feed17bea5bc669233a0d6da29ea1",
+   "issues": [
+    772,
+    773,
+    774,
+    775,
+    776,
+    777,
+    778,
+    779,
+    780,
+    781
+   ]
+  },
+  {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "url": "https://www.sistani.org/persian/book/26576/6571/",
+   "file": "khums/6571.md",
+   "sha256": "6c7fd696bc26a6f986ebece6ce63eecc5902de94eb1284f548079fe49c4ac328",
+   "issues": [
+    782,
+    783,
+    784,
+    785,
+    786,
+    787,
+    788,
+    789
+   ]
+  },
+  {
+   "page_id": 6572,
+   "title": "6. غنیمت",
+   "url": "https://www.sistani.org/persian/book/26576/6572/",
+   "file": "khums/6572.md",
+   "sha256": "85d59f524ea623d077c7f32322091d42dfde96fe9b218075f7ffce3a3be76e05",
+   "issues": [
+    790,
+    791,
+    792,
+    793,
+    794
+   ]
+  },
+  {
+   "page_id": 6573,
+   "title": "7. زمینی که کافر ذمّی از مسلمان بخرد",
+   "url": "https://www.sistani.org/persian/book/26576/6573/",
+   "file": "khums/6573.md",
+   "sha256": "799b76a171d0660035b299f43b9db6b19d779d4b8a615b8ffedc94feae22163d",
+   "issues": [
+    795
+   ]
+  },
+  {
+   "page_id": 6574,
+   "title": "مصرف خمس / توضیحات کلّی دربارۀ مصرف خمس و کسب اجازه در پرداخت آن",
+   "url": "https://www.sistani.org/persian/book/26576/6574/",
+   "file": "khums/6574.md",
+   "sha256": "add41c694facdd437b50dd9db88f314abf179ea3d1c10939363ccddb04204ae8",
+   "issues": [
+    796,
+    797,
+    798
+   ]
+  },
+  {
+   "page_id": 6575,
+   "title": "حساب کردن طلب بابت سهم سادات",
+   "url": "https://www.sistani.org/persian/book/26576/6575/",
+   "file": "khums/6575.md",
+   "sha256": "29d6cf86c75c3af6f56d5cfb8365d8189c97fa8851a69cc09e1814c64a509ca1",
+   "issues": [
+    799
+   ]
+  },
+  {
+   "page_id": 6576,
+   "title": "حساب کردن طلب بابت سهم امام(علیه السلام)",
+   "url": "https://www.sistani.org/persian/book/26576/6576/",
+   "file": "khums/6576.md",
+   "sha256": "ffdaa2cb8274ba92e3f570c380516dd7e95a9976ae390154ce5f406c82e3c07a",
+   "issues": [
+    800
+   ]
+  },
+  {
+   "page_id": 6577,
+   "title": "پرداخت سهم امام جهت ادای دین و بدهکاری",
+   "url": "https://www.sistani.org/persian/book/26576/6577/",
+   "file": "khums/6577.md",
+   "sha256": "a6db6067bfab240310eedf220389ffb29409eac0e0603bda12329de274438674",
+   "issues": [
+    801
+   ]
+  },
+  {
+   "page_id": 6578,
+   "title": "قصد قربت در پرداخت خمس",
+   "url": "https://www.sistani.org/persian/book/26576/6578/",
+   "file": "khums/6578.md",
+   "sha256": "533d520061b5e66fff4fe69825228c40a264faf5dc629fdc0ae629bc5fce368d",
+   "issues": [
+    802
+   ]
+  },
+  {
+   "page_id": 6579,
+   "title": "عدم لزوم اطلاع فقیر از «خمس بودن» مال پرداختی",
+   "url": "https://www.sistani.org/persian/book/26576/6579/",
+   "file": "khums/6579.md",
+   "sha256": "133b955a77e42af4bc3586509cbb9f6c59a7d6a018041b99ae175fafc3fddcd8",
+   "issues": [
+    803
+   ]
+  },
+  {
+   "page_id": 6580,
+   "title": "شرایط کسانی که مستحقّ سهم سادات‌اند",
+   "url": "https://www.sistani.org/persian/book/26576/6580/",
+   "file": "khums/6580.md",
+   "sha256": "4d3d683572ccf54da37f081a7321f5f6d1ab26f4b6b12a47d992163b7b527036",
+   "issues": []
+  },
+  {
+   "page_id": 6581,
+   "title": "شرط اول: سیّد بوده و سیادتش از طرف پدر باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6581/",
+   "file": "khums/6581.md",
+   "sha256": "e221c39649aecd39d596226c39db7b157c08e43474d9ad4fb46e3720d017e346",
+   "issues": [
+    804
+   ]
+  },
+  {
+   "page_id": 6582,
+   "title": "راه‌های اثبات سیادت",
+   "url": "https://www.sistani.org/persian/book/26576/6582/",
+   "file": "khums/6582.md",
+   "sha256": "095000735d5fc96903ce607e8fb8026eab5aa07624e1e4306a4f655a4e1899af",
+   "issues": [
+    805
+   ]
+  },
+  {
+   "page_id": 6583,
+   "title": "شرط دوّم: شیعۀ دوازده امامی باشد",
+   "url": "https://www.sistani.org/persian/book/26576/6583/",
+   "file": "khums/6583.md",
+   "sha256": "bd0730c9834386b8644c299023c8f597dce2e9058efeaabde164f0e1877c1f68",
+   "issues": [
+    806
+   ]
+  },
+  {
+   "page_id": 6584,
+   "title": "شرط سوّم: از فقرا و مساکین یا ایتام فقیر یا ابن سبیل باشد / 1. فقرا و مساکین / تعریف فقیر و مسکین",
+   "url": "https://www.sistani.org/persian/book/26576/6584/",
+   "file": "khums/6584.md",
+   "sha256": "83c3fd249ab36b597a245694a7473227680c29de7f2e20f56a5830c4fa772e45",
+   "issues": [
+    807
+   ]
+  },
+  {
+   "page_id": 6585,
+   "title": "معیار بودن سال قمری در محاسبۀ مخارج سال",
+   "url": "https://www.sistani.org/persian/book/26576/6585/",
+   "file": "khums/6585.md",
+   "sha256": "3a89b221980238b428726e9d79aac81d7a093b22c192f051f2c2f909e5e0c9c6",
+   "issues": [
+    808
+   ]
+  },
+  {
+   "page_id": 6586,
+   "title": "داشتن منبع درآمدی که مخارج سال فرد را تأمین می‌کند",
+   "url": "https://www.sistani.org/persian/book/26576/6586/",
+   "file": "khums/6586.md",
+   "sha256": "097106b0abebd6393672ddb6724185f9c2c66087d63d2fe446ba976b551306ab",
+   "issues": [
+    809
+   ]
+  },
+  {
+   "page_id": 6587,
+   "title": "داشتن منبع درآمدی که مخارج سال فرد را تأمین نمی‌کند",
+   "url": "https://www.sistani.org/persian/book/26576/6587/",
+   "file": "khums/6587.md",
+   "sha256": "dc212c1658ab6f256fc82df01f4802e9b75f8ed7e78645a6c492d0b4df3d5c11",
+   "issues": [
+    810
+   ]
+  },
+  {
+   "page_id": 6588,
+   "title": "داشتن مال اضافه از مقدار نیاز",
+   "url": "https://www.sistani.org/persian/book/26576/6588/",
+   "file": "khums/6588.md",
+   "sha256": "00f7a3bc0c2e24b99f2a1a2c92bccc63e26a4413dc0f0c0491edf697d0345584",
+   "issues": [
+    811
+   ]
+  },
+  {
+   "page_id": 6589,
+   "title": "داشتن طلب قابل وصول یا فروش",
+   "url": "https://www.sistani.org/persian/book/26576/6589/",
+   "file": "khums/6589.md",
+   "sha256": "fd47db2dd539da26fd7080e3baa037059c33342cde4237286de90999a2470680",
+   "issues": [
+    812
+   ]
+  },
+  {
+   "page_id": 6590,
+   "title": "داشتن مال اضافی غیر قابل فروش",
+   "url": "https://www.sistani.org/persian/book/26576/6590/",
+   "file": "khums/6590.md",
+   "sha256": "ae429514c2d822a5809a06dee40c957e99ce689dc8fce2ae0c5694cc2bfe59f9",
+   "issues": [
+    813
+   ]
+  },
+  {
+   "page_id": 6591,
+   "title": "داشتن مال اضافۀ قابل فروش به کمتر از قیمت بازاری",
+   "url": "https://www.sistani.org/persian/book/26576/6591/",
+   "file": "khums/6591.md",
+   "sha256": "f9ec30fca1c083730dd97e5397a75824bb68da0b05dfda0225621fc5f5f3c6bf",
+   "issues": [
+    814
+   ]
+  },
+  {
+   "page_id": 6592,
+   "title": "کمتر بودن درآمد کسبی فرد، نسبت به مخارج سال وی",
+   "url": "https://www.sistani.org/persian/book/26576/6592/",
+   "file": "khums/6592.md",
+   "sha256": "82badabaaf717dddf674e1b5c2fda6a3ede4468d2ba71dca6035e03ce9b649d8",
+   "issues": [
+    815
+   ]
+  },
+  {
+   "page_id": 6593,
+   "title": "عدم لزوم فروش منزل مسکونی (در حدّ شأن) و مانند آن",
+   "url": "https://www.sistani.org/persian/book/26576/6593/",
+   "file": "khums/6593.md",
+   "sha256": "23ea27ec72dc6d13b4c3a97b6f891917d5f37522055072c1480ca8a1924d9165",
+   "issues": [
+    816
+   ]
+  },
+  {
+   "page_id": 6594,
+   "title": "نداشتن خانه یا وسیلۀ نقلیه یا لوازم مورد نیاز",
+   "url": "https://www.sistani.org/persian/book/26576/6594/",
+   "file": "khums/6594.md",
+   "sha256": "45480d68ccbebc961964ee12a56f362b15bde3e1149ea0cb0e199b6d2111de78",
+   "issues": [
+    817,
+    818
+   ]
+  },
+  {
+   "page_id": 6595,
+   "title": "ترک کسب و کار از روی تنبلی",
+   "url": "https://www.sistani.org/persian/book/26576/6595/",
+   "file": "khums/6595.md",
+   "sha256": "456ec4424f1fb66da510908c157f2c48acbb968b3ebc245e6509bf8031da4750",
+   "issues": [
+    819
+   ]
+  },
+  {
+   "page_id": 6596,
+   "title": "توانایی یادگیری حرفه یا هنر درآمد زا",
+   "url": "https://www.sistani.org/persian/book/26576/6596/",
+   "file": "khums/6596.md",
+   "sha256": "f271235184b1a3e3447a61e3231fa4f036f9f96619c600cc437de47902b1b7b3",
+   "issues": [
+    820
+   ]
+  },
+  {
+   "page_id": 6597,
+   "title": "توانایی فعالیّت شغلی منافی با شأن فرد",
+   "url": "https://www.sistani.org/persian/book/26576/6597/",
+   "file": "khums/6597.md",
+   "sha256": "f4fb0932a6801996641383813831eca062cece542056f99892287f4fc0cbaa22",
+   "issues": [
+    821
+   ]
+  },
+  {
+   "page_id": 6598,
+   "title": "ناتوانی از کسب درآمد، به جهت نداشتن ابزار شغلی مورد نیاز",
+   "url": "https://www.sistani.org/persian/book/26576/6598/",
+   "file": "khums/6598.md",
+   "sha256": "7df1495e197d17e909c1787b314ce32e5c06e040f12cadf4a92472a47e299eef",
+   "issues": [
+    822
+   ]
+  },
+  {
+   "page_id": 6599,
+   "title": "استفاده از سهم فقرا برای کسی که مشغول تحصیل علم است",
+   "url": "https://www.sistani.org/persian/book/26576/6599/",
+   "file": "khums/6599.md",
+   "sha256": "837733bc2477cc73e9f5293bb7ae1b278a45216c71df4cd614efaeeccf705515",
+   "issues": [
+    823,
+    824
+   ]
+  },
+  {
+   "page_id": 6600,
+   "title": "توانایی قرض گرفتن برای مخارج سال",
+   "url": "https://www.sistani.org/persian/book/26576/6600/",
+   "file": "khums/6600.md",
+   "sha256": "4885938c29ecd1ed7ea167ee91020fffada6e8310f2e92909ed4c30608f9d3d5",
+   "issues": [
+    825
+   ]
+  },
+  {
+   "page_id": 6601,
+   "title": "ناتوانی از پرداخت بدهی، با وجود توانایی تأمین مخارج سال خود",
+   "url": "https://www.sistani.org/persian/book/26576/6601/",
+   "file": "khums/6601.md",
+   "sha256": "db97e9c2af62edaf0cb10d3cbda82020e98609e512a3f90087f17e6e1840984c",
+   "issues": [
+    826
+   ]
+  },
+  {
+   "page_id": 6602,
+   "title": "ناتوانی از پرداخت قرض و تأمین مخارج سال",
+   "url": "https://www.sistani.org/persian/book/26576/6602/",
+   "file": "khums/6602.md",
+   "sha256": "0fa8cbc42ad80f09899a3f25f9287eea36356ca0fe846e598b5c8a9e3b4cb0f9",
+   "issues": [
+    827
+   ]
+  },
+  {
+   "page_id": 6603,
+   "title": "راه‌های اثبات فقر",
+   "url": "https://www.sistani.org/persian/book/26576/6603/",
+   "file": "khums/6603.md",
+   "sha256": "4804ead2054a576e2725117793a138674e4abac491d60a500165c1a8050a18ce",
+   "issues": [
+    828
+   ]
+  },
+  {
+   "page_id": 6604,
+   "title": "مشکوک بودن فقر",
+   "url": "https://www.sistani.org/persian/book/26576/6604/",
+   "file": "khums/6604.md",
+   "sha256": "79c2f6d9e534dce742d3a36db578dc6725ff62024dcd95314a52c25ff7a6a32a",
+   "issues": [
+    829,
+    830
+   ]
+  },
+  {
+   "page_id": 6605,
+   "title": "2. ایتام فقیر از بنی‌هاشم",
+   "url": "https://www.sistani.org/persian/book/26576/6605/",
+   "file": "khums/6605.md",
+   "sha256": "ad6cc2a3865aca64920103b9b37644c3dd3585a50587dbecf9dc28837dd936b1",
+   "issues": [
+    831
+   ]
+  },
+  {
+   "page_id": 6606,
+   "title": "3. ابن سبیل (مسافر در راه مانده) از بنی‌هاشم",
+   "url": "https://www.sistani.org/persian/book/26576/6606/",
+   "file": "khums/6606.md",
+   "sha256": "3e5c5356684130712184b454af295c532880736bf70cc72d197b99a32309dc21",
+   "issues": [
+    832,
+    833
+   ]
+  },
+  {
+   "page_id": 6607,
+   "title": "شرط چهارم: خمس را در مسیر حرام مصرف نکند و بنابر احتیاط واجب موجب کمک به گناه یا ترغیب وی بر کار زشت نشود",
+   "url": "https://www.sistani.org/persian/book/26576/6607/",
+   "file": "khums/6607.md",
+   "sha256": "9ed119db0e9771c2c681d8f0f4c0d8ba35de470fc0afc477163d07839beae2d5",
+   "issues": [
+    834
+   ]
+  },
+  {
+   "page_id": 6608,
+   "title": "شرط پنجم: بنابر احتیاط واجب، شرابخوار، بینماز و متجاهر به فسق نباشد",
+   "url": "https://www.sistani.org/persian/book/26576/6608/",
+   "file": "khums/6608.md",
+   "sha256": "f9140083195e8f49f2d5729ecd4c952d409774c4a6eeba25bcec4d95fe32ae66",
+   "issues": [
+    835
+   ]
+  },
+  {
+   "page_id": 6850,
+   "title": "شرط ششم: بنابر احتیاط لازم، واجب النّفقۀ خمس دهنده نباشد / جائز نبودن پرداخت نفقات واجب یا توسعه‌ای از خمس (بنابر احتیاط واجب)",
+   "url": "https://www.sistani.org/persian/book/26576/6850/",
+   "file": "khums/6850.md",
+   "sha256": "ed5ff37d77de8b312c3bacfff72c49b6c35425f3b9ba87aefc36e616c75bf984",
+   "issues": [
+    836,
+    837
+   ]
+  },
+  {
+   "page_id": 6851,
+   "title": "فردی که قادر بر تأمین نفقات از غیر خمس نیست",
+   "url": "https://www.sistani.org/persian/book/26576/6851/",
+   "file": "khums/6851.md",
+   "sha256": "ae62212a47b2b8a4a19a5ca71b33a03f9dae2bf8e1d9d4aeb42d63808d5a4f6b",
+   "issues": [
+    838
+   ]
+  },
+  {
+   "page_id": 6852,
+   "title": "پرداخت خمس به واجب النفقه جهت تأمین نفقات دیگران",
+   "url": "https://www.sistani.org/persian/book/26576/6852/",
+   "file": "khums/6852.md",
+   "sha256": "3d6deba09c0706c692043c3143c83e31c5207c98538742fc3339fe4edd7d491e",
+   "issues": [
+    839
+   ]
+  },
+  {
+   "page_id": 6853,
+   "title": "پرداخت خمس به سیّد فقیری که مسؤولیّت تأمین نفقاتش بر عهدۀ شخص دیگر است",
+   "url": "https://www.sistani.org/persian/book/26576/6853/",
+   "file": "khums/6853.md",
+   "sha256": "a875141b1d11820440e69564627cf16edc7e62bdb7c4940e5d9ee8e2b6f18033",
+   "issues": [
+    840,
+    841
+   ]
+  },
+  {
+   "page_id": 6854,
+   "title": "پرداخت خمس توسط زوجه به شوهرش که سیّد فقیر است",
+   "url": "https://www.sistani.org/persian/book/26576/6854/",
+   "file": "khums/6854.md",
+   "sha256": "1abfce8e2d1f7beccd5b0053b605201d68c1f4c3cf797d36f442589176db00fa",
+   "issues": [
+    842
+   ]
+  },
+  {
+   "page_id": 6855,
+   "title": "پرداخت خمس بابت نفقات زوجۀ سیّده‌ای که حقّ نفقه ندارد",
+   "url": "https://www.sistani.org/persian/book/26576/6855/",
+   "file": "khums/6855.md",
+   "sha256": "2144c4947e705f8131993531ea895166d45cea34511ea2210a759494c0a53028",
+   "issues": [
+    843
+   ]
+  },
+  {
+   "page_id": 6856,
+   "title": "پرداخت خمس به سیّد فقیری که فرد، عهده‌دار سرپرستی او شده",
+   "url": "https://www.sistani.org/persian/book/26576/6856/",
+   "file": "khums/6856.md",
+   "sha256": "a807b1c1864c223462b3a88057c035dadf01b6e8d9781881a8c57583a8e1a179",
+   "issues": [
+    844
+   ]
+  },
+  {
+   "page_id": 6857,
+   "title": "پرداخت خمس به واجب النفقه بعد از وفات",
+   "url": "https://www.sistani.org/persian/book/26576/6857/",
+   "file": "khums/6857.md",
+   "sha256": "0ebd1ac631186417f5ef224cee419f6442810e86fcd5c7bb2f727e5d3c7fe945",
+   "issues": [
+    845
+   ]
+  },
+  {
+   "page_id": 6858,
+   "title": "شرط هفتم: بنابر احتیاط واجب بیشتر از کسری مخارج سال به وی خمس داده نشود",
+   "url": "https://www.sistani.org/persian/book/26576/6858/",
+   "file": "khums/6858.md",
+   "sha256": "395a941a4c28b01af13dfbce8c762ba3ecf044fac6540e1e73d113da37ae217f",
+   "issues": [
+    846,
+    847
+   ]
+  },
+  {
+   "page_id": 6859,
+   "title": "احکام دیگر پرداخت خمس / محسوب نشدن مالیات به عنوان خمس",
+   "url": "https://www.sistani.org/persian/book/26576/6859/",
+   "file": "khums/6859.md",
+   "sha256": "e95c8a8445c4d68c55d85d9ff645b569790ec6a6a93240c858cedd6616301ee5",
+   "issues": [
+    848
+   ]
+  },
+  {
+   "page_id": 6860,
+   "title": "پرداخت خمس از خود مال یا اموال دیگر",
+   "url": "https://www.sistani.org/persian/book/26576/6860/",
+   "file": "khums/6860.md",
+   "sha256": "61fa2c87521010a88a6424f1d856edb504a7d0046bc74c7f5f9c005a8d15d6f8",
+   "issues": [
+    849,
+    850
+   ]
+  },
+  {
+   "page_id": 6861,
+   "title": "پرداخت خمس از طریق چک، انتقال اعتباری، کارت به کارت کردن",
+   "url": "https://www.sistani.org/persian/book/26576/6861/",
+   "file": "khums/6861.md",
+   "sha256": "75af4221648697d34186326c0e43244e626792273f80bd3319a3386234854517",
+   "issues": [
+    851
+   ]
+  },
+  {
+   "page_id": 6862,
+   "title": "پرداخت خمس بخشی از اموال یا قسمتی از یک مال",
+   "url": "https://www.sistani.org/persian/book/26576/6862/",
+   "file": "khums/6862.md",
+   "sha256": "96f3651c6b5f5f8661d451f56e60bf9215c30a87fb70876f5fa992e42fb43eca",
+   "issues": [
+    852
+   ]
+  },
+  {
+   "page_id": 6863,
+   "title": "پرداخت خمس مالی که در شهر یا روستای دیگر قرار دارد",
+   "url": "https://www.sistani.org/persian/book/26576/6863/",
+   "file": "khums/6863.md",
+   "sha256": "3de481ba6a8d078b4ffd9c797805bec97cc6011ea605df271bc6e6f2fce955a8",
+   "issues": [
+    853
+   ]
+  },
+  {
+   "page_id": 6864,
+   "title": "انتقال خمس به شهر یا روستای دیگر",
+   "url": "https://www.sistani.org/persian/book/26576/6864/",
+   "file": "khums/6864.md",
+   "sha256": "f1b19e65d588ee5b8f26741f7306c266027983e617eef0542973718a373913ad",
+   "issues": [
+    854
+   ]
+  },
+  {
+   "page_id": 6865,
+   "title": "اشتباه در محاسبۀ خمس و پرداخت مقدار اضافی",
+   "url": "https://www.sistani.org/persian/book/26576/6865/",
+   "file": "khums/6865.md",
+   "sha256": "6b14d1e20b3c29a7332d598a420ead376a7efa69fd853449d4aa7fa8f8af0c3c",
+   "issues": [
+    855
+   ]
+  },
+  {
+   "page_id": 6866,
+   "title": "حیله در پرداخت خمس جایز نیست",
+   "url": "https://www.sistani.org/persian/book/26576/6866/",
+   "file": "khums/6866.md",
+   "sha256": "c190b2d2332ed2e4f453efd9bd03e94d1993f282db5ad90ec109cdf6574d4035",
+   "issues": [
+    856,
+    857
+   ]
+  },
+  {
+   "page_id": 6867,
+   "title": "پرداخت خمس دیگری به‌طور مجّانی",
+   "url": "https://www.sistani.org/persian/book/26576/6867/",
+   "file": "khums/6867.md",
+   "sha256": "28627733f28d8cd82dda63a16a379eccf7a62d0875f206742d8c63485f114756",
+   "issues": [
+    858
+   ]
+  }
+ ],
+ "issues": {
+  "559": {
+   "page_id": 5998,
+   "title": "موارد خمس به‌طور اجمالی",
+   "sha256": "a95b289054c3b4891938b22ff44918e2e516acf979e249fdb78663b0289748e7",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "560": {
+   "page_id": 5999,
+   "title": "خمس اموال نابالغ و مجنون و سفیه",
+   "sha256": "851f19c39daffef20f93558604e7ad0b581b57e6d2f214d9c1947696d4c8dfe4",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    287
+   ]
+  },
+  "561": {
+   "page_id": 5999,
+   "title": "خمس اموال نابالغ و مجنون و سفیه",
+   "sha256": "a3d346c447ce265c8ff89d7179d0db2407201895bfc6473e4a83c6b4f58b3494",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "562": {
+   "page_id": 5999,
+   "title": "خمس اموال نابالغ و مجنون و سفیه",
+   "sha256": "8de2f3cfb387464e59c3d6814781aa2f4396d0f4363216dca38235d4aabdf111",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "563": {
+   "page_id": 6001,
+   "title": "سال خمسی و احکام مربوط به آن / سال خمسی افراد شاغل",
+   "sha256": "c8767f4b8fda1467b85355db611b13f2f60681d6e779d944f734eb6c642e17fe",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "564": {
+   "page_id": 6002,
+   "title": "ملاک شاغل بودن فرد",
+   "sha256": "96e4d333513058a14c34ec50366bebb5b90b0b4f6067ee7e4795ff38899dfc80",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    288
+   ]
+  },
+  "565": {
+   "page_id": 6003,
+   "title": "فرد شاغلی که چند نوع کسب دارد",
+   "sha256": "48d17c81dc375d050efb2977c538763f56b1e07ba9335b1e573284e952e4dbdd",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "566": {
+   "page_id": 6003,
+   "title": "فرد شاغلی که چند نوع کسب دارد",
+   "sha256": "7b8906b65bf1e9686efcb4ff2078c1455401ef1c59efec9c79ffe900c02a43c8",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "567": {
+   "page_id": 6004,
+   "title": "افرادی که درآمد کسبی آنان در مواقع خاصّی از سال است",
+   "sha256": "85cc824a1f9ded93093a5e08e05821fc0697de855e74295719cf197ad5624432",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "568": {
+   "page_id": 6005,
+   "title": "افرادی که اموالشان را به مضاربه یا اجاره و مانند آن داده‌اند",
+   "sha256": "8879573261c3cbaac04edaf79619d777d58ffaa355deea3c8cbb43e68ec6797f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "569": {
+   "page_id": 6006,
+   "title": "درآمدهای اتّفاقی افراد شاغل",
+   "sha256": "d19e24b52737db84e645961ace8ae175761b5095a88fddf9cebc0c0b90da692b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "570": {
+   "page_id": 6006,
+   "title": "درآمدهای اتّفاقی افراد شاغل",
+   "sha256": "6d63649055e33f441202b01641188a2649108791eec6d4a583a98f654a197eb3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "571": {
+   "page_id": 6007,
+   "title": "پایان سال خمسی (ساعت خمسی)",
+   "sha256": "8b3c7ee39368fcf61424ef8d47a1f073fcc21e9bf5f19f48e1b2c182c7efd3c3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "572": {
+   "page_id": 6007,
+   "title": "پایان سال خمسی (ساعت خمسی)",
+   "sha256": "60c0eed2b0452f3daa9a4ebeba2d4cb050089a327a9bf4e0d0e626abc6ecc1d6",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "573": {
+   "page_id": 6008,
+   "title": "سال خمسی غیر شاغلین",
+   "sha256": "0b953abe364d7b6e1eafa9fda2b286758065f623849ec91b2b7ed40272a2d210",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "574": {
+   "page_id": 6008,
+   "title": "سال خمسی غیر شاغلین",
+   "sha256": "d2d5788e92cb8c76397b3710a6ea28d3c9c54b5e5f7bcba48eb71905cd2fbce6",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "575": {
+   "page_id": 6008,
+   "title": "سال خمسی غیر شاغلین",
+   "sha256": "04706f268147431d5efd6180545c71ad31b5849bd2271e65c01376759f7bf069",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "576": {
+   "page_id": 6009,
+   "title": "فرد شاغلی که در بین سال باز نشسته شده یا شغل خویش را رها کرده",
+   "sha256": "0f412f73dd8b0fcca1d507bb77380d7e0c13a40b83c3fd51feef21adfbe9a829",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "577": {
+   "page_id": 6010,
+   "title": "قمری، شمسی یا میلادی قرار دادن سال خمسی",
+   "sha256": "20b3e0167a0dbd1d0da43af772a1bae60e958e150ca0a0eaca087ff3c33c5d92",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "578": {
+   "page_id": 6011,
+   "title": "تغییر سال خمسی",
+   "sha256": "381bed37a657a0da868a4b53ea0ee79e53131214fb656469d7f27af7b1145e9c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "579": {
+   "page_id": 6011,
+   "title": "تغییر سال خمسی",
+   "sha256": "2dca20a4eb9c92e1cb112d831a814e59217ffb1cc3be0bc4802baa99a47094ee",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "580": {
+   "page_id": 6012,
+   "title": "شک در فرا رسیدن سال خمسی",
+   "sha256": "bf8a43b20043dd02c1504467fcb549df91ab0fb53d14032c649f332742c6a1d9",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "581": {
+   "page_id": 6148,
+   "title": "فرا رسیدن سال خمسی با فوت فرد",
+   "sha256": "5c247657ce22280563bdc823780c592ff7e7a256defb6b6f1e1e55a7e0822455",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "582": {
+   "page_id": 6149,
+   "title": "پرداخت خمس هنگام حصول درآمد، ‌قبل از فرا رسیدن سال خمسی",
+   "sha256": "7add337bc9fbcb11f9036e8972b9a14bbb33965667aa00f6120a0d6252dc5d7a",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "583": {
+   "page_id": 6150,
+   "title": "اموالی که هم متعلّق خمس می‌شوند و هم زکات",
+   "sha256": "c44799708c2bdd6942f86de06dc8015efc8376e87ebd2fda0850b4a9de0f14ec",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "584": {
+   "page_id": 6151,
+   "title": "درآمدهایی که خمس آنها واجب است",
+   "sha256": "0c63d212cd01db63ecd310093f8d35f6b05c77a70b8dedaa3ae1c70dead4ce59",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "585": {
+   "page_id": 6151,
+   "title": "درآمدهایی که خمس آنها واجب است",
+   "sha256": "8fda0eac264f8629d7c590c528ce98383838c6375d8226ca7d874519edb23db9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "586": {
+   "page_id": 6152,
+   "title": "برخی از موارد استثنا یا عدم استثنا از پرداخت خمس و احکام آن / مهریّه، عوض خلع؛ دیه",
+   "sha256": "0526980891fe02b496ff6d1abe1e7c07a45775581643e6a8909a929d550c3caa",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "587": {
+   "page_id": 6153,
+   "title": "درآمد حاصل از فروش خون یا اعضای بدن",
+   "sha256": "aa4c5c508082cabcbf81990e6b809f9d02c5049aa16e5d1595fe4f51b2bb5c92",
+   "wording": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "588": {
+   "page_id": 6154,
+   "title": "ارث",
+   "sha256": "d644d15600c7bae121ddd5a3c67683652efd65af41de889af54f9b606c651702",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "589": {
+   "page_id": 6154,
+   "title": "ارث",
+   "sha256": "795b57814706700653241498632aaf5fe0496b9b5fc8833536a03673f227efae",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "590": {
+   "page_id": 6154,
+   "title": "ارث",
+   "sha256": "530f7e27646a4b57242488d932c838b69e011e8778b8b14ecfc674e60328f225",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "591": {
+   "page_id": 6154,
+   "title": "ارث",
+   "sha256": "037ddba90fe04860a427974a736a17908f6d60c7af9004cad9432c572fbf6a63",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "592": {
+   "page_id": 6155,
+   "title": "وقف و نمائات آن",
+   "sha256": "67487f94f0f04636c0e1e55618c9fb194b257297b0274206086018098007a6bc",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "593": {
+   "page_id": 6155,
+   "title": "وقف و نمائات آن",
+   "sha256": "a066761c182e6a348181128fb18fa9f59991b4427c27a1cf13c80af4f4494a46",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "594": {
+   "page_id": 6156,
+   "title": "مالی که فقیر بابت خمس یا زکات دریافت کرده",
+   "sha256": "2ae4f8d301fce2b4c66ccbe6f807013fc218de795d3abfeb9e476c181cea3def",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "595": {
+   "page_id": 6157,
+   "title": "مالی که فقیر بابت کفّارات، ردّ مظالم، صدقات مستحبی دریافت کرده",
+   "sha256": "8c374072b27294144d894378c90d1eef40f5cd3a31c5385bc08067c04c68c272",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "596": {
+   "page_id": 6158,
+   "title": "مؤونه",
+   "sha256": "db769393346e6de9ffff0bc167c080afd2377e6864470fb1233751518b40412d",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "597": {
+   "page_id": 6159,
+   "title": "مؤونه تحصیل درآمد (مؤونه کسب و کار)",
+   "sha256": "df72cb6b2132672fee93c01a6199bec7616eda87e99e73055ae0c31598550b8d",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "598": {
+   "page_id": 6160,
+   "title": "مؤونه سال (مؤونه زندگی شخصی و خانوادگی)",
+   "sha256": "34099df6a56970e0c35de382df7b31cc4fd89014c554d398588ecf8f46d0991e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "599": {
+   "page_id": 6161,
+   "title": "مصرف مال در مسیر حرام یا بیشتر از شأن",
+   "sha256": "35ae9f141e5a075fd29dc1bdb2877d6e6918560041eba6fc255390db7bc62a73",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "600": {
+   "page_id": 6162,
+   "title": "ملاک در تعیین شأن افراد و حکم موارد مشکوک",
+   "sha256": "1770edcd7b61c3a9b67b7621a855c19a109a79ff97f0f0ef427a1ad0395fbc73",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "601": {
+   "page_id": 6162,
+   "title": "ملاک در تعیین شأن افراد و حکم موارد مشکوک",
+   "sha256": "dff7e4347c7e094071445df5cca83726d198564919a5ed7d0ccda07a4ee26e6e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "602": {
+   "page_id": 6163,
+   "title": "شک در استفاده از مال و تحقّق مؤونه",
+   "sha256": "ac9aff749eb85cc7bf0e14e23e437d542c90c458c8cfa2426dae36af39ec3439",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "603": {
+   "page_id": 6164,
+   "title": "خمس مقدار باقیمانده از کالاهای مصرفی",
+   "sha256": "101d3a3314b159bb083328a612ebee2d4b21fb8d5e956e11e1bbf290e8244652",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "604": {
+   "page_id": 6165,
+   "title": "محاسبه شدن خمس اموالی که با درآمد بین سال تهیّه شده و مؤونه نشده، به «قیمت فعلی»",
+   "sha256": "ae8928b8ff393ba8286c802c5985ce5b1b3334b2aa17b79da154469471f5ea36",
+   "wording": [
+    "احتیاط مستحب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط مستحب"
+   ],
+   "footnotes": []
+  },
+  "605": {
+   "page_id": 6166,
+   "title": "خمس اموالی که در معرض استفاده بوده، ولی استفاده نشده",
+   "sha256": "fd3e5a6bba8a5ce024e0a28dc382f27ec1206aaea7d2bfd79e8e05b4deeb8fd3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "606": {
+   "page_id": 6167,
+   "title": "خمس مالی که به واسطۀ قناعت و مانند آن باقی ‌مانده",
+   "sha256": "57dc68c082104652ac8f0b18132a49a5e98aac38a4b5cfb35244777be8bbf2d6",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "607": {
+   "page_id": 6168,
+   "title": "استفاده از مال یا بخشش آن به جهت فرار از خمس",
+   "sha256": "a4ffec8432506d4f5d9e9f3e411ef011d72b2c138245437bc6c34e3435dde813",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "608": {
+   "page_id": 6169,
+   "title": "خمس اشیاء و لوازم دوره‌ای",
+   "sha256": "735215d02fdb2430b3c164c0cc9573e20e01b75896302a053bcc30dbc2e58c6d",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "609": {
+   "page_id": 6170,
+   "title": "خمس اموالی که بدون تملیک برای استفاده در اختیار اطرافیان قرار گرفته",
+   "sha256": "d2c99a2b2e703bc147c8ce9917529971f0aed671aca96cfb65a15fb775867562",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "610": {
+   "page_id": 6171,
+   "title": "خمس اشیائی که هم مورد استفادۀ شخصی و هم کسبی است",
+   "sha256": "90cd6b73f8097c93380d7bc9f14421a174c8a95d3fb6f3fd6f42143b8ca89103",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "611": {
+   "page_id": 6172,
+   "title": "خمس کفن",
+   "sha256": "bae4cba23ece6da2f7f99cd981f5629399e0612b91de6b0b72a1cea54c3eb91e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "612": {
+   "page_id": 6173,
+   "title": "خمس جهیزیه و پس‌انداز ازدواج",
+   "sha256": "7a291a6099e62ba3f1c96b0e98ce8b3fc023bc510f7b59c7f8b62319f89e0025",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "613": {
+   "page_id": 6173,
+   "title": "خمس جهیزیه و پس‌انداز ازدواج",
+   "sha256": "2e0d5afd61a6f19598db7a2560bfb407f5e4c903ebe9dbba5fe1af7cfa2fcc7c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "614": {
+   "page_id": 6174,
+   "title": "خمس ساخت تدریجی مسکن و پس‌انداز مسکن",
+   "sha256": "aa55beb3d0c52d95006164d4b055d907ad22c1d7d5512c9805375e25ce502d20",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "615": {
+   "page_id": 6175,
+   "title": "خمس منزلی که به جهت تأمین قیمت خرید آن، اجاره یا رهن داده شده",
+   "sha256": "8f24c36d7018053adbd6c7aeb6f33fa1dbb6f4f7c6e19f56318dcb9bf25c9b7b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "616": {
+   "page_id": 6176,
+   "title": "خمس منزلی که قبلاً مؤونه بوده و اجاره داده شده و تهیه منزل دوم جهت سکونت",
+   "sha256": "dfabcb4b16f40428afe441493321def83c550bc55166c796888047cd6653bcb9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "617": {
+   "page_id": 6177,
+   "title": "خمس منزلی که به صورت مسلوب المنافع صلح شده",
+   "sha256": "eb206226119e5f53a4a59a88e5afe1a998ea4519042c2b4d8e4c41d526f77b98",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "618": {
+   "page_id": 6178,
+   "title": "خمس مالی که با فسخ صلح دوباره به ملکیّت انسان در آمده",
+   "sha256": "b2334c3570649d06d5df4773cd2ea3b99af9490ce8dbe451ecf123be9ab4c767",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "619": {
+   "page_id": 6179,
+   "title": "خمس مال در صورت اقالۀ معامله",
+   "sha256": "6b726f8c4ffdd910dcca368069cdefc27633d9268640d9befa10898b6a9a478b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "620": {
+   "page_id": 6180,
+   "title": "خمس یارانۀ دولت",
+   "sha256": "db47da3a8cc61dee0cb079c652db466e33cca527219de6c51e53b5c9ea3e7ae6",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "621": {
+   "page_id": 6180,
+   "title": "خمس یارانۀ دولت",
+   "sha256": "9a975be5a9f81f6cfb921393c8b54f1efc0458e5353784656d4830957f557663",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    4,
+    5
+   ]
+  },
+  "622": {
+   "page_id": 6181,
+   "title": "خمس پولی که با انتقال اعتباری هدیه داده شده",
+   "sha256": "58f2014d0657b40de7741fbd406d1816892ed1185e8c0a10f5f60fdce6705f08",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "623": {
+   "page_id": 6182,
+   "title": "خمس کارت هدیه",
+   "sha256": "f19317238b47ac924baa822560adb6e098fd4e337df971fded1c3df34248f232",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "624": {
+   "page_id": 6183,
+   "title": "خمس بیمه",
+   "sha256": "634b0997da0b4caa2f684f20ca371c8fe99f466908fbf565f0cb155022d24cda",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "625": {
+   "page_id": 6183,
+   "title": "خمس بیمه",
+   "sha256": "4ecbe3f47e877e5afa7a7e9d47066412bccd3d11c258803ffffeadfb004235fd",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "626": {
+   "page_id": 6184,
+   "title": "خمس پاداش یا حقوق و مستمرّی بازنشستگی",
+   "sha256": "16fe2b9c2718c4dae479a6763a22c062b43b9cc4bdf6f4130cf7492540c87f77",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "627": {
+   "page_id": 6185,
+   "title": "خمس درآمدی که در حج و زیارت هزینه می‌شود",
+   "sha256": "ddfb51205a495d9c94f0a6c55af11d7a09daea557eb09badd6e66356f1a59ed5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "628": {
+   "page_id": 6186,
+   "title": "خمس پولی که بابت ثبت نام حج و عمره داده شده",
+   "sha256": "392ac2fa99c1b1f94437a552ca198e094fd2035c78499410a248efe64be8b8d1",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "629": {
+   "page_id": 6186,
+   "title": "خمس پولی که بابت ثبت نام حج و عمره داده شده",
+   "sha256": "fac08f3a37bb4e56f745f51d9c9f026c99ce2970351ae02145287492a2889605",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "630": {
+   "page_id": 6186,
+   "title": "خمس پولی که بابت ثبت نام حج و عمره داده شده",
+   "sha256": "d4d8d6f17f1c270a43da672e952828d1558208eccb1b0c81c3fa5520d86837b9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    4,
+    5
+   ]
+  },
+  "631": {
+   "page_id": 6187,
+   "title": "خمس گیاهان و حیواناتی که مورد استفاده شخصی و خانوادگی است",
+   "sha256": "17001ee49b7b9232c7ac78689fc90831c9fcbad368bc28a604082456f1bddf7c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "632": {
+   "page_id": 6190,
+   "title": "خمس فروش مؤونه",
+   "sha256": "5b60c3126143a9a1e1479e12d63e659805e721bb529942cc94e5dddf91c487a9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "633": {
+   "page_id": 6190,
+   "title": "خمس فروش مؤونه",
+   "sha256": "ca1077aeac85e312bc3604b34b56c1dfbd503f789a09af64377c035c63cc2931",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "634": {
+   "page_id": 6191,
+   "title": "خمس مال در صورت برطرف شدن احتیاج به آن بدون فروش مال",
+   "sha256": "a84f8a738dd38cc4908d683c354eb4928462cce7ca938be3cc951e8fab4c0057",
+   "wording": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "635": {
+   "page_id": 6192,
+   "title": "خمس کسی که دیگری مخارج زندگی او را می‌دهد",
+   "sha256": "37b51a3e6b6bf0abbbcba4392bfc90ea18eccf43f9b4fc357525fc6a180feba8",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "636": {
+   "page_id": 6349,
+   "title": "صرف درآمد در مؤونه با وجود داشتن مال مخمّس یا در حکم مخمّس",
+   "sha256": "e0fca56f0962326273b2e1b556436bb6eb6d15b150cc7653610f84fcb46650f0",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "637": {
+   "page_id": 6350,
+   "title": "خمس تبدیل منزل و مانند آن به مغازه و تهیۀ منزل جدید یا غیر آن با درآمد بین سال",
+   "sha256": "cf9018447e146505ba72a82bbc19328673400ec0f9a963e6a74c179c1e86d8a7",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "638": {
+   "page_id": 6351,
+   "title": "مخلوط شدن مال مخمّس با درآمد و جدا کردن آنها با نیّت",
+   "sha256": "b91c302677d9d81848f9e6c7952970fff60711a566e9c25f236fb2b65b3333e4",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "639": {
+   "page_id": 6351,
+   "title": "مخلوط شدن مال مخمّس با درآمد و جدا کردن آنها با نیّت",
+   "sha256": "e55e22c8eecbf5726a46f5a0cadd52651bd9e8053994685cb479a4d572583654",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "640": {
+   "page_id": 6352,
+   "title": "خمس سرمایۀ اساسی و سرمایۀ توسعه ای",
+   "sha256": "c1f15e362bd03f01cb19325565d7ee7afe564225321a7899a1f6306a9cd102f3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "641": {
+   "page_id": 6353,
+   "title": "خمس مغازه، مکان تجاری و ابزار کسب و کار",
+   "sha256": "ffcac43f1b10aa9fd3bb1befe4126e8023a282b914462cba882ffcfa86961027",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "642": {
+   "page_id": 6354,
+   "title": "خمس سرقفلی مغازه و مکان تجاری",
+   "sha256": "f2cfb5912e4a5f68a2b67a6cea7c5cf1aa7f655e438682ab87d5c15c996407c2",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "643": {
+   "page_id": 6355,
+   "title": "خمس مربوط به پرورش دام و طیور و سایر حیوانات",
+   "sha256": "227d808edcb139aaa8978b1ad59700e7d444fbe955cb201d9ad07633ddfbf51b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "644": {
+   "page_id": 6355,
+   "title": "خمس مربوط به پرورش دام و طیور و سایر حیوانات",
+   "sha256": "c025715eefea565ef462e907466d4e920fff229c45d9fb2b78edeed4a981d031",
+   "wording": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "footnotes": []
+  },
+  "645": {
+   "page_id": 6356,
+   "title": "ترقّی قیمت مال التّجاره",
+   "sha256": "b8b86a42f1153674e42f59ef2490c189e530675b61b11f7bafdcdb8645700ad3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "646": {
+   "page_id": 6357,
+   "title": "ترقّی قیمت غیر مال التّجاره",
+   "sha256": "3549e0a1c8002a86f81021252bc05cd24e91a9ceb9beb2c4a9e0eb39fcfd9d23",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "647": {
+   "page_id": 6358,
+   "title": "ترقّی قیمت ناشی از تورّم",
+   "sha256": "178c03772d19ad3016b42a55c816124450593d8da00d8a3616f555ad82c87171",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "648": {
+   "page_id": 6359,
+   "title": "ترقّی قیمت مال التجارهای که بابت آن بدهکار است",
+   "sha256": "7af8ca9138641bff54ad89f8b9bbc45670faa4280f96e45631a1d08f512e740b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "649": {
+   "page_id": 6360,
+   "title": "تبدیل پول مخمّس به طلا، ملک و مانند آن به جهت حفظ مالیّت آن",
+   "sha256": "362908b5fb3779a7cd8ba71f6976d498973d7a02a67221788cd66332002e3746",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "650": {
+   "page_id": 6361,
+   "title": "کاهش قیمت مال التجاره و غیر آن،‌ پس از افزایش قبلی",
+   "sha256": "923a19de1e5f537076ae9764ba89e32618b92830af39fc8e74eea781b3eb5936",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "651": {
+   "page_id": 6361,
+   "title": "کاهش قیمت مال التجاره و غیر آن،‌ پس از افزایش قبلی",
+   "sha256": "6ebf4660f9f46b4d0eeab43fae3f524ef58e64023ccbee4f87cde90190886aae",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "652": {
+   "page_id": 6362,
+   "title": "فروش مؤونه‌ای که هدیه بوده یا با پول هدیه تهیّه شده با ترقّی قیمت",
+   "sha256": "286a0b3bf03f6539eed82f444da4851bbf402ea1f860f231e33f915fa165e1c3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "653": {
+   "page_id": 6363,
+   "title": "نکته‌ای در کیفیّت محاسبۀ خمس ترقّی قیمت مال مخمّس",
+   "sha256": "cac455a36027c3c60a8fddb0c60f9eb805107ad6b5de710e9b9aef2be41eeb54",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "654": {
+   "page_id": 6364,
+   "title": "ترقّی قیمت در ساخت و ساز آپارتمان",
+   "sha256": "bc1df2777509151cfd3617a8876e3729c30afc8e04cbcc5bd2243583b328e0ca",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "655": {
+   "page_id": 6365,
+   "title": "مغازه ای که ترقّی قیمت پیدا کرده و با مغازۀ دیگر معاوضه شده (طاق زده شده)",
+   "sha256": "305433f7fd508a5ccadd17e40b187f6ba1151afd8812a16607bbb745a413c538",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "656": {
+   "page_id": 6366,
+   "title": "خمس واحد آپارتمانی که با واگذاری منزل مؤونه به پیمانکار احداث شده",
+   "sha256": "53845b440158761a96920ebe7c5202b40cb9e2045102b394a90cc7daf4063d54",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "657": {
+   "page_id": 6367,
+   "title": "خمس ترقّی قیمت مغازه به جهت تعمیرات و مانند آن",
+   "sha256": "4848a1ebb9990cef3d733028791c036d5e3e25d8cc9b7cfee89dfb997e2106d5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "658": {
+   "page_id": 6368,
+   "title": "ترقّی قیمت ملک به جهت دریافت مجوّز تجاری برای آن",
+   "sha256": "ebf70920e42f7ec4a01897cf4e9aa332f07e169e734d88e186e58d23997ed531",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "659": {
+   "page_id": 6369,
+   "title": "خمس منزلی که زمین و مصالح آن با مال مخمّس تهیه شده، ولی هزینۀ ساخت آن با درآمد بین سال بوده",
+   "sha256": "c299d563118acf2fd41679bcb7fc646735b306f8c67e725c60527332d3e20bf3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "660": {
+   "page_id": 6370,
+   "title": "ترقّی قیمت کفن به جهت نوشتن قرآن و اسمای متبرّکه بر روی آن",
+   "sha256": "674a1c3fd9ee8a1e56d73143f1e9ebcb5f3154d20f924922829e0871bada00df",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "661": {
+   "page_id": 6371,
+   "title": "نماء و رشد مال مخمّس یا در حکم مخمّس",
+   "sha256": "ab96bff56aa06f048b9ace95b904d4926f70dbebfe3c97c54e80a80ce277421e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "662": {
+   "page_id": 6371,
+   "title": "نماء و رشد مال مخمّس یا در حکم مخمّس",
+   "sha256": "1ad3b33f3a5f4093c097e4360e70d81ba7b9c800bdc8975c2aa34f0581d9b936",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2,
+    3
+   ]
+  },
+  "663": {
+   "page_id": 6372,
+   "title": "خمس درختانی که به جهت استفادۀ تجاری از چوب آن کاشته می‌شود",
+   "sha256": "397161f2f971a7ecc332cf0e4ebba8051ff23d3209c8d11bbddc6c64430b4ddc",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "664": {
+   "page_id": 6373,
+   "title": "خمس محصولاتی که قسمتی از آن به ثمر رسیده و قسمتی نرسیده است",
+   "sha256": "243f2d451d46e4d7148c0593518bf5ab61bdbb031a64381a4704b450240a611a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "665": {
+   "page_id": 6374,
+   "title": "خمس احداث باغ و بستان",
+   "sha256": "ceb81b0870b3cc799b709d18c490bd02d0e96610a0aebc80150b753881f7cffb",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "666": {
+   "page_id": 6374,
+   "title": "خمس احداث باغ و بستان",
+   "sha256": "27f0b52be2dedf885995f6c290cd2e99038f58c2c6eab0e652bd5f23ed1f83e1",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    6,
+    7,
+    8
+   ]
+  },
+  "667": {
+   "page_id": 6375,
+   "title": "خمس زمین موات",
+   "sha256": "85a08f4e1f8908646bb71839594e186b624a3a5d101597db3011f09e7cac2a91",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
+  },
+  "668": {
+   "page_id": 6376,
+   "title": "الف. کسی که شغلش فروش طلا یا ارز است",
+   "sha256": "dacd2d702a0c03a95389815f7032c87b70b388c3f3d5f218847389e76dfad7ad",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "669": {
+   "page_id": 6377,
+   "title": "ب. کسی که شغلش غیر از فروش طلا و ارز است",
+   "sha256": "c1ff0579ebfcc0863eebc4d3a99b7368f8f1703882688a6ece466f2de9d6e18f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "670": {
+   "page_id": 6378,
+   "title": "کیفیّت قیمت‌گذاری کالا جهت پرداخت خمس",
+   "sha256": "d165c9869e0b1f6c538e15f432ca9a520fb2a64cd84073313f0664eef1a3a4ea",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "671": {
+   "page_id": 6379,
+   "title": "خمس اجیری که قسمتی از عمل را بعد از سال خمسی انجام می‌دهد",
+   "sha256": "21f7d871c498de7e2b038a9f5723ebba066d9d6612348c73c18a634d864eb5e3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "672": {
+   "page_id": 6380,
+   "title": "محاسبۀ میزان درآمد هر سال در قراردادهای چند ساله (سال خمسی)",
+   "sha256": "28132d6bf337e9d775a0d5503f51b662f2a220f8501349f8c2837f229ef11fce",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "673": {
+   "page_id": 6380,
+   "title": "محاسبۀ میزان درآمد هر سال در قراردادهای چند ساله (سال خمسی)",
+   "sha256": "a14dec51aef3aeb71dd8e9909350e22327565f247f1f9ac54dc6dcd73347fdbf",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2,
+    3
+   ]
+  },
+  "674": {
+   "page_id": 6380,
+   "title": "محاسبۀ میزان درآمد هر سال در قراردادهای چند ساله (سال خمسی)",
+   "sha256": "253dcaf723d10995cde3c74a090e4a64e5f44d1aae01938d2d86b4f9af9c287c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "675": {
+   "page_id": 6380,
+   "title": "محاسبۀ میزان درآمد هر سال در قراردادهای چند ساله (سال خمسی)",
+   "sha256": "fc1bd8c578bc3a40dc7316e03d714de94da1d5e53bdf002a29c4062f23da6bbb",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "676": {
+   "page_id": 6381,
+   "title": "خمس سرمایه‌گذاری بانکی و سود آن",
+   "sha256": "cee6eff43f7656a947d6a748888639ae6d90db64bb605e50466ad3635d578b61",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "677": {
+   "page_id": 6381,
+   "title": "خمس سرمایه‌گذاری بانکی و سود آن",
+   "sha256": "4cfc14869a48303115a3bb9492b659d2218c889abb45b12c7a2a40640045c855",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2,
+    3
+   ]
+  },
+  "678": {
+   "page_id": 6381,
+   "title": "خمس سرمایه‌گذاری بانکی و سود آن",
+   "sha256": "b3047dfbd26dddc12e64d0407c64803737e8dbdc6bbe15af9a68a6d186748c14",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    4,
+    5
+   ]
+  },
+  "679": {
+   "page_id": 6382,
+   "title": "خمس سهام و سود آن",
+   "sha256": "919020ca0d847775145dab9d8b9068c46a1d8dce99f0e20ebe902669ea855b13",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "680": {
+   "page_id": 6382,
+   "title": "خمس سهام و سود آن",
+   "sha256": "7c224e16808811aa4afd12d842d210640322c99ab7d11791719d280142ea2fb9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2
+   ]
+  },
+  "681": {
+   "page_id": 6382,
+   "title": "خمس سهام و سود آن",
+   "sha256": "95543cc75af052cb87ee8d368fab393fa3b7fd36ef8cd6e08405985dd1f564f3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3,
+    4
+   ]
+  },
+  "682": {
+   "page_id": 6382,
+   "title": "خمس سهام و سود آن",
+   "sha256": "c78482302c0af9a59dc3671857f52182b43aea5213c73916b7d1e01612eef849",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    5
+   ]
+  },
+  "683": {
+   "page_id": 6382,
+   "title": "خمس سهام و سود آن",
+   "sha256": "30a25f81d7c062add649cbe679c7e42e2eee315d288dc61f740baca6d6ff95b4",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    6,
+    7,
+    8,
+    9
+   ]
+  },
+  "684": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "65e7d16ada736beb0a4aa87e8b83fec3b2707852aeb4cfc92fe8cb488632b8b3",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "685": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "963bf0b05589156b3691a207f43b2e8fa8ede710755ede8b398ad8f46d1ccc29",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2,
+    3,
+    4
+   ]
+  },
+  "686": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "6519aeb119d9aa0af36a7a0e8fe0af4ef1fd412029472cc06ac72933b6a9866a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    5
+   ]
+  },
+  "687": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "360d6205b4ef746a7f7a4be6eea7b4e3c157231573b8574a614c71663e7379d4",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "688": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "6da1190f405dbf7076237b205a30bf78e86348a7377811bc7305a802ed9f4a74",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "689": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "a0759b762ad545595dabcc0a0dbaa6d494cf203ec903f0dd79bb5ceea7355b10",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "690": {
+   "page_id": 6383,
+   "title": "قاعده جبر (جبران) / جبران خسارت بر اموال یا تلف یا استهلاک وارد شده بر آنها",
+   "sha256": "4d48d5a46ae1a57a1559e89fedafd67ab3f810afa20aa9640be068362de04fff",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "691": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "52527c505b32fd178886d524ec7562d45e5ce853e9a8f86d092ba4c48c300266",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "692": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "2e688f03600cc8aa41ade265a6c177f8fd35a6460fd891a1edb944dbd121637e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "693": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "585033986dbca88468d4fe35bc6889f5afb526e28bbba0d3ed0a2bcb21830c49",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "694": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "e6add8ecf44129056e6315f6a7edb14bec13580c56f6f86102c1f04bb17dd7a2",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    4
+   ]
+  },
+  "695": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "2afa035028f531906d48592b2b5f5af7848bac922ab7b41889c1d69f2534a577",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "696": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "a74489d49b52d147d20424e683027a6909fd676ae774c9bc55f15524339cb150",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    5
+   ]
+  },
+  "697": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "3791897680f84ea9421c2c292de7bb6b7cd84afa24ab9f2edde39e2dd05657d9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    6
+   ]
+  },
+  "698": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "f948a589ec1c9904a2ce3c0629550c5d8979c5455c0aa05e840656ce3126160a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "699": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "a7642e6c0e0a794faac92ab27e86f630da009dead035f61fadcf0896c2748433",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "700": {
+   "page_id": 6384,
+   "title": "جبران مال مخمّس صرف شده در مؤونه",
+   "sha256": "933ab5a864ded2d7362f04fb8029321859d5e6372135cbe23aa4084cac7e3fd5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "701": {
+   "page_id": 6385,
+   "title": "جبران خسارت و مانند آن در یک رشتۀ کسبی از رشتۀ کسبی دیگر",
+   "sha256": "54cdd9315b1a54c4913b9eb7de28c0c2c710b179ae8f6407f5a62a9010d60ab0",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "702": {
+   "page_id": 6385,
+   "title": "جبران خسارت و مانند آن در یک رشتۀ کسبی از رشتۀ کسبی دیگر",
+   "sha256": "b3bcfccdaa56d1bca5f352555c520537705864c81cc0317104618fcc68fadad8",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "703": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "2972c066e1e094e7c25cb82bbc57c3eb29e297be6065bbae99a1ba60e12fa7ca",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "704": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "dca07f13f4f9fd00091e8dd4ecf3d92938b3dfea49585bac48f0d5bce78bc22a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ]
+  },
+  "705": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "0ab2d75218452bcaafc2f5af14fd921d641f9e832b42a4bcab73213b8076229f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    10,
+    11,
+    12
+   ]
+  },
+  "706": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "d1659492321bb0c378ced83bdfb04ecff98aa9677e3934bede82e7150bb5f30c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "707": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "ee3188e3e866d77d26d613388fb7c8d60570747c94a79b7f36b187fb48c154d0",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "708": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "48e7e61ae2547daddd1ab7d8c44f807648e8062f6561756453235fe4e7a66f43",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    13,
+    14
+   ]
+  },
+  "709": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "fa73dd92ccafa6cb435c61854974aa8f3f4ac5a778a05e93371be2ea7e6c4693",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  "710": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "8fa34f744cb176a67b9fa16d12558ba2538d07e4763c3469e518d65eaa5f6015",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "711": {
+   "page_id": 6386,
+   "title": "بدهکاری‌ها - قاعدۀ کسر",
+   "sha256": "f7ff953a0216d18bb84e1598ca04f392a0c4f99c12f504c081e43ff2016cea2a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    20,
+    21,
+    22,
+    23
+   ]
+  },
+  "712": {
+   "page_id": 6387,
+   "title": "سایر احکام بدهکاری‌ها",
+   "sha256": "d657201ace1a511e74cbdd28ac7e0a911298f742384150142704df50130aab85",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "713": {
+   "page_id": 6387,
+   "title": "سایر احکام بدهکاری‌ها",
+   "sha256": "3adb0a82a09f321a0a5859afd297ca9a82cc2f1fc9a3fa7b4d676af93768a905",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "714": {
+   "page_id": 6387,
+   "title": "سایر احکام بدهکاری‌ها",
+   "sha256": "b7847078182ad54d220df51b3cf97c76b776a029f0d51a330828d71639908387",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "715": {
+   "page_id": 6388,
+   "title": "مطالبات",
+   "sha256": "f7d25403bf3792cb08d4dbda0950b18149926f579d661f26c0c67eb95a1d86cc",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "716": {
+   "page_id": 6388,
+   "title": "مطالبات",
+   "sha256": "b37a72cf5bddd5e64b08eab8ec80a72e899ff174fc75dfba1fd6f505499f7ee6",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2
+   ]
+  },
+  "717": {
+   "page_id": 6389,
+   "title": "خمس پول رهن منزل",
+   "sha256": "939e4d84218e551c2187f68b930ca8684af0891dc548682c7d0b45ebfc7605d7",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "718": {
+   "page_id": 6390,
+   "title": "خمس مربوط به وام‌های جلسات فامیلی و مانند آن",
+   "sha256": "1591a4f6d85a46371382ad25635d75553abfd303debf6af8993eb46748880a90",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "719": {
+   "page_id": 6391,
+   "title": "احکام مربوط به مصالحه یا دستگردان و قاعدۀ رُبع",
+   "sha256": "2739ca88e2df1477758ea12d8b5af4ed724333a318ae6bba8084c552f68a24e0",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  "720": {
+   "page_id": 6391,
+   "title": "احکام مربوط به مصالحه یا دستگردان و قاعدۀ رُبع",
+   "sha256": "25f54b798e5de10e5e3317885a08a47409a5804f120d98f2d40d7059c121f309",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ]
+  },
+  "721": {
+   "page_id": 6391,
+   "title": "احکام مربوط به مصالحه یا دستگردان و قاعدۀ رُبع",
+   "sha256": "8cf6f6f1641ad3e8be4e2f31db61cdb765fb4cb24ce89b5b4debe3479aa6aa84",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    10,
+    11
+   ]
+  },
+  "722": {
+   "page_id": 6391,
+   "title": "احکام مربوط به مصالحه یا دستگردان و قاعدۀ رُبع",
+   "sha256": "98720165b978b9ee1e320e281481a090d660a8c5d769a7586d9035a6eebb14e5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    12,
+    13,
+    14,
+    15,
+    16
+   ]
+  },
+  "723": {
+   "page_id": 6391,
+   "title": "احکام مربوط به مصالحه یا دستگردان و قاعدۀ رُبع",
+   "sha256": "8de00967d1cd16bb84a009ac98287c1a49adbbead1ab71c2ba90cf04ff88bd45",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    17,
+    18
+   ]
+  },
+  "724": {
+   "page_id": 6392,
+   "title": "احکام مربوط به مال خمس داده نشده / تصرّف در مال خمس نداده",
+   "sha256": "a2cc499a42d66ab416cb410f962a4cefe679fcf1fa0f3fc280e7d0136c962a06",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "725": {
+   "page_id": 6393,
+   "title": "شرایط مربوط به جواز تأخیر در پرداخت خمس با اجازه حاکم شرع",
+   "sha256": "d050fcc3a503483b054e01d074175dcb8550ce45b695fed6c4eb3b30e56aeea1",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "726": {
+   "page_id": 6394,
+   "title": "خرید کالا با عین پول خمس نداده",
+   "sha256": "353ba414d61b621194bde712cffcfb0fa5e0a3ab9c34729a7083d748e4a83afe",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "727": {
+   "page_id": 6395,
+   "title": "خرید کالا بالذمّه و پرداخت بدهی آن از مال خمس نداده",
+   "sha256": "87b99ded1c357b754e69f0580bbc504842ac80e829b5ed309025fb84243034bd",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "728": {
+   "page_id": 6396,
+   "title": "بخشش طلب قبل از گذشت سال و بعد از آن",
+   "sha256": "2d6c74dfc40eaec5505be8f30c89a00dbe081253f81d26f7889af66e9ed08869",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2,
+    4
+   ]
+  },
+  "729": {
+   "page_id": 6397,
+   "title": "تصرّف یا استفاده از اموال کسانی که خمس نمی‌دهند",
+   "sha256": "1e6d4cb2d90d955028962a0c6e6fe097ea17fd36bad021dab310e192f03a949b",
+   "wording": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "730": {
+   "page_id": 6398,
+   "title": "شراکت با کسی که خمس نمی‌دهد",
+   "sha256": "56b239ed7a38c26f413c32a3149b547ed33ab4e2851547716bb20d35dfa8bf56",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "731": {
+   "page_id": 6399,
+   "title": "تصرّف وکیل در مالی که به آن خمس تعلّق گرفته است",
+   "sha256": "f9d02fe876b6b76e14ff07e7afae4d89c64048516fbef8b8156dc6673db11a1a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "732": {
+   "page_id": 6549,
+   "title": "برخی از آثار تأخیر در پرداخت خمس",
+   "sha256": "fc24e81003772d0fd8dda34b9199ec5c59ec09bb3979a3b169daba03eb23ab09",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "733": {
+   "page_id": 6549,
+   "title": "برخی از آثار تأخیر در پرداخت خمس",
+   "sha256": "dbf178ef4819c37e43ec1fc41fe4f385b94f22ea6817fed732bef50d229450f5",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "734": {
+   "page_id": 6549,
+   "title": "برخی از آثار تأخیر در پرداخت خمس",
+   "sha256": "bdeb0a4d7f4292f6f85af0698cee921ad3248b569d68196a38b7c5e7bd18341d",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "735": {
+   "page_id": 6549,
+   "title": "برخی از آثار تأخیر در پرداخت خمس",
+   "sha256": "ceba1a5098152f4953856bc1c055f25607873382e39d7cd6011a5280bf5ae156",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "736": {
+   "page_id": 6550,
+   "title": "خمس اموال مشکوک و افرادی که مدّتی خمس نداده‌اند / مشخّص نمودن سال خمسی افرادی که مدّتی خمس نداده اند",
+   "sha256": "6a992f7df77887e118440d5fb24fb19fb0ce79e86904a1b92af88429c1e6a66a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "737": {
+   "page_id": 6551,
+   "title": "تقسیم‌بندی اموال افرادی که مدّتی خمس نداده‌اند جهت محاسبۀ خمس",
+   "sha256": "3bf74a540cfeb8431848f4a5d7af0d21111e44a26efc4ecbe3be999f07a7843f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "738": {
+   "page_id": 6552,
+   "title": "خمس اموال تلف یا هزینه شده در مؤونۀ کسب و کار یا مؤونه زندگی",
+   "sha256": "f5763f16ae7936451d91506b90e43f6c5217a937521379ca7e91b4ea5c5e2e9b",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "739": {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "sha256": "496f3b0b8fb5498c1c8a756faa8d51249c047548b479a6c3752f353efee5deb7",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "740": {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "sha256": "2521e291fbdce50f1f6019fad2e24d286410acfd036305d7919974a9a6fd9a01",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  "741": {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "sha256": "a987bd03044d9dc2496144774b33d639bb6d1d06ad2b4cd5b0867e500061f8ad",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "742": {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "sha256": "50009aacd62814543a344cb342cf9b2b0533d1c34261eaff3e68f4d7c77e4e73",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    5,
+    6,
+    7
+   ]
+  },
+  "743": {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "sha256": "d8998710ef03fde8f77deb31b66271143c262234cc92a555518468b3ba3fb157",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    8
+   ]
+  },
+  "744": {
+   "page_id": 6553,
+   "title": "مصالحه خمس اموال مشکوک به نسبت احتمال و توضیح موارد آن",
+   "sha256": "8038fbcf814cb4bead1ada25516f4f847be38e6155f720747326df989f32ae0d",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    9
+   ]
+  },
+  "745": {
+   "page_id": 6555,
+   "title": "صاحب مال حرام و مقدار آن معلوم نباشد",
+   "sha256": "38244dcffe40459a9527515b92917d0c12e0e60d74e7186b3078276f3b7f1c4c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "746": {
+   "page_id": 6556,
+   "title": "مصرف خمس حلال مخلوط به حرام",
+   "sha256": "a0f00c74c45a7398c064aa6151cd255af8d97b4f6acba800002aba59857465b6",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "747": {
+   "page_id": 6557,
+   "title": "صاحب مال حرام معلوم نباشد، ولی مقدار حرام معلوم باشد",
+   "sha256": "19b83567ecc8d74eb827402a14b0f923dfba62c005647540a0e7e73b929cf2b1",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "748": {
+   "page_id": 6558,
+   "title": "صاحب مال حرام معلوم نباشد، ولی اجمالاً بداند مقدار حرام کمتر از خمس است",
+   "sha256": "0621a30f99a3288f411ba2492422ce9d3bbf90b25628ad515da1ea089e2090ca",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "749": {
+   "page_id": 6559,
+   "title": "صاحب مال حرام معلوم نباشد، ولی اجمالاً بداند مقدار حرام بیشتر از خمس است",
+   "sha256": "bf21af49e232db9bf4dbfa4e99983b945ed067b77a1220dadd4cad5087bcd931",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "750": {
+   "page_id": 6560,
+   "title": "مقدار حرام و صاحب مال، هر دو معلوم باشد",
+   "sha256": "20d041459ef260f86573f54448a7d6cd6e42b4ce0cd3e050af43b0430a4f7cfb",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "751": {
+   "page_id": 6561,
+   "title": "مقدار حرام معلوم نباشد، ولی صاحب مال معلوم باشد",
+   "sha256": "5cfe028c41a5e3b26e1848ddec7465046cf61598baff338443bdafc2dbe92254",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "752": {
+   "page_id": 6562,
+   "title": "مقدار حرام معلوم باشد و صاحب مال به‌طور اجمالی معلوم باشد",
+   "sha256": "4f88411b162466a583e4b44ef4c6d0a32af59908b148d240eba0074a5e05dfa7",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "753": {
+   "page_id": 6563,
+   "title": "حکم موردی که بعد از پرداخت خمس، معلوم شود مقدار حرام بیشتر بوده است",
+   "sha256": "c2d9d2fd768a581818a6f0aefad3cccb1af01fb53252ccb23bb906337f3a5607",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "754": {
+   "page_id": 6564,
+   "title": "حکم موردی که بعد از پرداخت خمس، معلوم شود مقدار حرام کمتر بوده است",
+   "sha256": "acdd5e164150a3e9b88f3ec982d0460e86b4712c1c07b922231c25721d45b6a6",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "755": {
+   "page_id": 6565,
+   "title": "پیدا شدن صاحب مال، بعد از پرداخت خمس حلال مخلوط به حرام یا صدقه",
+   "sha256": "25dc0f89953dea2104ac4be895dbb2583e1481f66223adf365898fdbddb3a44b",
+   "wording": [
+    "احتیاط لازم"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط لازم"
+   ],
+   "footnotes": []
+  },
+  "756": {
+   "page_id": 6566,
+   "title": "مال حلال مخلوط به حرام، که از بابت درآمد به آن خمس تعلّق گرفته",
+   "sha256": "e8f928a2d7300ed2dfe6925a5c4b42c4c2b91b308149e345a74fa57f3f85b2cc",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "757": {
+   "page_id": 6567,
+   "title": "موردی که مال حرام مخلوط شده با حلال، خمس یا زکات یا وقف باشد",
+   "sha256": "33f3aaa7033a2340e39d7bb70938fdf951a686601926242100dc33c569185818",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "758": {
+   "page_id": 6568,
+   "title": "مال حرام، در صورتی که به صورت دین در ذمّۀ شخص باشد",
+   "sha256": "b9c5f2022386fb843af84fde6e4b9263ef9f909542c02a897c69196dc2fda4f3",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "759": {
+   "page_id": 6568,
+   "title": "مال حرام، در صورتی که به صورت دین در ذمّۀ شخص باشد",
+   "sha256": "858716fe12183273ede68861bd06f7cdb3243b4722c7273b40967bdd2eabc3f8",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    2,
+    3
+   ]
+  },
+  "760": {
+   "page_id": 6568,
+   "title": "مال حرام، در صورتی که به صورت دین در ذمّۀ شخص باشد",
+   "sha256": "51a3da37d3138473d62b79aebb2c11d7e212b6db3bba200e1461cc4fd6fb2985",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    4
+   ]
+  },
+  "761": {
+   "page_id": 6568,
+   "title": "مال حرام، در صورتی که به صورت دین در ذمّۀ شخص باشد",
+   "sha256": "ae1b774692872dee863a962f8fbbc2c127824f81b0b6b605e0b17212be4d9a23",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    5
+   ]
+  },
+  "762": {
+   "page_id": 6568,
+   "title": "مال حرام، در صورتی که به صورت دین در ذمّۀ شخص باشد",
+   "sha256": "3749867793061892f981cc1eefdce17f25f62d0a494def277d8cfae2970ef098",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "763": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "ec839be8dc89ca78bb7dbf6b69fabae2d761ec1bb7caa7f9d0b92e606fa078ea",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "764": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "e3557c31ce86593f4248b4f7f5badd0f135e34c7553c4ee57d408093f0a83247",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "765": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "ac75632fa6ba86c74d0c1c75ca93db21641bb03218f1a8ddea681fe465c50d44",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "766": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "95d8bd369311de3af0f2b71bc843eac67927c8c337ca425da5a8d1b3fbf06550",
+   "wording": [
+    "احتیاط لازم"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط لازم"
+   ],
+   "footnotes": []
+  },
+  "767": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "a2842697e3d9816eec824568590034f33b9dafe9f0e68548e8b8689aaae06f17",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "768": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "de9153d360033b00f138f3c7781e492953c1f3e346124f21c4c6418798f66afe",
+   "wording": [
+    "احتیاط لازم"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط لازم"
+   ],
+   "footnotes": []
+  },
+  "769": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "e23dbdb4062ea63635eeec58b18ed56aad2684e84bfd09db5c0372a70d31fd5e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "770": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "2bc88e6424a03a56bc4c90fca136e66584585cd98621694be63fe4b5fbb390a5",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "771": {
+   "page_id": 6569,
+   "title": "3. معدن",
+   "sha256": "7972eadaedc92c26d31baa714a56237f3ff29c6c478577bc9da0a032b56eebc5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "772": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "2571234cee73c6b8b1badc999b37ca4948d3091f1f5ec91dd513a1311972530e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "773": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "2c84e05437710093128cb60508d46eef15deeaf40717526016f0017061867188",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "774": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "16b49dd3e2ee31ff066a33f289cfe7cb56e39c912cfdf0632e13ccc98f5137b9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2
+   ]
+  },
+  "775": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "a249e1152f2db92900a1f9810bcd34a9f4537517a9068cb59dbc83dde1c0222b",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "776": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "d497e703d07b22bb5b22f52b69c25da5f52017840953bd6909812e79660ccf1e",
+   "wording": [
+    "احتیاط لازم"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط لازم"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "777": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "0b0604021dd0688a4c6676e1eeeca2639e110b39205a78fa9477fd2df41c2fbb",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    4
+   ]
+  },
+  "778": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "aa27784856c8a7847c8b8442a3dbfeab7fc18c6da2e50be0e1e48ecc4339b835",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "779": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "667600acf6d2718b0069bb708674ba3a386fd452c6cd92d425c261cbc4174a29",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "780": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "ef62659c6a30c9ddb77ed36a37c110329b3a383ff40b409a18f8b3ecd3487560",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "781": {
+   "page_id": 6570,
+   "title": "4. گنج",
+   "sha256": "5019dc57a8b8441f1f6c2a312cf5789d91105dc3bf74c765a4bedf31eb203fd4",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "782": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "45639913cb2c8fcdf872082eed509bfabe194ce020651c2cbcc4797a89607ebb",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "783": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "0b1d9d562d49117b39ef303b7f8b240a381e2b81092dd53bd3a537c62d3773a0",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "784": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "d1ebff95ae2cdebf776dbeba7292fa913746a44645cfaa3d1152e5cd83d39bab",
+   "wording": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "footnotes": []
+  },
+  "785": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "5467a53eaa4e4eebff6ece5dab48340ee0bda7f75769db04cd8500f6e8c3cfb2",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "786": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "dff0a889dc5efdf836f0bab535db770bf761df1ed774e35ac4e7356f8d5bd5ce",
+   "wording": [
+    "احتیاط لازم"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط لازم"
+   ],
+   "footnotes": []
+  },
+  "787": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "28bcac8169336511b3c458418e7f0bdaa1a753e0e734a931c88dd361a1610132",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "788": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "09de0e83d7b10a7cbed670b5bfddd329ee99522835963748e6d3c29d43247ca5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2
+   ]
+  },
+  "789": {
+   "page_id": 6571,
+   "title": "5. جواهری که با فرو رفتن در دریا به دست می‌آید",
+   "sha256": "148e79ddcde8df9566022e25f6f3385e0e840e8cf9e62a77e139ee240054353d",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "790": {
+   "page_id": 6572,
+   "title": "6. غنیمت",
+   "sha256": "c5b281e3689517fb35cab1d2ffe3cb03d256a69be60d175e9ba81740ef189df7",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "791": {
+   "page_id": 6572,
+   "title": "6. غنیمت",
+   "sha256": "330377eaad96afce7f42d455851ed37403084755787bbbf75195bd480aa0b60a",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "792": {
+   "page_id": 6572,
+   "title": "6. غنیمت",
+   "sha256": "ef11d7b8c5c4e676f49b53b3644018ba8fd84e386e440de2b3ecb861548e8630",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "793": {
+   "page_id": 6572,
+   "title": "6. غنیمت",
+   "sha256": "7839fcbc11d9dadb6a069171c8c910be374951fb626238d1f1d0a8029cadc6d0",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "794": {
+   "page_id": 6572,
+   "title": "6. غنیمت",
+   "sha256": "c340fa0acc1b2f1b102fbfda16da51ce86e18d2d134a565249f4208df0961d29",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "795": {
+   "page_id": 6573,
+   "title": "7. زمینی که کافر ذمّی از مسلمان بخرد",
+   "sha256": "e776c81667f3fff98258a680f3e531648712406371de6bbb4e8d3fdb26029bf6",
+   "wording": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط (نوع نامشخص)"
+   ],
+   "footnotes": []
+  },
+  "796": {
+   "page_id": 6574,
+   "title": "مصرف خمس / توضیحات کلّی دربارۀ مصرف خمس و کسب اجازه در پرداخت آن",
+   "sha256": "3b6c0fec82f7c1280438c31c95d3cf610472c1cbf5ff74b946654f16b0b1fd76",
+   "wording": [
+    "احتیاط لازم",
+    "احتیاط مستحب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط لازم",
+    "احتیاط مستحب"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "797": {
+   "page_id": 6574,
+   "title": "مصرف خمس / توضیحات کلّی دربارۀ مصرف خمس و کسب اجازه در پرداخت آن",
+   "sha256": "a0a8d66735989d0b988ab54b0a46860f38ed5c6ba0d4c3ad1005bd69f4cc93d3",
+   "wording": [
+    "احتیاط واجب",
+    "احتیاط لازم"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب",
+    "احتیاط لازم"
+   ],
+   "footnotes": []
+  },
+  "798": {
+   "page_id": 6574,
+   "title": "مصرف خمس / توضیحات کلّی دربارۀ مصرف خمس و کسب اجازه در پرداخت آن",
+   "sha256": "afe23f1abf00c3d7f1114641f25f64c024761e0b6918f929a78be9b99d916bd2",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    3
+   ]
+  },
+  "799": {
+   "page_id": 6575,
+   "title": "حساب کردن طلب بابت سهم سادات",
+   "sha256": "1e3f8e82ba98c5abbdb928195a5d56272ee470ded679309140b6e1cfb25921a1",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "800": {
+   "page_id": 6576,
+   "title": "حساب کردن طلب بابت سهم امام(علیه السلام)",
+   "sha256": "c37150f8b710df799dac60d74673b03da20ecbec2724dc3802c3fafbd53b3252",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "801": {
+   "page_id": 6577,
+   "title": "پرداخت سهم امام جهت ادای دین و بدهکاری",
+   "sha256": "ffdee57dcecb3b5b1fc9295966fcb4020ad8ed8c269f5f8be349e0c614a53963",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "802": {
+   "page_id": 6578,
+   "title": "قصد قربت در پرداخت خمس",
+   "sha256": "2f8e793e29913a8b14246033c02967f34bfb17a05586634bff005f508ee56352",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "803": {
+   "page_id": 6579,
+   "title": "عدم لزوم اطلاع فقیر از «خمس بودن» مال پرداختی",
+   "sha256": "32fd4dd8c5239532227abb552dd5f1b3b08099453a735e4634385311eec9283b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "804": {
+   "page_id": 6581,
+   "title": "شرط اول: سیّد بوده و سیادتش از طرف پدر باشد",
+   "sha256": "d2f78a8e4216e2ad9237b22364fc42ac79f81968f7aa86b4f8a5f245b192f7fb",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "805": {
+   "page_id": 6582,
+   "title": "راه‌های اثبات سیادت",
+   "sha256": "2f82b9bb7a09ae06805a46320b723079cf25fda7a32a7398c6163a7a28728d96",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "806": {
+   "page_id": 6583,
+   "title": "شرط دوّم: شیعۀ دوازده امامی باشد",
+   "sha256": "34a804340beae4d2adabf61491902dcaafc34d81b76f6a09d4f24781ea744da5",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "807": {
+   "page_id": 6584,
+   "title": "شرط سوّم: از فقرا و مساکین یا ایتام فقیر یا ابن سبیل باشد / 1. فقرا و مساکین / تعریف فقیر و مسکین",
+   "sha256": "2fc0336edcbed8cf2a524050e904d5318d61ce9981e878d92ba5f78d05739ccc",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "808": {
+   "page_id": 6585,
+   "title": "معیار بودن سال قمری در محاسبۀ مخارج سال",
+   "sha256": "9aa20c50f8ccbf0c808c9fe530da8cd82bc9d43847491922cbbb91d60943ad4a",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "809": {
+   "page_id": 6586,
+   "title": "داشتن منبع درآمدی که مخارج سال فرد را تأمین می‌کند",
+   "sha256": "78b110f067c71aa485618ab1525a87a8e41548ce8930a7931118863fdc328909",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "810": {
+   "page_id": 6587,
+   "title": "داشتن منبع درآمدی که مخارج سال فرد را تأمین نمی‌کند",
+   "sha256": "b6e4932893aaa9721e0fd9dca2b5bb2dec2d5743ae3586bdb69ca37669c71e5d",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "811": {
+   "page_id": 6588,
+   "title": "داشتن مال اضافه از مقدار نیاز",
+   "sha256": "4c102db92eeabd478303a2a66a845c844892d94c2fc3c03358e24a564961633f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "812": {
+   "page_id": 6589,
+   "title": "داشتن طلب قابل وصول یا فروش",
+   "sha256": "a92b23f69ee5be2b2f017d74da0a6641499626155bc9015db1e22069340c9063",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "813": {
+   "page_id": 6590,
+   "title": "داشتن مال اضافی غیر قابل فروش",
+   "sha256": "7c1ca69e8a479061a28f2b3d14977b3376578208870359b3916074b1efe21b7e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "814": {
+   "page_id": 6591,
+   "title": "داشتن مال اضافۀ قابل فروش به کمتر از قیمت بازاری",
+   "sha256": "5c0bfe3b2e5ac37e8717f6030ee1b861523fb03616eadb92858adbba3b7f6219",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "815": {
+   "page_id": 6592,
+   "title": "کمتر بودن درآمد کسبی فرد، نسبت به مخارج سال وی",
+   "sha256": "d710359e38d2402215f8cced3b32455cde0b489897d3f364aa5264a9fff860c4",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "816": {
+   "page_id": 6593,
+   "title": "عدم لزوم فروش منزل مسکونی (در حدّ شأن) و مانند آن",
+   "sha256": "6e218a2bc6c13b31554b8edb785bfa5dd02016d393c8093d0302654fe20f2c8e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "817": {
+   "page_id": 6594,
+   "title": "نداشتن خانه یا وسیلۀ نقلیه یا لوازم مورد نیاز",
+   "sha256": "0fbc4c276154edade2ec5a0a44f7ca2d9e368e8256d9893c855d0cb98b83341b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "818": {
+   "page_id": 6594,
+   "title": "نداشتن خانه یا وسیلۀ نقلیه یا لوازم مورد نیاز",
+   "sha256": "92e6aecaffa48e556f3110953b06e997e094e0ea1bc3d42f8d6d5989ed2efc5c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "819": {
+   "page_id": 6595,
+   "title": "ترک کسب و کار از روی تنبلی",
+   "sha256": "0e00d2e81c8a211839046e7723a0f2a6d00b3d0462fcaaeba8f871c63df8cf1e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "820": {
+   "page_id": 6596,
+   "title": "توانایی یادگیری حرفه یا هنر درآمد زا",
+   "sha256": "1f3221d5420c0885304c13e0c83b7df4896143ddbc230fd07ed86f1d6a5c3fd3",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "821": {
+   "page_id": 6597,
+   "title": "توانایی فعالیّت شغلی منافی با شأن فرد",
+   "sha256": "cd6bfe4c04247c5ab2bec7bceef5c873e03ded3f83d8122e81a6f3a8cef51013",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "822": {
+   "page_id": 6598,
+   "title": "ناتوانی از کسب درآمد، به جهت نداشتن ابزار شغلی مورد نیاز",
+   "sha256": "8816fda66f0795f55fa2cedc56020c00fa5501e503d97a48ef4d7bd0c869ce0c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "823": {
+   "page_id": 6599,
+   "title": "استفاده از سهم فقرا برای کسی که مشغول تحصیل علم است",
+   "sha256": "c7ae336bc4d99f1589a5657fd0ef5cd17b3c3861bf5f57bf51b2f2b80f2aed1e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "824": {
+   "page_id": 6599,
+   "title": "استفاده از سهم فقرا برای کسی که مشغول تحصیل علم است",
+   "sha256": "3d59a1219c86f14769cf25437cb0cbb9667d91c3eefe3f6017ba2974ba376e87",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "825": {
+   "page_id": 6600,
+   "title": "توانایی قرض گرفتن برای مخارج سال",
+   "sha256": "37870d03e2210c004e8a739725637221ac78ae8fa1e3000d9cc8b988b64d0761",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "826": {
+   "page_id": 6601,
+   "title": "ناتوانی از پرداخت بدهی، با وجود توانایی تأمین مخارج سال خود",
+   "sha256": "6d4ff45486cd1b03d9f74831ccf72730ccb19fdf23e2e8d909cbb346f80ec952",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "827": {
+   "page_id": 6602,
+   "title": "ناتوانی از پرداخت قرض و تأمین مخارج سال",
+   "sha256": "1acd757620c932717a23736f7851d299e76b6dff0b210b61191d7b4ee68a2c8c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "828": {
+   "page_id": 6603,
+   "title": "راه‌های اثبات فقر",
+   "sha256": "fb3d0736a6ee3f94c76a15600ee4fa5622ef76fa71bf38f31131b1d988b93422",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "829": {
+   "page_id": 6604,
+   "title": "مشکوک بودن فقر",
+   "sha256": "142849d69f376c35a5cc98120f1533fd693c9653a76b66752afe87a25a9b053e",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "830": {
+   "page_id": 6604,
+   "title": "مشکوک بودن فقر",
+   "sha256": "d523f0dabae422d1e6d2147d263af44d570285a0258be28bb5e53dfb52612dbc",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "831": {
+   "page_id": 6605,
+   "title": "2. ایتام فقیر از بنی‌هاشم",
+   "sha256": "ce7b851cbb151d72cbb5f48936ba00e2bc1f4b854cb769dbd386cbf391c18fae",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "832": {
+   "page_id": 6606,
+   "title": "3. ابن سبیل (مسافر در راه مانده) از بنی‌هاشم",
+   "sha256": "4efb89c2f0899a38a293f5f39e3995315791787f77ff70bcd3683e5b07171eff",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "833": {
+   "page_id": 6606,
+   "title": "3. ابن سبیل (مسافر در راه مانده) از بنی‌هاشم",
+   "sha256": "36f6fc89212adefbb9281ab9e89c51506f6090cabb7c44bda321f2f332faa5b1",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    2
+   ]
+  },
+  "834": {
+   "page_id": 6607,
+   "title": "شرط چهارم: خمس را در مسیر حرام مصرف نکند و بنابر احتیاط واجب موجب کمک به گناه یا ترغیب وی بر کار زشت نشود",
+   "sha256": "4b6f58429ef1fda68f6e67e333c995ba731d6e218c1dfe0ff30690b9841e5b2c",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "835": {
+   "page_id": 6608,
+   "title": "شرط پنجم: بنابر احتیاط واجب، شرابخوار، بینماز و متجاهر به فسق نباشد",
+   "sha256": "0107d3960003bf2d84b0c88c3ef7f8d957f0a81714a7b06606e01e84189d7de4",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "836": {
+   "page_id": 6850,
+   "title": "شرط ششم: بنابر احتیاط لازم، واجب النّفقۀ خمس دهنده نباشد / جائز نبودن پرداخت نفقات واجب یا توسعه‌ای از خمس (بنابر احتیاط واجب)",
+   "sha256": "620f20a3ef70d9431f9fda35c80d336c51c0c05229311528ab5df1801b5b7b95",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "837": {
+   "page_id": 6850,
+   "title": "شرط ششم: بنابر احتیاط لازم، واجب النّفقۀ خمس دهنده نباشد / جائز نبودن پرداخت نفقات واجب یا توسعه‌ای از خمس (بنابر احتیاط واجب)",
+   "sha256": "2723b374b52ac921d845d4ed46ae504b09b134bc7ec6c960e6439e050403de19",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "838": {
+   "page_id": 6851,
+   "title": "فردی که قادر بر تأمین نفقات از غیر خمس نیست",
+   "sha256": "db798c1d063435a0b117e83a2c4c2adcb7b3f0d63afa7c2d56a81b0868e29b4b",
+   "wording": [
+    "احتیاط مستحب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط مستحب"
+   ],
+   "footnotes": []
+  },
+  "839": {
+   "page_id": 6852,
+   "title": "پرداخت خمس به واجب النفقه جهت تأمین نفقات دیگران",
+   "sha256": "cae89b4ee3b7e9309dba7b3e451d406cfa5545e5fafbdb28243e79b79aa39b48",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "840": {
+   "page_id": 6853,
+   "title": "پرداخت خمس به سیّد فقیری که مسؤولیّت تأمین نفقاتش بر عهدۀ شخص دیگر است",
+   "sha256": "a6cb78b8948a9c697d0caecf732d0581a6569208e7329f0cfac52a74f9c1e59c",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "841": {
+   "page_id": 6853,
+   "title": "پرداخت خمس به سیّد فقیری که مسؤولیّت تأمین نفقاتش بر عهدۀ شخص دیگر است",
+   "sha256": "f8954022ddba3f3d54ec814ba6be782b7eb6bc845501175829963c4b6a34c0ff",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "842": {
+   "page_id": 6854,
+   "title": "پرداخت خمس توسط زوجه به شوهرش که سیّد فقیر است",
+   "sha256": "4c36cc94a8564286d586962f3551ab77f5f56d7521e9219d7891cfe37a969160",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "843": {
+   "page_id": 6855,
+   "title": "پرداخت خمس بابت نفقات زوجۀ سیّده‌ای که حقّ نفقه ندارد",
+   "sha256": "abaf88923bd02ca59257b1e4e9889728dd84d8da2793d986b5e153426dd0dd13",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "844": {
+   "page_id": 6856,
+   "title": "پرداخت خمس به سیّد فقیری که فرد، عهده‌دار سرپرستی او شده",
+   "sha256": "e9ea5ae789bde3e66e530c744fb65cef232add48240c6da9f1fdf71ad5fa0337",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "845": {
+   "page_id": 6857,
+   "title": "پرداخت خمس به واجب النفقه بعد از وفات",
+   "sha256": "bce9aa2e5fc96a246fa3d448c8a9fb1091a93819af8f256602dd0c6cf16b67dd",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "846": {
+   "page_id": 6858,
+   "title": "شرط هفتم: بنابر احتیاط واجب بیشتر از کسری مخارج سال به وی خمس داده نشود",
+   "sha256": "3b9ad97b1a9e5f7f723406f85302d597cce62ebfc117e8bfbf7595e1148bf274",
+   "wording": [
+    "احتیاط واجب"
+   ],
+   "wording_with_footnotes": [
+    "احتیاط واجب"
+   ],
+   "footnotes": []
+  },
+  "847": {
+   "page_id": 6858,
+   "title": "شرط هفتم: بنابر احتیاط واجب بیشتر از کسری مخارج سال به وی خمس داده نشود",
+   "sha256": "42ae69f7915c900ea09a360bc1f836c8ecaa776a23b86eadcbf4d70cf7dfb8e9",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "848": {
+   "page_id": 6859,
+   "title": "احکام دیگر پرداخت خمس / محسوب نشدن مالیات به عنوان خمس",
+   "sha256": "32ce0f175a8e133513d218ab53f6d99f201915aa59620a6e1e01c5fb4a3a2bcf",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "849": {
+   "page_id": 6860,
+   "title": "پرداخت خمس از خود مال یا اموال دیگر",
+   "sha256": "3056429ec0db61b73b16d412ba78bf0dfccb0ef9e446cf8d8c72098feabd759f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "850": {
+   "page_id": 6860,
+   "title": "پرداخت خمس از خود مال یا اموال دیگر",
+   "sha256": "420f05326dab7a4055939e3accae2ffe854d9f56375e2c87c3658174f00a6030",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "851": {
+   "page_id": 6861,
+   "title": "پرداخت خمس از طریق چک، انتقال اعتباری، کارت به کارت کردن",
+   "sha256": "5b730e4938a677c16937a851b6a564cef08e7deb3d28bcfa77233d370e6247aa",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "852": {
+   "page_id": 6862,
+   "title": "پرداخت خمس بخشی از اموال یا قسمتی از یک مال",
+   "sha256": "134f8f4eb0b3f0a83725b04dcdb14f3899400f9a1e67124e8b401bc335f48a5c",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "853": {
+   "page_id": 6863,
+   "title": "پرداخت خمس مالی که در شهر یا روستای دیگر قرار دارد",
+   "sha256": "9e05c35b2974d2fd3780cfe7182141a8cba5252e51b44fee49796015437db60f",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "854": {
+   "page_id": 6864,
+   "title": "انتقال خمس به شهر یا روستای دیگر",
+   "sha256": "6cf17106428b951917d234680890b4bc330573efa00651ed6ec3c3983574939e",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "855": {
+   "page_id": 6865,
+   "title": "اشتباه در محاسبۀ خمس و پرداخت مقدار اضافی",
+   "sha256": "369c8fad6ab64fea024675ccfacad3a351aa23b3529bbb072b2b6746df628c49",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1,
+    2
+   ]
+  },
+  "856": {
+   "page_id": 6866,
+   "title": "حیله در پرداخت خمس جایز نیست",
+   "sha256": "fcda34cb8ef3556d1fcd01823e1f868dddf82fb52761ee52d2e56e4b3adbb34b",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": [
+    1
+   ]
+  },
+  "857": {
+   "page_id": 6866,
+   "title": "حیله در پرداخت خمس جایز نیست",
+   "sha256": "465a43cb9caade946755e200dafed214b4698b0d8262a1985b7234c16a02c843",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  },
+  "858": {
+   "page_id": 6867,
+   "title": "پرداخت خمس دیگری به‌طور مجّانی",
+   "sha256": "bb013206f99039ea87e0a729a73218c8c0d2e921ffe418c849533ba9b2ac1fa4",
+   "wording": [
+    "بدون عبارت احتیاط"
+   ],
+   "wording_with_footnotes": [
+    "بدون عبارت احتیاط"
+   ],
+   "footnotes": []
+  }
+ },
+ "qa": [
+  {
+   "code": "0893",
+   "label": "خمس",
+   "url": "https://www.sistani.org/persian/qa/0893/",
+   "file": "qa/0893.md",
+   "sha256": "c4a7beb7ca95a6f1f43202f2bf64579e33d455d48b35dc46b937a7f96e299621",
+   "questions": [
+    12380,
+    25405,
+    25404,
+    12381,
+    12382,
+    12383,
+    25956,
+    25401,
+    12386,
+    25406,
+    12384,
+    25403,
+    12385,
+    25402,
+    25408,
+    25409,
+    12387,
+    12388,
+    12390,
+    12391,
+    12392,
+    12393,
+    12394,
+    12395,
+    25400,
+    12397,
+    12398,
+    12399,
+    12400,
+    12401,
+    12402,
+    12403,
+    12404,
+    12405,
+    12406,
+    12407,
+    12408,
+    12409,
+    12411,
+    12412,
+    12413,
+    12415,
+    25410,
+    12416,
+    12417,
+    12418,
+    12419,
+    12420,
+    12421,
+    12422,
+    12423,
+    12424,
+    12425,
+    12426,
+    12427,
+    12428,
+    12429,
+    12430,
+    12431,
+    12432,
+    12433,
+    12434,
+    12435,
+    25412,
+    12436,
+    12437,
+    12438,
+    12439,
+    12440,
+    12442,
+    12444,
+    12445,
+    12446,
+    12447,
+    12448,
+    12449,
+    25407,
+    12450,
+    12453,
+    12454,
+    12456,
+    12457,
+    12459,
+    12795,
+    14779,
+    20197,
+    23136,
+    23137,
+    23144,
+    25399,
+    25439
+   ]
+  },
+  {
+   "code": "01084",
+   "label": "وجوهات",
+   "url": "https://www.sistani.org/persian/qa/01084/",
+   "file": "qa/01084.md",
+   "sha256": "85fa0cf903d0e8f44c9b74d4849e0e26404b07b3f601807d6d1c45915c87a194",
+   "questions": [
+    14699,
+    14700,
+    14701,
+    14702,
+    14703,
+    14704,
+    14706,
+    14708,
+    14710,
+    14711
+   ]
+  },
+  {
+   "code": "0936",
+   "label": "سهام",
+   "url": "https://www.sistani.org/persian/qa/0936/",
+   "file": "qa/0936.md",
+   "sha256": "467d2f5334f33f7816dd8fe6a87cf74af0cbabd3693b4df05d50846e627c0cae",
+   "questions": [
+    13056,
+    13057,
+    13058,
+    13059,
+    13060,
+    13061
+   ]
+  },
+  {
+   "code": "0837",
+   "label": "بورس",
+   "url": "https://www.sistani.org/persian/qa/0837/",
+   "file": "qa/0837.md",
+   "sha256": "2456ad764be63d52fb4943bd148cacb09e4f0924f39311633625e91d6e713f9b",
+   "questions": [
+    12017
+   ]
+  },
+  {
+   "code": "0944",
+   "label": "سود بانکی",
+   "url": "https://www.sistani.org/persian/qa/0944/",
+   "file": "qa/0944.md",
+   "sha256": "a155b18bc4ec426d02546b7a76f68ab7ddcc440d4de2d7a55636ddccaeb09c82",
+   "questions": [
+    12027,
+    12032,
+    26205,
+    25441
+   ]
+  },
+  {
+   "code": "0839",
+   "label": "بانک",
+   "url": "https://www.sistani.org/persian/qa/0839/",
+   "file": "qa/0839.md",
+   "sha256": "2ded9e9b22b4277483478f6ef70571a83a80ebf2a50238017c54d64eb57f4f69",
+   "questions": [
+    26202,
+    12021,
+    12022,
+    12028,
+    12029,
+    12030,
+    12037,
+    12040,
+    25444
+   ]
+  },
+  {
+   "code": "0831",
+   "label": "اوراق مشارکت",
+   "url": "https://www.sistani.org/persian/qa/0831/",
+   "file": "qa/0831.md",
+   "sha256": "c45cb904cf502ed7a949db96d8fa888415fcb219823f2bb5b6722303b373efcf",
+   "questions": [
+    11995
+   ]
+  },
+  {
+   "code": "01088",
+   "label": "وام",
+   "url": "https://www.sistani.org/persian/qa/01088/",
+   "file": "qa/01088.md",
+   "sha256": "e7bfcd96524c2ed0087b68990c82067673724891292a7dcc1418a06f6287756e",
+   "questions": [
+    14732,
+    14733,
+    14734,
+    14735,
+    12026,
+    14736,
+    12035,
+    14737,
+    14738,
+    26204,
+    14739,
+    14741,
+    20055
+   ]
+  },
+  {
+   "code": "0994",
+   "label": "قرض",
+   "url": "https://www.sistani.org/persian/qa/0994/",
+   "file": "qa/0994.md",
+   "sha256": "97b4f7db0b4ef352deb8ca5d6f52bf7e70932a62f704668b44f618c20879db8d",
+   "questions": [
+    13483,
+    13484,
+    13485,
+    13486,
+    13487,
+    13488,
+    13490,
+    13491,
+    13492,
+    13493,
+    13494,
+    13495,
+    13496,
+    13497,
+    13498,
+    20008,
+    23142
+   ]
+  },
+  {
+   "code": "0955",
+   "label": "شراکت",
+   "url": "https://www.sistani.org/persian/qa/0955/",
+   "file": "qa/0955.md",
+   "sha256": "dd5f7c33b2e8bf59e209014a9a52c88f0efd2246975dd09541c84e87e836a880",
+   "questions": [
+    13184
+   ]
+  },
+  {
+   "code": "01090",
+   "label": "هدیه (بخشش)",
+   "url": "https://www.sistani.org/persian/qa/01090/",
+   "file": "qa/01090.md",
+   "sha256": "81619f85decf8935c408ae208b016e97988d04928a74076893552d7d592b6d2b",
+   "questions": [
+    25448,
+    14743,
+    14744,
+    14745,
+    14746,
+    14747
+   ]
+  }
+ ]
+}

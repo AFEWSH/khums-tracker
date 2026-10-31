@@ -29,3 +29,7 @@
 *.dump
 *.log
 /.idea/
+
+# Full ruling text stays local until the repository is private (see docs/rulings/README.md).
+/docs/rulings/khums/
+/docs/rulings/qa/

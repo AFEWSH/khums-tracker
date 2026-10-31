@@ -16,7 +16,8 @@
 | [ARCHITECTURE](ARCHITECTURE.md) | اجزا، جریان ثبت، امنیت و نگهداری |
 | [DATABASE](DATABASE.md) | مدل داده، روابط، تاریخچه و قیود |
 | [FINANCIAL_RULES](FINANCIAL_RULES.md) | دفترکل، دقت عددی، بهای تمام‌شده و منشأ |
-| [KHUMS_RULES](KHUMS_RULES.md) | قرارداد موتور خمس و چرخه سال |
+| [KHUMS_RULES](KHUMS_RULES.md) | نقشهٔ احکام، قرارداد موتور خمس و چرخه سال |
+| [KHUMS_PROFILE](KHUMS_PROFILE.md) | پرسش‌های یک‌باره، پیش‌فرض‌ها و ذخیرهٔ نسخه‌دار پروفایل |
 | [ZAKAT_RULES](ZAKAT_RULES.md) | شرایط زکات، نصاب و دوره مستقل |
 | [INFLATION](INFLATION.md) | شاخص‌ها، جریان‌ها و فرمول اقتصادی |
 | [RULING_SOURCES](RULING_SOURCES.md) | فهرست احکام و منابع رسمی بررسی‌شده |

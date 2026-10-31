@@ -28,5 +28,6 @@
         <env name="SESSION_SECURE_COOKIE" value="false" force="true"/>
         <env name="HASH_DRIVER" value="argon2id" force="true"/>
         <env name="QUEUE_CONNECTION" value="sync" force="true"/>
+        <env name="VIEW_COMPILED_PATH" value="storage/framework/testing/views" force="true"/>
     </php>
 </phpunit>

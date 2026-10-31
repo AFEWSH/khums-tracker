@@ -17,6 +17,12 @@ it('renders the Persian RTL login and protected dashboard', function (): void {
         ->assertOk()->assertSee('حساب مالک')->assertSee('خروج از حساب');
 });
 
+it('compiles test views outside the application view cache', function (): void {
+    $compiled = app('blade.compiler')->getCompiledPath(resource_path('views/livewire/auth/login.blade.php'));
+
+    expect($compiled)->toStartWith('storage/framework/testing/views/');
+});
+
 it('sets security headers and prevents caching private HTML', function (): void {
     $response = $this->actingAs(User::factory()->create())->get('/dashboard');
 

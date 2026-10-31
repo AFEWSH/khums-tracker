@@ -55,9 +55,9 @@
 
 | فاز | عنوان | پیش‌نیاز | وضعیت |
 |---|---|---|---|
-| P0 | تثبیت و پاک‌سازی | — | آماده شروع |
-| P1 | راستی‌آزمایی لایهٔ پایه | P0 | منتظر |
-| P2 | تکمیل و بایگانی منبع احکام | P0 (موازی‌پذیر با P1) | منتظر |
+| P0 | تثبیت و پاک‌سازی | — | تمام‌شده |
+| P1 | راستی‌آزمایی لایهٔ پایه | P0 | آماده شروع |
+| P2 | تکمیل و بایگانی منبع احکام | P0 (موازی‌پذیر با P1) | آماده شروع |
 | P3 | پرسش‌های یک‌باره و سیاست کاربر | P2 | منتظر |
 | P4 | مشخصات موتور خمس و سناریوهای مرجع | P1، P3 | منتظر |
 | P5 | پیاده‌سازی موتور خمس جدید | P4 | منتظر |
@@ -228,7 +228,40 @@
 
 ## نقشهٔ کد
 
-در P0 تکمیل می‌شود.
+تدوین‌شده در P0 (2026-10-31) بر پایهٔ وابستگی‌های واقعی کد. «پایه» یعنی در P1 راستی‌آزمایی و نگه داشته می‌شود؛ «جایگزین» یعنی پس از سبز شدن جایگزین در همان فاز حذف یا ساده می‌شود؛ «معوق» طبق D30 دست‌نخورده می‌ماند و تست‌هایش سبز می‌ماند.
+
+**پایه، نگه‌داشتن**
+
+| بخش | اعضا |
+|---|---|
+| عدد و تاریخ | `Support/Numbers`: `MoneyRial`، `AssetQuantity`، `DecimalInput`، `FifoLots`، `RialAllocation`؛ `Support/Dates`: `PersianDate`، `EffectiveTime` |
+| پشتیبان | `Support/Backup/SqliteBackup`، فرمان‌های `CreateBackupCommand`، `VerifyBackupCommand`، `RestoreBackupToEmptyCommand` |
+| هویت و امنیت | `Actions/Auth/*`، `CreateOwnerCommand`، `ResetOwnerPasswordCommand`، `Models/User`، `LoginController`، `LogoutController`، `Controller`، `EnsureOwner`، `SecureResponses`، `AppServiceProvider`، `Livewire/Auth/Login` |
+| دفترکل و نقد | `CashBook`، `CashOverview`، `FinanceInputException` |
+| دارایی | `AssetCatalog`، `AssetTrading`، `AssetDisposal`، `AssetOverview`، `AssetFacts` |
+| گذشته و افتتاحیه | `OpeningSetup`، `OpeningAmendment`، `BackdatedPosting`، `ReplayProjection`، `CoverageConfirmation`، `ForeignObligationSettlement` |
+| تقویم و قواعد | `KhumsYearSchedule`، `KhumsPeriodCalendar`، `KhumsClosureGate`، `RuleCatalog`، `config/khums_rules.php`، `RulingLibrary` (در P2/P5/P6 بازبینی و تکمیل، نه جایگزینی) |
+| داده | همهٔ migrationهای موجود؛ تغییر schema فقط با migration تازه |
+
+**جایگزین**
+
+| فاز | اعضا | یادداشت |
+|---|---|---|
+| P5 | `KhumsDraft`، `KhumsPeriodReport`، `KhumsSimulation`، `KhumsComponentDecision`، `KhumsOriginPlan`، `KhumsProceedsAllocation`، `KhumsAssetBasisTrace`، `ProtectedOriginReplay`، `ProtectedLotBasis` | ورود دستی مبلغ مشمول و طرح منشأ دستی؛ `KhumsPeriodClosure`، `KhumsDueDrafts` و `KhumsPeriodReview` به `KhumsPeriodReport` وابسته‌اند |
+| P6 | `KhumsPeriodReview`، `KhumsDueDrafts`، `KhumsPeriodClosure`، `KhumsBackupVerifier`، `KhumsSettlement`، `KhumsSettlementTerms`، `KhumsBasisResolution`، `KhumsAmendmentReconciliation`، `KhumsPeriodAmendment`، `KhumsPaymentReversal`، `KhumsYearDependencies` | منطق سالم حفظ و ساده می‌شود. `CashBook` (پایه) هنگام برگشت پرداخت `KhumsPaymentReversal` را فرامی‌خواند و این اتصال باید حفظ شود |
+| P7 | `KhumsWorkspace` (۶۲۸ خط)، `Dashboard`، `CashWorkspace`، `CashSetup`، `AssetWorkspace`، `FinanceReview`، viewهای همین صفحات، layoutها، `routes/web.php` | فقط رابط؛ backend این صفحات در دستهٔ پایه می‌ماند. `KhumsWorkspace` پس از P5/P6 به Actionهای جدید وصل می‌شود |
+
+تست هر کلاس جایگزین‌شده همراه آن بازنویسی می‌شود و معیارهایش (به‌ویژه K09–K20) حذف نمی‌شوند.
+
+**معوق، دست‌نخورده**
+
+| بخش | اعضا |
+|---|---|
+| CPI و عملکرد اقتصادی | `CpiCatalog`، `CpiCsvImport`، `EconomicPerformanceReport`، `EconomicReturn`، `Livewire/CpiWorkspace` و view آن |
+| جریان نقدی | `CashFlowReport` (در `FinanceReview` مصرف می‌شود؛ با بازطراحی آن صفحه فقط جایش تغییر می‌کند) |
+| ورود گروهی | `CsvCashImport`، `Livewire/CashCsvImport` و view آن |
+
+**یادداشت‌ها:** `RialAllocation` فعلاً فقط در تست مصرف می‌شود و برای تقسیم دقیق موتور جدید نگه داشته شده است. تست‌های سوژهٔ هر کلاس در `tests/` همان دستهٔ کلاس را دارند.
 
 ## تصویر محصول نهایی (نمونهٔ ساختگی؛ اعمال احکام فقط برای نمایش شکل خروجی است)
 

@@ -5,7 +5,7 @@
     "description": "Private, offline-first Persian personal finance application.",
     "license": "proprietary",
     "require": {
-        "php": "^8.4",
+        "php": "~8.4.0",
         "ext-intl": "*",
         "ext-pdo": "*",
         "ext-pdo_sqlite": "*",

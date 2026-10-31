@@ -1,71 +1,6 @@
 # مدل داده پیشنهادی
 
-## مستند مستقل مبلغ پرداختیِ کسری ریال — 2026-10-23
-
-migration جدید ندارد؛ schema ۸ حفظ شد. user_decisions.kind=khums_settlement_terms شامل assessment_id، closure_snapshot_hash، computed_due_exact_rial، payable_rial، case_reference، rule_snapshot، policy_version و proposal (hash مشاهده، manifest، facts، مرجع، replaces_id و دلیل) است. اصلاح رکورد تازه می‌سازد. khums_payment_terms هر پرداخت واقعی را به پروندهٔ موردی استفاده‌شده پیوند می‌دهد. khums_basis_resolved اکنون settlement_terms_decision_id را ثبت می‌کند. due_exact_rial جدول assessment و snapshot محاسبه ثابت می‌مانند؛ settled_rial مبلغ واقعیِ تخصیص‌یافته است. کنترل سقف پرداخت و برابری تسویه باید با payable_due_exact_rial انجام شود، نه با بازنویسی مبلغ محاسبه. در نبود پرونده، این دو مقدار برابرند.
-
-## ردیابی چندمرحله‌ای منشأ در فاز ۸ — 2026-10-23
-
-migration تازه‌ای لازم نشد؛ schema محلی ۸ است. user_decisions.kind=khums_origin_plan شامل date/source_hash/plan/facts/rule_manifest_hash/policy_version و در اصلاحیه replaces_decision_id/reason است؛ رکورد قبلی حذف یا بازنویسی نمی‌شود. khums_origin_plan_impact شناسهٔ سال‌های نیازمند بازبینی را نگه می‌دارد. khums_payment_origin ارجاع مدرک منشأ پرداخت را، در صورت مصرف شاهد دقیق‌تر از projection محافظه‌کارانه، ذخیره می‌کند. payload هر origin plan با hash حسابرسی متناظر تطبیق داده می‌شود. lot_bases در تأیید پایه می‌تواند چند lot همگن با سهم بازارِ rational داشته باشد. جمع پایهٔ نقدیِ تازه در نقطهٔ basis_after_operation_id (آخرین عملیات به ترتیب زمان/sequence، با حفظ last_operation_id برای کنترل نسخه)، و بازپایه‌گذاری lot در مرز سال اعمال می‌شود؛ فقط closure فعال/بدون stale، تعهد تسویه‌شده و carryover حل‌شده معتبرند.
-
-## تخصیص مستند وجه فروش — 2026-10-23
-
-تصمیم جدید khums_proceeds_allocation در user_decisions موجود ذخیره می‌شود: تاریخ، حساب، raw_hash، protected_basis_rial، rule_id، hash manifest و facts. ثبت آن audit مستقل دارد، دفترکل یا بهای اقتصادی را تغییر نمی‌دهد و migration جدید لازم ندارد. تخصیص متفاوت روی همان ورودی تأییدشده رد می‌شود؛ تاریخچه حذف نمی‌شود.
-
-## تطبیق داده‌های ادامهٔ فاز ۸ — 2026-10-23
-
-این ادامه migration جدید ندارد و schema ۸ حفظ شده است. payload تصمیم قلم شامل dependency_hash و asset_basis_hash است. تصمیم khums_basis_resolved می‌تواند lot_bases و closure_snapshot_hash داشته باشد؛ بهای اقتصادی lots بازنویسی نمی‌شود. تصمیم khums_payment_reversed سابقهٔ برگشت را نگه می‌دارد؛ تخصیص‌های تطبیق و پرداخت‌های قبلی حذف نمی‌شوند. dependency_stale مانع تأیید پایهٔ جدید است.
-
-## schema اجرایی فاز ۸ — 2026-10-19
-
-schema ۷ جدول‌های `khums_period_closures` (نسخه، snapshot و hash، وابستگی و وضعیت stale)، `khums_assessments` (تعهد دقیق مستقل از پرداخت)، `khums_settlements` (پیوند یکتای سند هزینه و تخصیص)، و `khums_basis_carryovers` (وضعیت پایهٔ سال بعد) را افزود. schema ۸ جدول `khums_schedule_versions` را برای تغییر آینده‌نگر تاریخ/ساعت سررسید افزود. تصمیم واجدبودن قلم و حل پایه با payload نسخه‌دار در `user_decisions`، همراه audit، نگهداری می‌شود؛ محاسبهٔ قواعد در DB نیست. `settled_basis_review` مخمّس قطعی نیست و اصلاحیهٔ دارای پرداخت قبلی `reconciliation_required` می‌ماند. پشتیبان‌های schema ۶ و ۷ پیش از migrationها بازیابی آزمایشی شدند؛ نسخه‌های ۷ و ۸ در `SqliteBackup` قابل verify/restore هستند. جدول‌های زکات ساخته نشده‌اند.
-
-## schema ۶: پیش‌نویس دورهٔ خمس — 2026-10-19
-
-`khums_period_reviews` فقط snapshot بازبینی ناقص پس از سررسید را ذخیره می‌کند: سال، دو مرز UTC، تاریخ داده، نسخه مالی، hash manifest/ورودی/snapshot، payload JSON و actor. کلید `(start_year,input_hash)` تکرار را یکتا می‌کند؛ خواندن hash را می‌سنجد. جدول‌های مقصد `period_closures`، `assessments`، `settlement_allocations` و پایهٔ انتقالی هنوز ساخته نشده‌اند. این جدول جای snapshot کامل بسته‌شده نیست.
-
-یادداشت فاز ۷ — 2026-10-17: فاز ۷ migration جدید ندارد. manifest قواعد در کد نسخه‌دار است و شبیه‌سازی `/khums` هیچ `calculation_run` یا `period_closure` پایداری نمی‌نویسد؛ hash ورودی صرفاً همراه خروجی همان پیش‌نمایش خواندنی است. جدول‌های دوره/محاسبه/بستن پایین صفحه هنوز طرح مقصد فاز ۸ هستند. داده‌های تاریخ‌دار از جداول موجود خوانده می‌شوند و اصل مخمّس با ارزش بازار یا بهای دفتری جایگزین نمی‌شود.
-
-## مصرف داده CPI در گزارش فاز ۶ — 2026-10-17
-
-migration تازه‌ای افزوده نشد. گزارش، `cpi_revisions.id` مصرف‌شده و `financial_state.revision` را برمی‌گرداند؛ بازه و شناسه حساب‌های سبد در خروجی خواندنی مشخص‌اند. snapshot دائمی گزارش هنوز موضوع فاز آینده است. وضعیت `verification_status` سری در DB فعلاً `unverified` باقی می‌ماند و هیچ مسیر UI برای جعل `verified` وجود ندارد.
-
-
-## schema اجرایی فاز ۶ — 2026-10-14
-
-پنجمین migration سه جدول `cpi_series`، `cpi_points` و `cpi_revisions` را اضافه کرد. هویت سری `(provider, coverage, base_year, methodology_version)` یکتاست؛ وضعیت فعلی `unverified` است. هر نقطه `(series_id, jalali_year, jalali_month)` یکتا و دارای بازه ماه میلادی استاندارد است؛ مقدار، منبع، تاریخ انتشار اختیاری، دلیل اصلاح، actor و زمان ثبت در revision تغییرناپذیر نگه داشته می‌شود. برای CPI از `VARCHAR` دهدهی و محاسبه دقیق استفاده می‌شود. جدول bridge، منطق شرعی و snapshot گزارش این فاز ساخته نشده‌اند. پیش از migration محلی، backup رمزدار schema ۴ و restore drill موفق انجام شد.
-
-
-## فاز ۵ب — 2026-10-14
-
-فاز ۵ب migration ندارد. idempotency در `operations.idempotency_key` موجود و نسخهٔ پیش‌نمایش در `financial_state.revision` موجود استفاده می‌شود؛ هیچ جدول `imports` یا صف کار افزوده نشده است. metadata موقت پیش‌نمایش در session رمزگذاری‌شدهٔ مالک قرار می‌گیرد و پس از تأیید پاک می‌شود. postedها همان جداول و قیود عملیات دستی‌اند.
-
-
-## تکمیل اجرایی فاز ۵ — 2026-10-14
-
-اصلاح مقدار افتتاحیه schema تازه نمی‌خواهد: `amendment_cases.proposal` نسخه اظهار، `quantity_entries` اختلاف مقدار، `user_decisions` اظهار تأییدشده و `replay_lot_positions` وضعیت بازسازی‌شده را نگه می‌دارند. اصل `asset_opening_items` و `lots.acquired_atoms` ثابت‌اند. تسویه تعهد ارزی از `operations`, `journal_lines`, `quantity_entries` و `audit_events` موجود استفاده می‌کند؛ سود/زیان تسعیر حساب‌های سیستمی جداست.
-
-
-## وضعیت اجرایی فاز ۴/۵ — 2026-10-14
-
-migration چهارم `2026_10_14_000002_create_replay_and_facts` جدول‌های `projection_revisions`, `lot_allocation_projections`, `replay_cash_positions`, `replay_lot_positions`, `replay_adjustments`, `lot_basis_adjustments`, `asset_fact_versions`, `amendment_cases` را افزود. `approved_operation_id` اصلاحیه تأییدشده را به سند posted وصل می‌کند. نسخه قدیمی سند/lot به‌جای overwrite حفظ می‌شود؛ projectionهای نقد و lot نسخه‌دارند. schema محلی پس از backup و restore drill از ۳ به ۴ رسید: یک مالک، صفر عملیات مالی، integrity و FK سالم. `SqliteBackup` هر چهار schema را می‌پذیرد.
-
-
-## schema اجراشده فاز ۴ — 2026-10-14
-
-migration سوم `2026_10_14_000001_create_quantity_assets` جدول‌های `instruments`, `asset_opening_items`, `foreign_obligation_opening_items`, `asset_accounts`, `foreign_obligations`, `quantity_entries`, `lots`, `lot_allocations`, `asset_origin_events`, `asset_prices` را افزود. ستون‌های مقدار/قیمت در transport و DB متن دقیق‌اند؛ پول ریالی BIGINT است. `lots.cost_rial` برای افتتاحیه فقط ارزش تأییدشده افتتاحیه است؛ `historical_cost_rial` و `acquired_date` می‌توانند null باشند. `asset_origin_events` مقدار مخمّس اظهارشده/حد نامعلوم و پایه ریالی را جدا دارد. افتتاحیه ارزی در حساب تعهد و quantity ثبت می‌شود، نه در lot سرمایه‌گذاری.
-
-پایگاه محلی پس از backup رمزدار schema ۲ و بازیابی آزمایشی به schema ۳ ارتقا یافت؛ یک مالک و صفر عملیات/دارایی/قیمت حفظ شد. `SqliteBackup` schemaهای ۱/۲/۳ را می‌پذیرد. `lot_allocations` برای فروش بعدی مهیا است اما تا تأیید FIFO و آزمون مسیر فروش مصرف نمی‌شود. جدول‌های CPI، شرعی و replay ساخته نشده‌اند.
-
-## وضعیت schema اجراشده فاز ۳ — 2026-10-14
-
-migration دوم `2026_10_14_000000_create_cash_finance_core` این جدول‌ها را واقعاً ساخت: `financial_state`, `setup_sessions`, `opening_items`, `accounts`, `categories`, `operations`, `journal_lines`, `provenance_events`, `obligations`, `user_decisions`, `audit_events`. ستون‌های `balance_rial` و `protected_min/max_rial` در accounts projection کنترل‌شده‌اند؛ عملیات posted و خطوط آن منبع حسابرسی‌اند. فقط حساب‌های ریالی در این فاز ایجاد می‌شوند. `operations.effective_at` برای زمان نامعلوم nullable و `boundary_relation` برای روز افتتاحیه صریح است. `operations.idempotency_key` و `reversal_of_id` یکتا هستند. هیچ جدول مقدار/lot/CPI/احکام هنوز موجود نیست.
-
-پایگاه محلی پس از backup و restore drill نسخه ۱، migration دوم را با موفقیت اجرا کرد. شمار مالک پیش/پس ۱، `operations`/`journal_lines`/`opening_items` صفر و `integrity_check=ok` است؛ هیچ داده مالی واقعی نوشته نشد. `SqliteBackup` حالا bundleهای schema ۱ و ۲ را می‌پذیرد. هنگام طراحی migration بعدی باید نسخه پشتیبان و آزمون بازگردانی تازه شود.
-
-یادداشت اجرا 2026-10-14: فاز ۲ migration جدید ندارد. `MoneyRial` با بازه BIGINT و `AssetQuantity` با atoms رشته‌ای در کد هستند و جدول‌های مقدار/دفترکل هنوز وجود ندارند. پشتیبان نسخه ۱ فقط schema فعلی هویت (`2026_10_13_000000_create_identity_tables`) را می‌پذیرد؛ پیش از هر migration آینده باید نسخه پشتیبان و آزمون سازگاری آن به‌روز شود. هیچ schema یا داده محلی کاربر در این فاز تغییر نکرد.
-
-نسخه 0.2 — 2026-10-13؛ طرح منطقی مرحله‌ای برای migrationهای آینده؛ migration هویت فاز ۱ روی SQLite تازه اجرا شده است؛ فقط users/sessions و metadata migrations واقعی‌اند و جدول‌های دامنه آینده هنوز طرح‌اند. ۴۸ جدول دامنه در طرح مقصد، نه تعهد به ساخت هم‌زمان؛ جدول‌های framework در این شمارش نیستند.
+> **وضعیت و ترتیب کار:** [PLAN](PLAN.md). بخش «سوابق اجرایی» انتهای این سند تاریخی است: شمارهٔ فازها در آن قدیمی‌اند و عبارت‌هایی مانند «فاز ۸ باز است» یا «فاز ۹ مجوز ندارد» وضعیت امروز نیستند.
 
 ## قرارداد عمومی
 
@@ -210,7 +145,73 @@ erDiagram
 
 قیود تکمیلی راه‌انداز: dataset_id به dataset_state تک‌ردیفی ارجاع دارد؛ تأیید قبلی به user_decisions و تأییدکننده به users متصل‌اند. مانده افتتاحیه هر قلم ریشه origin مستقل و قابل پیوند به opening_item دارد؛ یک source کلی نباید وضعیت همه اقلام را مخلوط کند. setup پیش‌نویس می‌تواند داده مرجع بسازد، ولی هیچ دفتر مالی پیش از تأیید نوشته نمی‌شود. وضعیت ready تنها آمادگی مالی پیش‌نمایش است، نه تأیید شرعی.
 
-## محدوده migration آماده‌شده فاز ۱
+## سوابق اجرایی تا 2026-10-29
+
+این بخش سابقهٔ زمان نگارش است و وضعیت جاری را نشان نمی‌دهد.
+
+### مستند مستقل مبلغ پرداختیِ کسری ریال — 2026-10-23
+
+migration جدید ندارد؛ schema ۸ حفظ شد. user_decisions.kind=khums_settlement_terms شامل assessment_id، closure_snapshot_hash، computed_due_exact_rial، payable_rial، case_reference، rule_snapshot، policy_version و proposal (hash مشاهده، manifest، facts، مرجع، replaces_id و دلیل) است. اصلاح رکورد تازه می‌سازد. khums_payment_terms هر پرداخت واقعی را به پروندهٔ موردی استفاده‌شده پیوند می‌دهد. khums_basis_resolved اکنون settlement_terms_decision_id را ثبت می‌کند. due_exact_rial جدول assessment و snapshot محاسبه ثابت می‌مانند؛ settled_rial مبلغ واقعیِ تخصیص‌یافته است. کنترل سقف پرداخت و برابری تسویه باید با payable_due_exact_rial انجام شود، نه با بازنویسی مبلغ محاسبه. در نبود پرونده، این دو مقدار برابرند.
+
+### ردیابی چندمرحله‌ای منشأ در فاز ۸ — 2026-10-23
+
+migration تازه‌ای لازم نشد؛ schema محلی ۸ است. user_decisions.kind=khums_origin_plan شامل date/source_hash/plan/facts/rule_manifest_hash/policy_version و در اصلاحیه replaces_decision_id/reason است؛ رکورد قبلی حذف یا بازنویسی نمی‌شود. khums_origin_plan_impact شناسهٔ سال‌های نیازمند بازبینی را نگه می‌دارد. khums_payment_origin ارجاع مدرک منشأ پرداخت را، در صورت مصرف شاهد دقیق‌تر از projection محافظه‌کارانه، ذخیره می‌کند. payload هر origin plan با hash حسابرسی متناظر تطبیق داده می‌شود. lot_bases در تأیید پایه می‌تواند چند lot همگن با سهم بازارِ rational داشته باشد. جمع پایهٔ نقدیِ تازه در نقطهٔ basis_after_operation_id (آخرین عملیات به ترتیب زمان/sequence، با حفظ last_operation_id برای کنترل نسخه)، و بازپایه‌گذاری lot در مرز سال اعمال می‌شود؛ فقط closure فعال/بدون stale، تعهد تسویه‌شده و carryover حل‌شده معتبرند.
+
+### تخصیص مستند وجه فروش — 2026-10-23
+
+تصمیم جدید khums_proceeds_allocation در user_decisions موجود ذخیره می‌شود: تاریخ، حساب، raw_hash، protected_basis_rial، rule_id، hash manifest و facts. ثبت آن audit مستقل دارد، دفترکل یا بهای اقتصادی را تغییر نمی‌دهد و migration جدید لازم ندارد. تخصیص متفاوت روی همان ورودی تأییدشده رد می‌شود؛ تاریخچه حذف نمی‌شود.
+
+### تطبیق داده‌های ادامهٔ فاز ۸ — 2026-10-23
+
+این ادامه migration جدید ندارد و schema ۸ حفظ شده است. payload تصمیم قلم شامل dependency_hash و asset_basis_hash است. تصمیم khums_basis_resolved می‌تواند lot_bases و closure_snapshot_hash داشته باشد؛ بهای اقتصادی lots بازنویسی نمی‌شود. تصمیم khums_payment_reversed سابقهٔ برگشت را نگه می‌دارد؛ تخصیص‌های تطبیق و پرداخت‌های قبلی حذف نمی‌شوند. dependency_stale مانع تأیید پایهٔ جدید است.
+
+### schema اجرایی فاز ۸ — 2026-10-19
+
+schema ۷ جدول‌های `khums_period_closures` (نسخه، snapshot و hash، وابستگی و وضعیت stale)، `khums_assessments` (تعهد دقیق مستقل از پرداخت)، `khums_settlements` (پیوند یکتای سند هزینه و تخصیص)، و `khums_basis_carryovers` (وضعیت پایهٔ سال بعد) را افزود. schema ۸ جدول `khums_schedule_versions` را برای تغییر آینده‌نگر تاریخ/ساعت سررسید افزود. تصمیم واجدبودن قلم و حل پایه با payload نسخه‌دار در `user_decisions`، همراه audit، نگهداری می‌شود؛ محاسبهٔ قواعد در DB نیست. `settled_basis_review` مخمّس قطعی نیست و اصلاحیهٔ دارای پرداخت قبلی `reconciliation_required` می‌ماند. پشتیبان‌های schema ۶ و ۷ پیش از migrationها بازیابی آزمایشی شدند؛ نسخه‌های ۷ و ۸ در `SqliteBackup` قابل verify/restore هستند. جدول‌های زکات ساخته نشده‌اند.
+
+### schema ۶: پیش‌نویس دورهٔ خمس — 2026-10-19
+
+`khums_period_reviews` فقط snapshot بازبینی ناقص پس از سررسید را ذخیره می‌کند: سال، دو مرز UTC، تاریخ داده، نسخه مالی، hash manifest/ورودی/snapshot، payload JSON و actor. کلید `(start_year,input_hash)` تکرار را یکتا می‌کند؛ خواندن hash را می‌سنجد. جدول‌های مقصد `period_closures`، `assessments`، `settlement_allocations` و پایهٔ انتقالی هنوز ساخته نشده‌اند. این جدول جای snapshot کامل بسته‌شده نیست.
+
+یادداشت فاز ۷ — 2026-10-17: فاز ۷ migration جدید ندارد. manifest قواعد در کد نسخه‌دار است و شبیه‌سازی `/khums` هیچ `calculation_run` یا `period_closure` پایداری نمی‌نویسد؛ hash ورودی صرفاً همراه خروجی همان پیش‌نمایش خواندنی است. جدول‌های دوره/محاسبه/بستن پایین صفحه هنوز طرح مقصد فاز ۸ هستند. داده‌های تاریخ‌دار از جداول موجود خوانده می‌شوند و اصل مخمّس با ارزش بازار یا بهای دفتری جایگزین نمی‌شود.
+
+### مصرف داده CPI در گزارش فاز ۶ — 2026-10-17
+
+migration تازه‌ای افزوده نشد. گزارش، `cpi_revisions.id` مصرف‌شده و `financial_state.revision` را برمی‌گرداند؛ بازه و شناسه حساب‌های سبد در خروجی خواندنی مشخص‌اند. snapshot دائمی گزارش هنوز موضوع فاز آینده است. وضعیت `verification_status` سری در DB فعلاً `unverified` باقی می‌ماند و هیچ مسیر UI برای جعل `verified` وجود ندارد.
+
+### schema اجرایی فاز ۶ — 2026-10-14
+
+پنجمین migration سه جدول `cpi_series`، `cpi_points` و `cpi_revisions` را اضافه کرد. هویت سری `(provider, coverage, base_year, methodology_version)` یکتاست؛ وضعیت فعلی `unverified` است. هر نقطه `(series_id, jalali_year, jalali_month)` یکتا و دارای بازه ماه میلادی استاندارد است؛ مقدار، منبع، تاریخ انتشار اختیاری، دلیل اصلاح، actor و زمان ثبت در revision تغییرناپذیر نگه داشته می‌شود. برای CPI از `VARCHAR` دهدهی و محاسبه دقیق استفاده می‌شود. جدول bridge، منطق شرعی و snapshot گزارش این فاز ساخته نشده‌اند. پیش از migration محلی، backup رمزدار schema ۴ و restore drill موفق انجام شد.
+
+### فاز ۵ب — 2026-10-14
+
+فاز ۵ب migration ندارد. idempotency در `operations.idempotency_key` موجود و نسخهٔ پیش‌نمایش در `financial_state.revision` موجود استفاده می‌شود؛ هیچ جدول `imports` یا صف کار افزوده نشده است. metadata موقت پیش‌نمایش در session رمزگذاری‌شدهٔ مالک قرار می‌گیرد و پس از تأیید پاک می‌شود. postedها همان جداول و قیود عملیات دستی‌اند.
+
+### تکمیل اجرایی فاز ۵ — 2026-10-14
+
+اصلاح مقدار افتتاحیه schema تازه نمی‌خواهد: `amendment_cases.proposal` نسخه اظهار، `quantity_entries` اختلاف مقدار، `user_decisions` اظهار تأییدشده و `replay_lot_positions` وضعیت بازسازی‌شده را نگه می‌دارند. اصل `asset_opening_items` و `lots.acquired_atoms` ثابت‌اند. تسویه تعهد ارزی از `operations`, `journal_lines`, `quantity_entries` و `audit_events` موجود استفاده می‌کند؛ سود/زیان تسعیر حساب‌های سیستمی جداست.
+
+### وضعیت اجرایی فاز ۴/۵ — 2026-10-14
+
+migration چهارم `2026_10_14_000002_create_replay_and_facts` جدول‌های `projection_revisions`, `lot_allocation_projections`, `replay_cash_positions`, `replay_lot_positions`, `replay_adjustments`, `lot_basis_adjustments`, `asset_fact_versions`, `amendment_cases` را افزود. `approved_operation_id` اصلاحیه تأییدشده را به سند posted وصل می‌کند. نسخه قدیمی سند/lot به‌جای overwrite حفظ می‌شود؛ projectionهای نقد و lot نسخه‌دارند. schema محلی پس از backup و restore drill از ۳ به ۴ رسید: یک مالک، صفر عملیات مالی، integrity و FK سالم. `SqliteBackup` هر چهار schema را می‌پذیرد.
+
+### schema اجراشده فاز ۴ — 2026-10-14
+
+migration سوم `2026_10_14_000001_create_quantity_assets` جدول‌های `instruments`, `asset_opening_items`, `foreign_obligation_opening_items`, `asset_accounts`, `foreign_obligations`, `quantity_entries`, `lots`, `lot_allocations`, `asset_origin_events`, `asset_prices` را افزود. ستون‌های مقدار/قیمت در transport و DB متن دقیق‌اند؛ پول ریالی BIGINT است. `lots.cost_rial` برای افتتاحیه فقط ارزش تأییدشده افتتاحیه است؛ `historical_cost_rial` و `acquired_date` می‌توانند null باشند. `asset_origin_events` مقدار مخمّس اظهارشده/حد نامعلوم و پایه ریالی را جدا دارد. افتتاحیه ارزی در حساب تعهد و quantity ثبت می‌شود، نه در lot سرمایه‌گذاری.
+
+پایگاه محلی پس از backup رمزدار schema ۲ و بازیابی آزمایشی به schema ۳ ارتقا یافت؛ یک مالک و صفر عملیات/دارایی/قیمت حفظ شد. `SqliteBackup` schemaهای ۱/۲/۳ را می‌پذیرد. `lot_allocations` برای فروش بعدی مهیا است اما تا تأیید FIFO و آزمون مسیر فروش مصرف نمی‌شود. جدول‌های CPI، شرعی و replay ساخته نشده‌اند.
+
+### وضعیت schema اجراشده فاز ۳ — 2026-10-14
+
+migration دوم `2026_10_14_000000_create_cash_finance_core` این جدول‌ها را واقعاً ساخت: `financial_state`, `setup_sessions`, `opening_items`, `accounts`, `categories`, `operations`, `journal_lines`, `provenance_events`, `obligations`, `user_decisions`, `audit_events`. ستون‌های `balance_rial` و `protected_min/max_rial` در accounts projection کنترل‌شده‌اند؛ عملیات posted و خطوط آن منبع حسابرسی‌اند. فقط حساب‌های ریالی در این فاز ایجاد می‌شوند. `operations.effective_at` برای زمان نامعلوم nullable و `boundary_relation` برای روز افتتاحیه صریح است. `operations.idempotency_key` و `reversal_of_id` یکتا هستند. هیچ جدول مقدار/lot/CPI/احکام هنوز موجود نیست.
+
+پایگاه محلی پس از backup و restore drill نسخه ۱، migration دوم را با موفقیت اجرا کرد. شمار مالک پیش/پس ۱، `operations`/`journal_lines`/`opening_items` صفر و `integrity_check=ok` است؛ هیچ داده مالی واقعی نوشته نشد. `SqliteBackup` حالا bundleهای schema ۱ و ۲ را می‌پذیرد. هنگام طراحی migration بعدی باید نسخه پشتیبان و آزمون بازگردانی تازه شود.
+
+یادداشت اجرا 2026-10-14: فاز ۲ migration جدید ندارد. `MoneyRial` با بازه BIGINT و `AssetQuantity` با atoms رشته‌ای در کد هستند و جدول‌های مقدار/دفترکل هنوز وجود ندارند. پشتیبان نسخه ۱ فقط schema فعلی هویت (`2026_10_13_000000_create_identity_tables`) را می‌پذیرد؛ پیش از هر migration آینده باید نسخه پشتیبان و آزمون سازگاری آن به‌روز شود. هیچ schema یا داده محلی کاربر در این فاز تغییر نکرد.
+
+نسخه 0.2 — 2026-10-13؛ طرح منطقی مرحله‌ای برای migrationهای آینده؛ migration هویت فاز ۱ روی SQLite تازه اجرا شده است؛ فقط users/sessions و metadata migrations واقعی‌اند و جدول‌های دامنه آینده هنوز طرح‌اند. ۴۸ جدول دامنه در طرح مقصد، نه تعهد به ساخت هم‌زمان؛ جدول‌های framework در این شمارش نیستند.
+
+### محدوده migration آماده‌شده فاز ۱
 
 فایل `database/migrations/2026_10_13_000000_create_identity_tables.php` تنها users و sessions را تعریف می‌کند؛ migrations جدول metadata خود Laravel است. migration در محیط محلی تازه و DBهای آزمایشی اجرا و آزموده شد. هیچ جدول دفترکل، دارایی، افتتاحیه، CPI، rule، audit مالی یا دوره‌های آینده ایجاد یا تعریف اجرایی نشده است.
 
@@ -220,7 +221,7 @@ sessions جدول زیرساختی driver database است، با FK nullable use
 
 SQLite پیش‌فرض در storage/app/private/database.sqlite، foreign keys=true و busy timeout=5000 است. تست‌ها فقط SQLite in-memory دارند و قبل از RefreshDatabase config واقعی را رد می‌کنند. انتقال MySQL/MariaDB هنوز پیاده یا آزموده نشده؛ از Schema و FK استاندارد برای این migration استفاده شده، اما سازگاری مقصد فقط پس از تست واقعی ادعا می‌شود.
 
-## نتیجه بررسی SQLite فاز ۱
+### نتیجه بررسی SQLite فاز ۱
 
 PHP PDO SQLite با نسخه 3.45.1 فعال است. پایگاه جدید خصوصی تنها migrations، sessions و users دارد؛ تعداد مالک محلی صفر است و هیچ داده مالی وجود ندارد. .env و database.sqlite با permission 0600 ساخته شدند و محتوای APP_KEY نمایش داده نشد. پیش از این migration، پایگاه محلی وجود نداشت؛ به داده موجود نیاز به تغییر/backup نبود.
 

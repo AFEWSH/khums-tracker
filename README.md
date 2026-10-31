@@ -2,13 +2,12 @@
 
 # Khums Finance
 
-**A Persian-first personal finance project built with Laravel and Livewire.**
+**A private, Persian-first annual Khums tracker built with Laravel and Livewire.**
 
 [![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
 [![Livewire](https://img.shields.io/badge/Livewire-4E56A6?logo=livewire&logoColor=white)](https://livewire.laravel.com/)
 ![Status](https://img.shields.io/badge/status-in%20development-orange)
-![Phase](https://img.shields.io/badge/current%20phase-5b-blue)
 
 [Overview](#overview) · [Current Status](#current-status) · [Getting Started](#getting-started) · [Documentation](#documentation)
 
@@ -18,13 +17,13 @@
 
 ## Overview
 
-**Khums Finance** is a personal project exploring a simple, privacy-conscious way to manage financial records and, in later phases, support Khums-related tracking and calculations. The interface is intended for Persian-speaking users.
+**Khums Finance** is a personal project for calculating and tracking annual Khums, with the financial records that calculation needs. The interface is intended for Persian-speaking users.
 
-The project is being developed incrementally. **It is not yet a complete finance or Khums calculation application.** The phase-five financial workflow is ready for review with synthetic data; religious calculations and real-data acceptance remain separate.
+The project is being developed incrementally. **It is not yet a complete Khums calculation application.**
 
 ## Current Status
 
-**Phase 5b — Limited CSV import ready for synthetic-data review**
+The Khums engine, year cycle and interface are being rebuilt on top of the existing financial foundation. The work order and current phase are tracked in [docs/PLAN.md](docs/PLAN.md).
 
 The current implementation includes:
 
@@ -36,9 +35,7 @@ The current implementation includes:
 - A limited, reviewed CSV batch import for supported cash operations.
 - Automated checks for the implemented financial workflow.
 
-**Last reported verification:** 95 tests, 556 assertions; formatting, Blade compilation and frontend build passed. Visual and keyboard-accessibility review remains pending. Phase 6 has not started.
-
-> **Development notice:** Do not enter real financial information until the review and separate acceptance documented in [PROGRESS](docs/PROGRESS.md). Khums and Zakat engines are not implemented.
+> **Development notice:** Do not enter real financial information before phase P9 of the plan. All real religious rules are inactive, and the current Khums engine does not calculate the eligible amount by itself.
 
 ## Technical Approach
 
@@ -116,7 +113,8 @@ This repository is an application under development and is **not** financial or 
 | --- | --- |
 | [Setup guide](docs/SETUP.md) | Installation and local development |
 | [Architecture](docs/ARCHITECTURE.md) | Components, boundaries and design decisions |
-| [Roadmap](docs/ROADMAP.md) | Planned phases and priorities |
+| [Plan](docs/PLAN.md) | Current work order and phase status |
+| [Roadmap](docs/ROADMAP.md) | Historical phases and risk register |
 | [Progress](docs/PROGRESS.md) | Implemented work, verification and pending checks |
 | [Agent instructions](AGENTS.md) | Repository-specific development instructions |
 

@@ -24,7 +24,7 @@ final class ReplayProjection
             'actor_id' => auth()->id(), 'created_at' => now(),
         ]);
         $this->rebuildLots($operations, $revision, $triggerOperationId);
-        $this->rebuildCash($operations, $revision);
+        $this->rebuildCash($operations, $revision, $triggerOperationId);
 
         return $revision;
     }
@@ -185,7 +185,7 @@ final class ReplayProjection
         ]);
     }
 
-    private function rebuildCash($operations, int $revision): void
+    private function rebuildCash($operations, int $revision, int $triggerOperationId): void
     {
         $liquidTypes = ['bank', 'cash', 'broker_cash', 'wallet_cash', 'receivable'];
         $positions = [];
@@ -193,8 +193,27 @@ final class ReplayProjection
         foreach ($accounts as $account) {
             $positions[(int) $account->id] = ['balance' => MoneyRial::fromRial('0'), 'min' => MoneyRial::fromRial('0'), 'max' => MoneyRial::fromRial('0')];
         }
+        $debts = [];
+        foreach (DB::table('accounts')->where('class', 'liability')->pluck('id') as $accountId) {
+            $debts[(int) $accountId] = MoneyRial::fromRial('0');
+        }
+        $reversed = $operations->pluck('reversal_of_id')->filter()->map(fn ($id): int => (int) $id)->all();
         foreach ($operations as $operation) {
+            // A reversal restores the exact prior state, so the cancelled pair leaves no trace.
+            if ($operation->type === 'reversal' || in_array((int) $operation->id, $reversed, true)) {
+                continue;
+            }
             $lines = DB::table('journal_lines')->where('operation_id', $operation->id)->get();
+            foreach ($lines as $line) {
+                $accountId = (int) $line->account_id;
+                if (isset($debts[$accountId])) {
+                    $amount = MoneyRial::fromRial((string) $line->amount_rial);
+                    $debts[$accountId] = $line->side === 'credit' ? $debts[$accountId]->add($amount) : $debts[$accountId]->subtract($amount);
+                    if ($debts[$accountId]->rial()[0] === '-') {
+                        throw new FinanceInputException('Operation '.$operation->public_id.' on '.$operation->effective_date.' repays more than debt '.$accountId.' owed.');
+                    }
+                }
+            }
             $sourceId = null;
             $movedMin = MoneyRial::fromRial('0');
             $movedMax = MoneyRial::fromRial('0');
@@ -232,12 +251,15 @@ final class ReplayProjection
                     } elseif ($sourceId !== null) {
                         $position['min'] = $position['min']->add($movedMin);
                         $position['max'] = $position['max']->add($movedMax);
-                    } else {
+                    } elseif (! in_array($operation->type, ['income', 'accrue_income', 'borrow'], true)) {
                         $position['max'] = $position['max']->add($amount);
                     }
                 } else {
                     $position['balance'] = $position['balance']->subtract($amount);
-                    $position['min'] = $position['min']->subtract($amount);
+                    // An opening correction keeps the declaration, which was validated against the new amount.
+                    if ($operation->type !== 'opening_amendment') {
+                        $position['min'] = $position['min']->subtract($amount);
+                    }
                     if ($position['min']->rial()[0] === '-') {
                         $position['min'] = MoneyRial::fromRial('0');
                     }
@@ -263,19 +285,35 @@ final class ReplayProjection
             if ($journal->rial() !== $position['balance']->rial()) {
                 throw new FinanceInputException('Cash journal and replay projection differ for account '.$accountId.'.');
             }
-            DB::table('accounts')->where('id', $accountId)->update([
-                'balance_rial' => $position['balance']->rial(),
-                'protected_min_rial' => $position['min']->rial(),
-                'protected_max_rial' => $position['max']->rial(), 'updated_at' => now(),
-            ]);
+            $this->savePosition($accountId, $position['balance'], $position['min'], $position['max'], $triggerOperationId);
         }
-        foreach (DB::table('accounts')->where('class', 'liability')->pluck('id') as $accountId) {
-            $balance = $this->journalBalance((int) $accountId, 'liability');
+        foreach (array_keys($debts) as $accountId) {
+            $balance = $this->journalBalance($accountId, 'liability');
             if ($balance->rial()[0] === '-') {
                 throw new FinanceInputException('Debt '.$accountId.' would become negative after replay.');
             }
-            DB::table('accounts')->where('id', $accountId)->update(['balance_rial' => $balance->rial(), 'updated_at' => now()]);
+            $this->savePosition($accountId, $balance, MoneyRial::fromRial('0'), MoneyRial::fromRial('0'), $triggerOperationId);
         }
+    }
+
+    /** Records each changed position so a later reversal restores the replayed state, not an older one. */
+    private function savePosition(int $accountId, MoneyRial $balance, MoneyRial $minimum, MoneyRial $maximum, int $triggerOperationId): void
+    {
+        $stored = DB::table('accounts')->find($accountId);
+        if ((string) $stored->balance_rial === $balance->rial() && (string) $stored->protected_min_rial === $minimum->rial()
+            && (string) $stored->protected_max_rial === $maximum->rial()) {
+            return;
+        }
+        DB::table('accounts')->where('id', $accountId)->update([
+            'balance_rial' => $balance->rial(), 'protected_min_rial' => $minimum->rial(),
+            'protected_max_rial' => $maximum->rial(), 'updated_at' => now(),
+        ]);
+        DB::table('provenance_events')->insert([
+            'operation_id' => $triggerOperationId, 'account_id' => $accountId, 'origin_kind' => 'replay',
+            'balance_after_rial' => $balance->rial(), 'protected_min_after_rial' => $minimum->rial(),
+            'protected_max_after_rial' => $maximum->rial(), 'evidence' => 'mixed_unresolved',
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
     }
 
     private function journalBalance(int $accountId, string $class): MoneyRial

@@ -2,6 +2,17 @@
 
 > **وضعیت و ترتیب کار:** [PLAN](PLAN.md). بخش «سوابق اجرایی» انتهای این سند تاریخی است: شمارهٔ فازها در آن قدیمی‌اند و عبارت‌هایی مانند «فاز ۸ باز است» یا «فاز ۹ مجوز ندارد» وضعیت امروز نیستند.
 
+## تغییرات برنامه‌ریزی‌شدهٔ موتور خمس (P5)
+
+طرح است و هنوز ساخته نشده. هر کدام با migration، پشتیبان و بازیابی آزمایشی انجام می‌شود:
+
+- `khums_profile_versions` طبق [KHUMS_PROFILE](KHUMS_PROFILE.md).
+- `operations.income_kind`: `income`، `gift`، `exempt` برای جدا کردن ارث و مهریه و دیه از درآمد؛ پیش‌فرض `income`.
+- `lots.purchase_intent` با سابقهٔ تاریخ‌دار، و `lots.acquisition_kind`: `exchange` یا `non_exchange`.
+- `obligations.debt_purpose`، `obligations.expense_realized_on`، و `obligations.is_continuing`.
+- `khums_year_balances`: مانده‌های پایانی ظرف‌های `M`، `Q`، `X`، `U`، پایه و سهم هر lot و کسرهای مصرف‌شدهٔ هر بدهی، برای هر closure.
+- `khums_year_item_inputs`: پاسخ‌های فهرست پایان سال، مانند استفاده تا سر سال و مانده‌های مصرفی.
+
 ## قرارداد عمومی
 
 کلید داخلی BIGINT، شناسه عمومی تصادفی برای URL و idempotency، FKهای صریح و `ON DELETE RESTRICT` برای سوابق مالی. وضعیت‌ها string محدود با enum در PHP و CHECK قابل پشتیبانی در DB. استفاده از enum اختصاصی MySQL یا JSON query برای هسته محاسبه ممنوع. JSON فقط برای snapshot/metadata نسخه‌دار با schema و اعداد رشته‌ای است؛ مبلغ/مقدار مهم ستون دارد.

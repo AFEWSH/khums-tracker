@@ -4,7 +4,7 @@ use App\Support\Khums\RuleCatalog;
 
 function rulingIndex(): array
 {
-    return json_decode(file_get_contents(base_path('docs/rulings/index.json')), true, flags: JSON_THROW_ON_ERROR);
+    return json_decode(file_get_contents(base_path('docs/khums/rulings/index.json')), true, flags: JSON_THROW_ON_ERROR);
 }
 
 it('indexes every khums issue exactly once with a hash and source page', function (): void {
@@ -39,12 +39,12 @@ it('points every manifest rule at archived issues and keeps all of them inactive
 
 it('matches the archived text to its recorded hash when the local text is present', function (): void {
     $pages = rulingIndex()['pages'];
-    if (! is_file(base_path('docs/rulings/'.$pages[0]['file']))) {
+    if (! is_file(base_path('docs/khums/rulings/'.$pages[0]['file']))) {
         $this->markTestSkipped('Full ruling text stays local until the repository is private.');
     }
 
     foreach ($pages as $page) {
-        $raw = file_get_contents(base_path('docs/rulings/'.$page['file']));
+        $raw = file_get_contents(base_path('docs/khums/rulings/'.$page['file']));
         $body = substr($raw, strpos($raw, "---\n\n", 4) + 5);
 
         expect(hash('sha256', $body))->toBe($page['sha256']);

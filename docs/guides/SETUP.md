@@ -1,6 +1,6 @@
 # نصب و اجرا
 
-> **وضعیت و ترتیب کار:** [PLAN](PLAN.md). نتیجهٔ روز آزمون‌ها در [PROGRESS](PROGRESS.md) است. دادهٔ مالی واقعی تا P9 وارد نمی‌شود؛ صفحات را فقط با دادهٔ ساختگی و روی پایگاه جداگانه بررسی کنید.
+> **وضعیت و ترتیب کار:** [PLAN](../status/PLAN.md). نتیجهٔ روز آزمون‌ها در [PROGRESS](../status/PROGRESS.md) است. دادهٔ مالی واقعی تا P9 وارد نمی‌شود؛ صفحات را فقط با دادهٔ ساختگی و روی پایگاه جداگانه بررسی کنید.
 
 ## وضعیت نسخه‌ها و سازگاری
 
@@ -74,7 +74,7 @@ php artisan owner:reset-password
 
 SQLite پیش‌فرض در `storage/app/private/database.sqlite` است؛ DB_DATABASE می‌تواند مسیر خصوصی مطلق تعیین کند. local disk قابل serve نیست و لینک public/storage نداریم. `.env`، SQLite/WAL، cache نشست، log، backup، receipt و export در ignore قرار دارند؛ اطلاعات محرمانه در `.env.example` نیست.
 
-اجرای توسعه فقط روی loopback است. برای استقرار آینده، public تنها web root و HTTPS الزامی است؛ APP_ENV=production باعث اجبار Secure cookie و غیرفعال‌شدن debug در provider می‌شود. تنظیم APP_URL، دسترسی فایل‌های خصوصی و کاربر PHP-FPM باید متناسب همان میزبان بررسی شود. استقرار سرور خارج از [PLAN](PLAN.md) و معوق است.
+اجرای توسعه فقط روی loopback است. برای استقرار آینده، public تنها web root و HTTPS الزامی است؛ APP_ENV=production باعث اجبار Secure cookie و غیرفعال‌شدن debug در provider می‌شود. تنظیم APP_URL، دسترسی فایل‌های خصوصی و کاربر PHP-FPM باید متناسب همان میزبان بررسی شود. استقرار سرور خارج از [PLAN](../status/PLAN.md) و معوق است.
 
 ## پشتیبان و بازیابی
 

@@ -1,12 +1,12 @@
 # مدل داده پیشنهادی
 
-> **وضعیت و ترتیب کار:** [PLAN](PLAN.md). بخش «سوابق اجرایی» انتهای این سند تاریخی است: شمارهٔ فازها در آن قدیمی‌اند و عبارت‌هایی مانند «فاز ۸ باز است» یا «فاز ۹ مجوز ندارد» وضعیت امروز نیستند.
+> **وضعیت و ترتیب کار:** [PLAN](../status/PLAN.md). بخش «سوابق اجرایی» انتهای این سند تاریخی است: شمارهٔ فازها در آن قدیمی‌اند و عبارت‌هایی مانند «فاز ۸ باز است» یا «فاز ۹ مجوز ندارد» وضعیت امروز نیستند.
 
 ## تغییرات برنامه‌ریزی‌شدهٔ موتور خمس (P5)
 
 طرح است و هنوز ساخته نشده. هر کدام با migration، پشتیبان و بازیابی آزمایشی انجام می‌شود:
 
-- `khums_profile_versions` طبق [KHUMS_PROFILE](KHUMS_PROFILE.md).
+- `khums_profile_versions` طبق [KHUMS_PROFILE](../khums/KHUMS_PROFILE.md).
 - `operations.income_kind`: `income`، `gift`، `exempt` برای جدا کردن ارث و مهریه و دیه از درآمد؛ پیش‌فرض `income`.
 - `lots.purchase_intent` با سابقهٔ تاریخ‌دار، و `lots.acquisition_kind`: `exchange` یا `non_exchange`.
 - `obligations.debt_purpose`، `obligations.expense_realized_on`، و `obligations.is_continuing`.
